@@ -1,6 +1,16 @@
 import { FC } from 'react'
 
-import { Footer, Header } from 'src/components/business'
+import {
+  About,
+  Advantages,
+  Contacts,
+  Footer,
+  Header,
+  Hero,
+  Plan,
+  Request,
+  Services,
+} from 'src/components/business'
 
 const HomePage: FC = () => {
   return (
@@ -8,7 +18,13 @@ const HomePage: FC = () => {
       <Header />
 
       <main>
-        <h1>MAIN</h1>
+        <Hero />
+        <About />
+        <Services />
+        <Plan />
+        <Advantages />
+        <Request />
+        <Contacts />
       </main>
 
       <Footer />
