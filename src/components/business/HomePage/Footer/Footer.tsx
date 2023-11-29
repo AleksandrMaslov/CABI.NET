@@ -16,10 +16,10 @@ const Footer: FC<FooterProps> = ({ className }) => {
       <div className={classes.container}>
         <Logo color="white" />
 
-        <p>
+        <h6 className={classes.header}>
           © 2021 Сoworking. Дизайн сайта - &nbsp;
           <Anchor
-            className={classes.bold}
+            className={classes.anchor}
             href="https://www.behance.net/maslovairina"
             underlined
             lineColor="white"
@@ -27,10 +27,10 @@ const Footer: FC<FooterProps> = ({ className }) => {
             Ирина Маслова
           </Anchor>
           . Все права защищены.
-        </p>
+        </h6>
 
-        <Anchor className={classes.bold} href="#" underlined lineColor="white">
-          Политика конфиденциальности
+        <Anchor href="#" underlined lineColor="white">
+          <h6>Политика конфиденциальности</h6>
         </Anchor>
       </div>
     </footer>
