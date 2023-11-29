@@ -11,9 +11,9 @@ const Hero: FC<HeroProps> = ({ className }) => {
   if (className) rootClasses.push(className)
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <section className={rootClasses.join(' ')}>
       <div className={classes.container}>Hero</div>
-    </div>
+    </section>
   )
 }
 

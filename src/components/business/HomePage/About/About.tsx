@@ -13,12 +13,12 @@ const About: FC<AboutProps> = ({ className }) => {
   if (className) rootClasses.push(className)
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <section className={rootClasses.join(' ')}>
       <div className={classes.container}>
         <Breaker number="01" title="Кто мы" />
         About
       </div>
-    </div>
+    </section>
   )
 }
 

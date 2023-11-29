@@ -13,12 +13,12 @@ const Plan: FC<PlanProps> = ({ className }) => {
   if (className) rootClasses.push(className)
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <section className={rootClasses.join(' ')}>
       <div className={classes.container}>
         <Breaker number="03" title="План коворкинга" />
         Plan
       </div>
-    </div>
+    </section>
   )
 }
 
