@@ -1,0 +1,8 @@
+.homePage {
+  background-color: var(--ui-var);
+}
+
+.container {
+  position: relative;
+  margin: auto;
+}

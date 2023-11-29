@@ -1,0 +1,12 @@
+@import '../styles/_reset.css';
+@import '../styles/_fonts.css';
+@import '../styles/_scrollbar.css';
+@import '../styles/_variables.css';
+
+:root,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
