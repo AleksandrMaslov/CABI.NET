@@ -10,7 +10,11 @@ const Hero: FC<HeroProps> = ({ className }) => {
   const rootClasses = [classes.hero]
   if (className) rootClasses.push(className)
 
-  return <div className={rootClasses.join(' ')}>Hero</div>
+  return (
+    <div className={rootClasses.join(' ')}>
+      <div className={classes.container}>Hero</div>
+    </div>
+  )
 }
 
 export default Hero

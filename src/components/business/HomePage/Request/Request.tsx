@@ -10,7 +10,11 @@ const Request: FC<RequestProps> = ({ className }) => {
   const rootClasses = [classes.request]
   if (className) rootClasses.push(className)
 
-  return <div className={rootClasses.join(' ')}>Request</div>
+  return (
+    <div className={rootClasses.join(' ')}>
+      <div className={classes.container}>Request</div>
+    </div>
+  )
 }
 
 export default Request

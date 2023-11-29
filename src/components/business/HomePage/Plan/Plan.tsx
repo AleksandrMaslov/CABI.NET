@@ -14,8 +14,10 @@ const Plan: FC<PlanProps> = ({ className }) => {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <Breaker number="03" title="План коворкинга" />
-      Plan
+      <div className={classes.container}>
+        <Breaker number="03" title="План коворкинга" />
+        Plan
+      </div>
     </div>
   )
 }

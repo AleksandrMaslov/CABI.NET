@@ -14,8 +14,10 @@ const Contacts: FC<ContactsProps> = ({ className }) => {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <Breaker number="05" title="Как с нами связаться" />
-      Contacts
+      <div className={classes.container}>
+        <Breaker number="05" title="Как с нами связаться" />
+        Contacts
+      </div>
     </div>
   )
 }

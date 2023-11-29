@@ -14,8 +14,10 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <Breaker number="04" title="Комфорт" />
-      Advantages
+      <div className={classes.container}>
+        <Breaker number="04" title="Комфорт" />
+        Advantages
+      </div>
     </div>
   )
 }

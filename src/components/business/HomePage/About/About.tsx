@@ -14,8 +14,10 @@ const About: FC<AboutProps> = ({ className }) => {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <Breaker number="01" title="Кто мы" />
-      About
+      <div className={classes.container}>
+        <Breaker number="01" title="Кто мы" />
+        About
+      </div>
     </div>
   )
 }
