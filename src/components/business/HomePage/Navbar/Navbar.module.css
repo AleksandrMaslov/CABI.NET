@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+}
+
+.anchors {
+  font-family: var(--font-special);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+
+  padding: 0rem 9rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  border-left: 0.15rem solid var(--black);
+  border-right: 0.15rem solid var(--black);
+}
+
+.actions {
+  margin-left: 9rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.icon {
+  cursor: pointer;
+}

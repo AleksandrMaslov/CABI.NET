@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  color: var(--white);
+  background-color: var(--black);
+  font-size: 2rem;
+}
+
+.container {
+  flex: 1 1 auto;
+  margin: 5rem 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bold {
+  font-family: var(--font-special);
+  font-weight: 500;
+}
