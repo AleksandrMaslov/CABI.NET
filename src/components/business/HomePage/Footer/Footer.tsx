@@ -30,7 +30,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
         </h6>
 
         <Anchor href="#" underlined lineColor="white">
-          <h6>Политика конфиденциальности</h6>
+          <h6 className={classes.header}>Политика конфиденциальности</h6>
         </Anchor>
       </div>
     </footer>
