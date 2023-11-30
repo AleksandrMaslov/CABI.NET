@@ -35,10 +35,8 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
         </div>
       </div>
 
-      <div className={classes.wrapper}>
-        <div className={classes.milk} />
-        <div className={classes.orange} />
-      </div>
+      <div className={classes.milk} />
+      <div className={classes.orange} />
     </div>
   )
 }

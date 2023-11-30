@@ -1,21 +1,21 @@
 .businesscard {
-  display: flex;
-  flex-direction: column;
   color: var(--white);
   background-color: var(--black);
+
+  display: grid;
+  grid-template-rows: auto 15rem;
+  grid-template-columns: 15rem auto;
+  grid-template-areas:
+    'content content'
+    'milk orange';
 }
 
 .content {
+  grid-area: content;
   margin: 8rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.wrapper {
-  display: flex;
-  height: 15rem;
-  width: 100%;
 }
 
 .social {
@@ -26,13 +26,11 @@
 }
 
 .milk {
-  width: 15rem;
-  height: 100%;
+  grid-area: milk;
   background-color: var(--milk);
 }
 
 .orange {
-  flex: 1 1 auto;
-  height: 100%;
+  grid-area: orange;
   background-color: var(--orange);
 }
