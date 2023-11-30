@@ -1,6 +1,8 @@
+import { Marker } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
 import Breaker from '../Breaker/Breaker'
+import Businesscard from '../Businesscard/Businesscard'
 
 import classes from './Contacts.module.css'
 
@@ -13,12 +15,15 @@ const Contacts: FC<ContactsProps> = ({ className }) => {
   if (className) rootClasses.push(className)
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <section className={rootClasses.join(' ')}>
       <div className={classes.container}>
         <Breaker number="05" title="Как с нами связаться" />
-        Contacts
+
+        <Businesscard className={classes.businesscard} />
+
+        <Marker className={classes.marker} tooltip="CABI.NET" />
       </div>
-    </div>
+    </section>
   )
 }
 
