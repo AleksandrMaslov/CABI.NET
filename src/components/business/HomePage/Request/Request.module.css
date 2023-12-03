@@ -3,4 +3,54 @@
 
 .container {
   margin: 0rem 0rem 17rem;
+  display: grid;
+  grid-template-rows: 49.5rem 27.5rem;
+  grid-template-columns: 29rem auto 89rem;
+  grid-template-areas:
+    'side form img'
+    'square form img';
+}
+
+.side {
+  position: relative;
+  overflow: hidden;
+  grid-area: side;
+  background-color: var(--green);
+}
+
+.text {
+  z-index: 0;
+  position: absolute;
+  top: -5rem;
+  left: -6.5rem;
+  transform-origin: center;
+  transform: rotate(180deg);
+
+  color: var(--white);
+  font-family: var(--font-special);
+  font-weight: 700;
+  font-size: 28.5rem;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  writing-mode: vertical-rl;
+  -webkit-text-fill-color: transparent;
+  background-size: 15rem;
+  background-position: top -6rem left 2.5rem;
+  background-image: url('../../../../assets/request_text_bg.webp');
+}
+
+.square {
+  grid-area: square;
+  background-color: var(--black);
+}
+
+.form {
+  grid-area: form;
+  background-color: var(--lightgrey);
+}
+
+.img {
+  grid-area: img;
+  background-color: var(--grey);
 }

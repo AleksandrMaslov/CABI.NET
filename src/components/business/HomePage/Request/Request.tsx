@@ -1,4 +1,9 @@
+import { Img } from 'cabinet_ui_kit'
 import { FC } from 'react'
+
+import { request_bg } from 'src/assets'
+
+import RequestForm from '../RequestForm/RequestForm'
 
 import classes from './Request.module.css'
 
@@ -12,7 +17,17 @@ const Request: FC<RequestProps> = ({ className }) => {
 
   return (
     <section className={rootClasses.join(' ')}>
-      <div className={classes.container}>Request</div>
+      <div className={classes.container}>
+        <div className={classes.side}>
+          <div className={classes.text}>CAB</div>
+        </div>
+
+        <div className={classes.square}></div>
+
+        <RequestForm className={classes.form}></RequestForm>
+
+        <Img className={classes.img} src={request_bg} />
+      </div>
     </section>
   )
 }
