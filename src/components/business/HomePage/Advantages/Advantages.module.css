@@ -3,4 +3,12 @@
 
 .container {
   margin: 0rem 20rem 17rem;
+  display: flex;
+  flex-direction: column;
+  gap: 9rem;
+}
+
+.header {
+  text-align: center;
+  text-wrap: balance;
 }
