@@ -1,4 +1,10 @@
+import { Img } from 'cabinet_ui_kit'
 import { FC } from 'react'
+
+import { hero_img } from 'src/assets'
+
+import Cover from '../Cover/Cover'
+import Title from '../Title/Title'
 
 import classes from './Hero.module.css'
 
@@ -12,7 +18,19 @@ const Hero: FC<HeroProps> = ({ className }) => {
 
   return (
     <section className={rootClasses.join(' ')}>
-      <div className={classes.container}>Hero</div>
+      <div className={classes.container}>
+        <div className={classes.wrapper}>
+          <Img className={classes.img} src={hero_img} />
+
+          <Title className={classes.title} text="КОВОРКИНГ НА ЮГЕ МОСКВЫ" />
+
+          <h1 className={classes.header}>
+            САМЫЕ ЛУЧШИЕ КВАДРАТНЫЕ МЕТРЫ В&nbsp;ГОРОДЕ.
+          </h1>
+        </div>
+
+        <Cover />
+      </div>
     </section>
   )
 }

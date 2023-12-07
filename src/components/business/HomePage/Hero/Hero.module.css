@@ -3,4 +3,30 @@
 
 .container {
   margin: 17rem 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 7.5rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    'img title'
+    'img header';
+  row-gap: 4rem;
+  column-gap: 7.5rem;
+}
+
+.img {
+  grid-area: img;
+  height: 35rem;
+  width: 35rem;
+}
+
+.title {
+  grid-area: title;
+}
+
+.header {
+  grid-area: header;
 }
