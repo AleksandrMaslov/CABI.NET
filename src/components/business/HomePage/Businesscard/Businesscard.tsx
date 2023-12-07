@@ -18,18 +18,18 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
       <div className={classes.content}>
         <h2>Контакты</h2>
 
-        <Contact title="Адрес:" content="Воронцовские пруды, д,3" />
+        <Contact href="#" title="Адрес:" content="Воронцовские пруды, д,3" />
 
-        <Contact title="Телефон:" content="+7 (495) 555-55-55" />
+        <Contact href="#" title="Телефон:" content="+7 (495) 555-55-55" />
 
-        <Contact title="E-mail:" content="coworking@mail.ru" />
+        <Contact href="#" title="E-mail:" content="coworking@mail.ru" />
 
         <div className={classes.social}>
-          <Anchor lineColor="white" underlined>
+          <Anchor href="#" lineColor="white" underlined>
             Telegram
           </Anchor>
 
-          <Anchor lineColor="white" underlined>
+          <Anchor href="#" lineColor="white" underlined>
             WhatsApp
           </Anchor>
         </div>
