@@ -18,7 +18,7 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
       <div className={classes.content}>
         <h2>Контакты</h2>
 
-        <Contact href="#" title="Адрес:" content="Воронцовские пруды, д,3" />
+        <Contact href="#" title="Адрес:" content="Воронцовские пруды, д.3" />
 
         <Contact href="#" title="Телефон:" content="+7 (495) 555-55-55" />
 
