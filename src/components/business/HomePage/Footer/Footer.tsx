@@ -21,6 +21,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
           <Anchor
             className={classes.anchor}
             href="https://www.behance.net/maslovairina"
+            target="_blank"
             underlined
             lineColor="white"
           >
