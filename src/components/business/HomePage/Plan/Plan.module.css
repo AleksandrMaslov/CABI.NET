@@ -1,6 +1,15 @@
-.module {
+.plan {
 }
 
 .container {
   margin: 0rem 20rem 17rem;
+  display: flex;
+  flex-direction: column;
+  gap: 9rem;
+}
+
+.wrapper {
+  border: 8rem solid var(--lightgrey);
+  background-color: var(--lightgrey);
+  position: relative;
 }
