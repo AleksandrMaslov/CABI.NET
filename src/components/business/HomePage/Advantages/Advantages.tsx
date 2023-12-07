@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import { IAdvantage } from 'src/models'
-import AdvantageService from 'src/services/AdvatagesService'
+import { AdvantagesService } from 'src/services'
 
 import Advantage from '../Advantage/Advantage'
 import Breaker from '../Breaker/Breaker'
@@ -20,7 +20,7 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
   const [advantages, setAdvantges] = useState<IAdvantage[]>([])
 
   useEffect(() => {
-    setAdvantges(AdvantageService.getAll())
+    setAdvantges(AdvantagesService.getAll())
   }, [])
 
   return (
