@@ -3,4 +3,45 @@
 
 .container {
   margin: 0rem 20rem 17rem;
+  display: flex;
+  flex-direction: column;
+  gap: 9rem;
+}
+
+.content {
+  display: flex;
+  margin-left: 27rem;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  writing-mode: vertical-rl;
+  transform-origin: center;
+  transform: rotate(180deg);
+}
+
+.title {
+  font-family: var(--font-special);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+}
+
+.img {
+  height: 35rem;
+  width: 35rem;
+  margin-left: 4rem;
+  margin-right: 9rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+}
+
+.text {
+  font-size: 2.2rem;
+  text-wrap: balance;
 }
