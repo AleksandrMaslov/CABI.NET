@@ -1,9 +1,10 @@
-import { Icon, Img } from 'cabinet_ui_kit'
+import { Img } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
 import { about_img } from 'src/assets'
 
 import Breaker from '../Breaker/Breaker'
+import Title from '../Title/Title'
 
 import classes from './About.module.css'
 
@@ -21,10 +22,7 @@ const About: FC<AboutProps> = ({ className }) => {
         <Breaker number="01" title="Кто мы" />
 
         <div className={classes.content}>
-          <div className={classes.subtitle}>
-            <Icon icon="square" color="orange" size="2.5rem" />
-            <p className={classes.title}>ИДЕАЛЬНОЕ ПРОСТРАНСТВО</p>
-          </div>
+          <Title className={classes.title} text="ИДЕАЛЬНОЕ ПРОСТРАНСТВО" />
 
           <Img className={classes.img} src={about_img} />
 

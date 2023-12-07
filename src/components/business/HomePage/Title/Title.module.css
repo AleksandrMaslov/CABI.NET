@@ -1,0 +1,11 @@
+.title {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.text {
+  font-family: var(--font-special);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+}

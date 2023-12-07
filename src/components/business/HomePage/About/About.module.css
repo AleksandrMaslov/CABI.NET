@@ -13,19 +13,10 @@
   margin-left: 27rem;
 }
 
-.subtitle {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+.title {
   writing-mode: vertical-rl;
   transform-origin: center;
   transform: rotate(180deg);
-}
-
-.title {
-  font-family: var(--font-special);
-  font-weight: 500;
-  letter-spacing: 0.07em;
 }
 
 .img {
