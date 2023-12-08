@@ -1,0 +1,63 @@
+.framerSlider {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.overflow {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  padding: 0 1%;
+}
+
+.icon {
+  padding: 2.5rem;
+  background-color: var(--white);
+  transform: translate(50%, -50%);
+  transition: background-color 0.1s ease-out;
+}
+
+.arrow {
+  z-index: 10;
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 1;
+  transition: transform 0.1s ease-out;
+}
+
+.arrow:last-child {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.arrow:last-child .icon {
+  transform: rotate(180deg);
+}
+
+.arrow:hover .icon {
+  background-color: var(--lightgrey);
+}
+
+.arrow:hover {
+  transform: translate(10%, 0);
+}
+
+.arrow:last-child:hover {
+  transform: translate(-60%, -50%);
+}
+
+.arrow:active {
+  transform: scale(0.9);
+}
+
+.arrow:last-child:active {
+  transform: scale(0.9) translate(-50%, -50%);
+}
