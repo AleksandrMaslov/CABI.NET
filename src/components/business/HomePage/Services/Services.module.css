@@ -1,5 +1,6 @@
 .services {
   overflow: hidden;
+  outline: 30px solid white;
 }
 
 .container {
@@ -10,9 +11,12 @@
   text-align: center;
 }
 
-.slider {
+.galery {
   height: 93rem;
   background-color: var(--lightgreen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tickers {
