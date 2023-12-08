@@ -13,13 +13,6 @@ const Tickers: FC<TickersProps> = ({ className }) => {
   const rootClasses = [classes.tickers]
   if (className) rootClasses.push(className)
 
-  const ticker = (
-    <span className={classes.string}>
-      <h2>ФУНКЦИОНАЛЬНОЕ ПРОСТРАНСТВО ДЛЯ КОМФОРТНОЙ РАБОТЫ</h2>
-      <Icon icon="square" size="1rem" />
-    </span>
-  )
-
   return (
     <div className={rootClasses.join(' ')}>
       <Ticker content={ticker} />
@@ -29,3 +22,10 @@ const Tickers: FC<TickersProps> = ({ className }) => {
 }
 
 export default Tickers
+
+const ticker = (
+  <span className={classes.string}>
+    <h2>ФУНКЦИОНАЛЬНОЕ ПРОСТРАНСТВО ДЛЯ КОМФОРТНОЙ РАБОТЫ</h2>
+    <Icon icon="square" size="1rem" />
+  </span>
+)
