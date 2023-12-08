@@ -1,0 +1,22 @@
+.ticker {
+  display: flex;
+}
+
+.item {
+  font-weight: 500;
+  white-space: nowrap;
+  animation: 15s tickerAnimation linear infinite;
+}
+
+.item_reversed {
+  animation-direction: reverse;
+}
+
+@keyframes tickerAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

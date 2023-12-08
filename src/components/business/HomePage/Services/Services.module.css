@@ -1,6 +1,20 @@
 .services {
+  overflow: hidden;
 }
 
 .container {
   margin: 0rem 20rem 17rem;
+  display: flex;
+  flex-direction: column;
+  gap: 9rem;
+  text-align: center;
+}
+
+.slider {
+  height: 93rem;
+  background-color: var(--lightgreen);
+}
+
+.tickers {
+  margin-left: -20rem;
 }

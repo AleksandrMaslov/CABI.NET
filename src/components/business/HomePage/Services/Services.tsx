@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import Breaker from '../Breaker/Breaker'
+import Tickers from '../Tickers/Tickers'
 
 import classes from './Services.module.css'
 
@@ -16,7 +17,14 @@ const Services: FC<ServicesProps> = ({ className }) => {
     <div className={rootClasses.join(' ')}>
       <div className={classes.container}>
         <Breaker number="02" title="Услуги" />
-        Services
+
+        <h2>НАШЕ ПРОСТРАНСТВО</h2>
+
+        <div className={classes.slider}>
+          <h3>SLIDER</h3>
+        </div>
+
+        <Tickers className={classes.tickers} />
       </div>
     </div>
   )

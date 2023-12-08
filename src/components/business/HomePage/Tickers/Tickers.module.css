@@ -1,0 +1,13 @@
+.tickers {
+}
+
+.string {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-right: 2rem;
+}
+
+.string * {
+  font-weight: 500;
+}
