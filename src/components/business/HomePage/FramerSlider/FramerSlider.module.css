@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.framerSlider[data-disabled='true'] {
+  pointer-events: none;
+}
+
 .overflow {
   display: flex;
   position: relative;

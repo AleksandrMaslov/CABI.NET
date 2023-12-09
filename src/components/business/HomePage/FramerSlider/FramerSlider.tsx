@@ -1,6 +1,6 @@
 import { Icon } from 'cabinet_ui_kit'
-import { AnimatePresence, motion } from 'framer-motion'
-import { ReactNode } from 'react'
+import { AnimatePresence, AnimationDefinition, motion } from 'framer-motion'
+import { ReactNode, useState } from 'react'
 
 import { useInfinitePagination } from 'src/hooks'
 
@@ -24,14 +24,22 @@ function FramerSlider<T>({
   if (className) rootClasses.push(className)
 
   const number = items.length
-  const hasControls = number > 1
+  const hasControls = renderItem && number > 1
 
+  const [isAnimating, setAnimating] = useState<boolean>(false)
   const [index, [page, direction], paginate] = useInfinitePagination(0, number)
 
   const dragEndHandler = createDragEndHandler(paginate)
 
+  const animationStartHandler = () => setAnimating(true)
+
+  const animationCompleteHandler = (definition: AnimationDefinition) => {
+    if (definition !== 'center') return
+    setAnimating(false)
+  }
+
   return (
-    <div className={rootClasses.join(' ')}>
+    <div className={rootClasses.join(' ')} data-disabled={isAnimating}>
       <div className={classes.overflow}>
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
@@ -46,10 +54,10 @@ function FramerSlider<T>({
             dragElastic={1}
             onDragEnd={dragEndHandler}
             dragConstraints={{ left: 0, right: 0 }}
+            onAnimationStart={animationStartHandler}
+            onAnimationComplete={animationCompleteHandler}
           >
-            {(!renderItem || !number) && fallbackItem}
-
-            {renderItem && number && renderItem(items[index])}
+            {!renderItem || !number ? fallbackItem : renderItem(items[index])}
           </motion.div>
         </AnimatePresence>
       </div>
