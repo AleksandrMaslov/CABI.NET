@@ -11,11 +11,14 @@
 }
 
 .galery {
-  height: 93rem;
-  background-color: var(--lightgreen);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 2rem;
 }
 
 .tickers {

@@ -1,0 +1,9 @@
+.pageIndicator {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.indicator {
+  font-size: 3rem;
+}

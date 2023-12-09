@@ -1,11 +1,15 @@
 import { SpaceCard } from 'cabinet_ui_kit'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
+import { CategoriesEnum } from 'src/data'
 import { IGroupedSpace } from 'src/models'
+import { SpacesService } from 'src/services'
 
 import Breaker from '../Breaker/Breaker'
 import FallbackCard from '../FallbackCard/FallbackCard'
 import FramerSlider from '../FramerSlider/FramerSlider'
+import PageIndicator from '../PageIndicator/PageIndicator'
+import Tab from '../Tab/Tab'
 import Tickers from '../Tickers/Tickers'
 
 import classes from './Services.module.css'
@@ -14,9 +18,33 @@ interface ServicesProps {
   className?: string
 }
 
+const tabs = Object.values(CategoriesEnum).filter(
+  label => label !== CategoriesEnum.public,
+)
+
 const Services: FC<ServicesProps> = ({ className }) => {
   const rootClasses = [classes.services]
   if (className) rootClasses.push(className)
+
+  const [spaces, setSpaces] = useState<IGroupedSpace[]>([])
+  const [filtered, setFiltered] = useState<IGroupedSpace[]>([])
+  const [page, setPage] = useState<number>(0)
+
+  useEffect(() => {
+    setSpaces(SpacesService.getCommercial())
+  }, [])
+
+  useEffect(() => {
+    handleFilterClick(CategoriesEnum.offices)
+  }, [spaces])
+
+  const handleFilterClick = (label: string) => {
+    setFiltered(
+      spaces.filter(space => {
+        return CategoriesEnum[space.group] === label
+      }),
+    )
+  }
 
   return (
     <div className={rootClasses.join(' ')}>
@@ -26,11 +54,20 @@ const Services: FC<ServicesProps> = ({ className }) => {
         <h2>НАШЕ ПРОСТРАНСТВО</h2>
 
         <div className={classes.galery}>
+          <div className={classes.tabs}>
+            {tabs.map(label => (
+              <Tab key={label} label={label} onClick={handleFilterClick} />
+            ))}
+          </div>
+
           <FramerSlider
             fallbackItem={<FallbackCard />}
-            // items={spaces}
+            items={filtered}
             renderItem={(space: IGroupedSpace) => <SpaceCard space={space} />}
+            setPage={setPage}
           />
+
+          <PageIndicator current={page} total={filtered.length} />
         </div>
 
         <Tickers className={classes.tickers} />
@@ -40,29 +77,3 @@ const Services: FC<ServicesProps> = ({ className }) => {
 }
 
 export default Services
-
-const space: IGroupedSpace = {
-  name: 'Енисей',
-  group: 'offices',
-  coords: ['', ''],
-  img: 'https://placehold.jp/600x600.png',
-  area: '26,8 м2',
-  workspaces: '5-6',
-  screen: true,
-  ownMeeting: false,
-  options: [
-    'roundTheClock',
-    'internetSpeed',
-    'legalAddress',
-    'freeMeeting',
-    'printerScaner',
-    'dailyCleaning',
-  ],
-  price: {
-    monthly: 46000,
-    quarterly: 120000,
-    yearly: 560000,
-  },
-}
-
-const spaces: IGroupedSpace[] = [space, space, space]
