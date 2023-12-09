@@ -261,7 +261,7 @@ const lira: IGroupedSpace = {
   },
 }
 
-const spacesData: IGroupedSpace[] = [
+export const spacesData: IGroupedSpace[] = [
   kassiopeia,
   lira,
   andromeda,
@@ -278,4 +278,10 @@ const spacesData: IGroupedSpace[] = [
   veranda,
 ]
 
-export default spacesData
+export enum CategoriesEnum {
+  public = 'ОБЩЕСТВЕННЫЕ',
+  offices = 'ОФИСЫ',
+  meetingrooms = 'ПЕРЕГОВОРНЫЕ',
+  workspaces = 'РАБОЧИЕ МЕСТА В ОПЕНСПЕЙСАХ',
+  lectures = 'ЛЕКТОРИИ',
+}
