@@ -11,4 +11,10 @@ export default class SpaceService {
       coords,
     }))
   }
+
+  public static getCommercial(): IGroupedSpace[] {
+    return SpaceService.items
+      .filter(({ group }) => group !== 'public')
+      .sort(({ name: nameA }, { name: nameB }) => nameA.localeCompare(nameB))
+  }
 }
