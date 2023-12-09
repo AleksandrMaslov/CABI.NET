@@ -12,4 +12,5 @@
   border: 8rem solid var(--lightgrey);
   background-color: var(--lightgrey);
   position: relative;
+  user-select: none;
 }
