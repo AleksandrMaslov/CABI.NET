@@ -1,9 +1,20 @@
-export const variants = {
+export const overflowVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  invisible: { display: 'none' },
+}
+
+export const overflowTransition = {
+  opacity: { ease: 'easeInOut', duration: 0.5 },
+  display: { duration: 0 },
+}
+
+export const slideVariants = {
   initial: (direction: number) => ({
     x: direction > 0 ? '100%' : '-100%',
   }),
 
-  center: {
+  centered: {
     x: '0%',
   },
 
@@ -12,7 +23,7 @@ export const variants = {
   }),
 }
 
-export const transition = {
+export const slideTransition = {
   x: { type: 'tween', ease: 'easeOut', duration: 1 },
 }
 

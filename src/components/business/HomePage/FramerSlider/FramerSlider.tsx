@@ -8,8 +8,10 @@ import classes from './FramerSlider.module.css'
 import {
   constraints,
   createDragEndHandler,
-  transition,
-  variants,
+  overflowTransition,
+  overflowVariants,
+  slideTransition,
+  slideVariants,
 } from './settings'
 
 interface FramerSliderProps<T> {
@@ -33,6 +35,8 @@ function FramerSlider<T>({
   const number = items.length
   const hasControls = renderItem && number > 1
 
+  const [overflowKey, setOverflowKey] = useState<number>(Date.now())
+
   const [isAnimating, setAnimating] = useState<boolean>(false)
 
   const [index, [page, direction], paginate, reset] = useInfinitePagination(
@@ -45,11 +49,19 @@ function FramerSlider<T>({
   const animationStartHandler = () => setAnimating(true)
 
   const animationCompleteHandler = (definition: AnimationDefinition) => {
-    if (definition !== 'center') return
+    if (definition !== 'centered') return
+    setAnimating(false)
+  }
+
+  const animationOverflowCompleteHandler = (
+    definition: AnimationDefinition,
+  ) => {
+    if (definition !== 'visible') return
     setAnimating(false)
   }
 
   useEffect(() => {
+    setOverflowKey(Date.now())
     reset()
   }, [items])
 
@@ -60,27 +72,37 @@ function FramerSlider<T>({
 
   return (
     <div className={rootClasses.join(' ')} data-disabled={isAnimating}>
-      <div className={classes.overflow}>
-        <AnimatePresence initial={false} custom={direction} mode="popLayout">
-          <motion.div
-            drag={hasControls && 'x'}
-            initial="initial"
-            animate="center"
-            exit="exit"
-            key={page}
-            custom={direction}
-            variants={variants}
-            transition={transition}
-            dragElastic={1}
-            dragConstraints={constraints}
-            onDragEnd={dragEndHandler}
-            onAnimationStart={animationStartHandler}
-            onAnimationComplete={animationCompleteHandler}
-          >
-            {!renderItem || !number ? fallbackItem : renderItem(items[index])}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      <AnimatePresence initial={false} mode="popLayout">
+        <motion.div
+          className={classes.overflow}
+          initial="hidden"
+          animate="visible"
+          exit="invisible"
+          key={overflowKey}
+          variants={overflowVariants}
+          transition={overflowTransition}
+          onAnimationComplete={animationOverflowCompleteHandler}
+        >
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
+            <motion.div
+              drag={hasControls && 'x'}
+              initial="initial"
+              animate="centered"
+              exit="exit"
+              key={page}
+              custom={direction}
+              variants={slideVariants}
+              transition={slideTransition}
+              dragConstraints={constraints}
+              onDragEnd={dragEndHandler}
+              onAnimationStart={animationStartHandler}
+              onAnimationComplete={animationCompleteHandler}
+            >
+              {!renderItem || !number ? fallbackItem : renderItem(items[index])}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+      </AnimatePresence>
 
       {hasControls && (
         <>
