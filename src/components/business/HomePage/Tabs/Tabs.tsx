@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { CategoriesEnum, tabs } from 'src/data'
 import { IGroupedSpace } from 'src/models'
@@ -14,6 +14,8 @@ interface TabsProps {
 }
 
 const Tabs: FC<TabsProps> = ({ items, setFiltered, className }) => {
+  const [selected, setSelected] = useState<string>('')
+
   const rootClasses = [classes.tabs]
   if (className) rootClasses.push(className)
 
@@ -22,6 +24,8 @@ const Tabs: FC<TabsProps> = ({ items, setFiltered, className }) => {
   }, [items])
 
   const handleFilterClick = (label: string) => {
+    setSelected(label)
+
     setFiltered(
       items.filter(item => {
         return CategoriesEnum[item.group] === label
@@ -32,7 +36,12 @@ const Tabs: FC<TabsProps> = ({ items, setFiltered, className }) => {
   return (
     <div className={rootClasses.join(' ')}>
       {tabs.map(label => (
-        <Tab key={label} label={label} onClick={handleFilterClick} />
+        <Tab
+          key={label}
+          label={label}
+          onClick={handleFilterClick}
+          selected={selected === label}
+        />
       ))}
     </div>
   )
