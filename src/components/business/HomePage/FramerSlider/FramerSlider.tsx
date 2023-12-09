@@ -1,6 +1,6 @@
 import { Icon } from 'cabinet_ui_kit'
 import { AnimatePresence, AnimationDefinition, motion } from 'framer-motion'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import { useInfinitePagination } from 'src/hooks'
 
@@ -11,13 +11,15 @@ interface FramerSliderProps<T> {
   fallbackItem: ReactNode
   items?: T[]
   renderItem?: (item: T) => ReactNode
+  setPage?: (page: number) => void
   className?: string
 }
 
 function FramerSlider<T>({
+  fallbackItem,
   items = [],
   renderItem,
-  fallbackItem,
+  setPage,
   className,
 }: FramerSliderProps<T>) {
   const rootClasses = [classes.framerSlider]
@@ -27,7 +29,11 @@ function FramerSlider<T>({
   const hasControls = renderItem && number > 1
 
   const [isAnimating, setAnimating] = useState<boolean>(false)
-  const [index, [page, direction], paginate] = useInfinitePagination(0, number)
+
+  const [index, [page, direction], paginate, reset] = useInfinitePagination(
+    0,
+    number,
+  )
 
   const dragEndHandler = createDragEndHandler(paginate)
 
@@ -37,6 +43,15 @@ function FramerSlider<T>({
     if (definition !== 'center') return
     setAnimating(false)
   }
+
+  useEffect(() => {
+    reset()
+  }, [items])
+
+  useEffect(() => {
+    if (!setPage) return
+    setPage(index + 1)
+  }, [index])
 
   return (
     <div className={rootClasses.join(' ')} data-disabled={isAnimating}>

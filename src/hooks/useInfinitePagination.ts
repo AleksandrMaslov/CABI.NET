@@ -3,7 +3,7 @@ import { useState } from 'react'
 const useInfinitePagination = (
   min: number,
   max: number,
-): [number, [number, number], (newDirection: number) => void] => {
+): [number, [number, number], (newDirection: number) => void, () => void] => {
   const [[page, direction], setPage] = useState([0, 0])
   const index = useInfiniteIndex(min, max, page)
 
@@ -11,7 +11,11 @@ const useInfinitePagination = (
     setPage([page + newDirection, newDirection])
   }
 
-  return [index, [page, direction], paginate]
+  const reset = () => {
+    setPage([0, 0])
+  }
+
+  return [index, [page, direction], paginate, reset]
 }
 
 const useInfiniteIndex = (min: number, max: number, current: number) => {
