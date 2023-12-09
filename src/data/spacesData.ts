@@ -7,6 +7,18 @@ const OPTIONS = {
   freeMeeting: 'Бесплатная переговодная 2 часа в неделю',
   printerScaner: 'Принтер / сканер',
   dailyCleaning: 'Ежедневная уборка',
+  meetingService: 'Обслуживание проведения переговоров',
+  teaCoffeeCookies: 'Чай, кофе, печенье',
+  equippedKitchen: 'Оборудованная кухня',
+  restWithTennis: 'Зона отдыха с настольным теннисом',
+  restZone: 'Зона отдыха',
+}
+
+const SALES = {
+  residents:
+    '* Действует система скидок для резидентов. Более подробную информацию уточняйте у менеджеров или в личном кабинете.',
+  conditions:
+    '* Сумма может варироваться в зависимости от условий аренды. Подробности уточняйте у менеджера по телефону или оставьте заявку ниже.',
 }
 
 const kitchen: IGroupedSpace = {
@@ -21,10 +33,11 @@ const kitchen: IGroupedSpace = {
   ownMeeting: false,
   options: [],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '',
+    medium: '',
+    long: '',
   },
+  sales: '',
 }
 
 const playroom: IGroupedSpace = {
@@ -39,10 +52,11 @@ const playroom: IGroupedSpace = {
   ownMeeting: false,
   options: [],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '',
+    medium: '',
+    long: '',
   },
+  sales: '',
 }
 
 const veranda: IGroupedSpace = {
@@ -57,10 +71,11 @@ const veranda: IGroupedSpace = {
   ownMeeting: false,
   options: [],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '',
+    medium: '',
+    long: '',
   },
+  sales: '',
 }
 
 const vega: IGroupedSpace = {
@@ -69,16 +84,24 @@ const vega: IGroupedSpace = {
   coords: ['105.7rem', '19rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '26,8 м2',
-  workspaces: '5-6',
+  area: '18,0 м2',
+  workspaces: '7',
   screen: false,
   ownMeeting: false,
-  options: [OPTIONS.dailyCleaning],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '38 000 ₽/мес',
+    medium: '105 000 ₽/квартал*',
+    long: '495 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const persei: IGroupedSpace = {
@@ -87,16 +110,24 @@ const persei: IGroupedSpace = {
   coords: ['97.5rem', '72rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '26,8 м2',
+  workspaces: '4',
   screen: false,
-  ownMeeting: false,
-  options: [],
+  ownMeeting: true,
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '90 000 ₽/мес',
+    medium: '260 000 ₽/квартал*',
+    long: '1 000 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const kapella: IGroupedSpace = {
@@ -105,16 +136,24 @@ const kapella: IGroupedSpace = {
   coords: ['120.5rem', '20rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '47,0 м2',
+  workspaces: '5-6',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '38 000 ₽/мес',
+    medium: '105 000 ₽/квартал*',
+    long: '495 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const sirius: IGroupedSpace = {
@@ -123,16 +162,24 @@ const sirius: IGroupedSpace = {
   coords: ['92rem', '17rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '18,7 м2',
+  workspaces: '5-6',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '70 000 ₽/мес',
+    medium: '260 000 ₽/квартал*',
+    long: '1 000 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const mira: IGroupedSpace = {
@@ -141,16 +188,24 @@ const mira: IGroupedSpace = {
   coords: ['23rem', '68.6rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '7,3 м2',
+  workspaces: '3',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '35 000 ₽/мес',
+    medium: '105 000 ₽/квартал*',
+    long: '395 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const alkor: IGroupedSpace = {
@@ -159,16 +214,24 @@ const alkor: IGroupedSpace = {
   coords: ['11rem', '68rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '12,0 м2',
+  workspaces: '6',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '55 000 ₽/мес',
+    medium: '150 000 ₽/квартал*',
+    long: '580 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const meridiana: IGroupedSpace = {
@@ -177,16 +240,24 @@ const meridiana: IGroupedSpace = {
   coords: ['20rem', '50rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '17,7 м2',
+  workspaces: '5-6',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.legalAddress,
+    OPTIONS.freeMeeting,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '65 000 ₽/мес',
+    medium: '180 000 ₽/квартал*',
+    long: '600 000 ₽/год*',
   },
+  sales: SALES.residents,
 }
 
 const andromeda: IGroupedSpace = {
@@ -195,16 +266,23 @@ const andromeda: IGroupedSpace = {
   coords: ['42rem', '19rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
-  screen: false,
+  area: '17,2 м2',
+  workspaces: '10',
+  screen: true,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.freeMeeting,
+    OPTIONS.meetingService,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '3 000 ₽/час',
+    medium: '7 000 ₽/3 часа',
+    long: '14 000 ₽/5 часов*',
   },
+  sales: SALES.conditions,
 }
 
 const orion: IGroupedSpace = {
@@ -213,16 +291,23 @@ const orion: IGroupedSpace = {
   coords: ['11.8rem', '26.5rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
-  screen: false,
+  area: '10,8 м2',
+  workspaces: '6',
+  screen: true,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.roundTheClock,
+    OPTIONS.internetSpeed,
+    OPTIONS.freeMeeting,
+    OPTIONS.meetingService,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '3 000 ₽/час',
+    medium: '7 000 ₽/3 часа',
+    long: '14 000 ₽/5 часов*',
   },
+  sales: SALES.conditions,
 }
 
 const kassiopeia: IGroupedSpace = {
@@ -231,16 +316,24 @@ const kassiopeia: IGroupedSpace = {
   coords: ['67rem', '16.5rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '50,0 м2',
+  workspaces: '20',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.internetSpeed,
+    OPTIONS.teaCoffeeCookies,
+    OPTIONS.equippedKitchen,
+    OPTIONS.restWithTennis,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '950 ₽/день',
+    medium: '7 000 ₽/месяц',
+    long: '',
   },
+  sales: SALES.residents,
 }
 
 const lira: IGroupedSpace = {
@@ -249,16 +342,24 @@ const lira: IGroupedSpace = {
   coords: ['117rem', '68rem'],
 
   img: 'https://placehold.jp/600x600.png',
-  area: '##,# м2',
-  workspaces: '#',
+  area: '50,0 м2',
+  workspaces: '20',
   screen: false,
   ownMeeting: false,
-  options: [],
+  options: [
+    OPTIONS.internetSpeed,
+    OPTIONS.teaCoffeeCookies,
+    OPTIONS.equippedKitchen,
+    OPTIONS.restZone,
+    OPTIONS.printerScaner,
+    OPTIONS.dailyCleaning,
+  ],
   price: {
-    monthly: 0,
-    quarterly: 0,
-    yearly: 0,
+    short: '3 000 ₽/час',
+    medium: '(не менее 2-x часов)',
+    long: '',
   },
+  sales: SALES.residents,
 }
 
 export const spacesData: IGroupedSpace[] = [
