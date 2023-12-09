@@ -1,7 +1,6 @@
 import { SpaceCard } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
-import { CategoriesEnum, tabs } from 'src/data'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 
@@ -10,7 +9,7 @@ import {
   FallbackCard,
   FramerSlider,
   PageIndicator,
-  Tab,
+  Tabs,
   Tickers,
 } from '../..'
 
@@ -32,18 +31,6 @@ const Services: FC<ServicesProps> = ({ className }) => {
     setSpaces(SpacesService.getCommercial())
   }, [])
 
-  useEffect(() => {
-    handleFilterClick(CategoriesEnum.offices)
-  }, [spaces])
-
-  const handleFilterClick = (label: string) => {
-    setFiltered(
-      spaces.filter(space => {
-        return CategoriesEnum[space.group] === label
-      }),
-    )
-  }
-
   return (
     <div className={rootClasses.join(' ')}>
       <div className={classes.container}>
@@ -52,11 +39,7 @@ const Services: FC<ServicesProps> = ({ className }) => {
         <h2>НАШЕ ПРОСТРАНСТВО</h2>
 
         <div className={classes.galery}>
-          <div className={classes.tabs}>
-            {tabs.map(label => (
-              <Tab key={label} label={label} onClick={handleFilterClick} />
-            ))}
-          </div>
+          <Tabs items={spaces} setFiltered={setFiltered} />
 
           <FramerSlider
             fallbackItem={<FallbackCard />}
