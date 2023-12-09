@@ -1,0 +1,5 @@
+.tab {
+  padding: 3rem 4rem;
+  border: 0.1rem solid var(--black);
+  background-color: transparent;
+}
