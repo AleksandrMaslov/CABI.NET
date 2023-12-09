@@ -1,7 +1,10 @@
-import { ISpace, SpaceCard } from 'cabinet_ui_kit'
+import { SpaceCard } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
+import { IGroupedSpace } from 'src/models'
+
 import Breaker from '../Breaker/Breaker'
+import FallbackCard from '../FallbackCard/FallbackCard'
 import FramerSlider from '../FramerSlider/FramerSlider'
 import Tickers from '../Tickers/Tickers'
 
@@ -24,8 +27,9 @@ const Services: FC<ServicesProps> = ({ className }) => {
 
         <div className={classes.galery}>
           <FramerSlider
-            items={spaces}
-            renderItem={(space: ISpace) => <SpaceCard space={space} />}
+            fallbackItem={<FallbackCard />}
+            // items={spaces}
+            renderItem={(space: IGroupedSpace) => <SpaceCard space={space} />}
           />
         </div>
 
@@ -37,8 +41,10 @@ const Services: FC<ServicesProps> = ({ className }) => {
 
 export default Services
 
-const space = {
+const space: IGroupedSpace = {
   name: 'Енисей',
+  group: 'offices',
+  coords: ['', ''],
   img: 'https://placehold.jp/600x600.png',
   area: '26,8 м2',
   workspaces: '5-6',
@@ -59,4 +65,4 @@ const space = {
   },
 }
 
-const spaces = [space, space, space]
+const spaces: IGroupedSpace[] = [space, space, space]

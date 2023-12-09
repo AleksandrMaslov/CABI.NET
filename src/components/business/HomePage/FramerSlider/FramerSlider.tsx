@@ -8,14 +8,16 @@ import classes from './FramerSlider.module.css'
 import { createDragEndHandler, transition, variants } from './settings'
 
 interface FramerSliderProps<T> {
-  items: T[]
-  renderItem: (item: T) => ReactNode
+  fallbackItem: ReactNode
+  items?: T[]
+  renderItem?: (item: T) => ReactNode
   className?: string
 }
 
 function FramerSlider<T>({
-  items,
+  items = [],
   renderItem,
+  fallbackItem,
   className,
 }: FramerSliderProps<T>) {
   const rootClasses = [classes.framerSlider]
@@ -45,7 +47,9 @@ function FramerSlider<T>({
             onDragEnd={dragEndHandler}
             dragConstraints={{ left: 0, right: 0 }}
           >
-            {renderItem(items[index])}
+            {(!renderItem || !items.length) && fallbackItem}
+
+            {renderItem && items.length && renderItem(items[index])}
           </motion.div>
         </AnimatePresence>
       </div>
