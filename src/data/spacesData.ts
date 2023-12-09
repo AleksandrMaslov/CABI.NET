@@ -285,3 +285,7 @@ export enum CategoriesEnum {
   workspaces = 'РАБОЧИЕ МЕСТА В ОПЕНСПЕЙСАХ',
   lectures = 'ЛЕКТОРИИ',
 }
+
+export const tabs = Object.values(CategoriesEnum).filter(
+  label => label !== CategoriesEnum.public,
+)

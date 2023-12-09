@@ -1,7 +1,7 @@
 import { SpaceCard } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
-import { CategoriesEnum } from 'src/data'
+import { CategoriesEnum, tabs } from 'src/data'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 
@@ -19,10 +19,6 @@ import classes from './Services.module.css'
 interface ServicesProps {
   className?: string
 }
-
-const tabs = Object.values(CategoriesEnum).filter(
-  label => label !== CategoriesEnum.public,
-)
 
 const Services: FC<ServicesProps> = ({ className }) => {
   const rootClasses = [classes.services]
