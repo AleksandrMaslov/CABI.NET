@@ -13,13 +13,12 @@ export const variants = {
 }
 
 export const transition = {
-  x: {
-    ease: 'easeInOut',
-    duration: 1,
-  },
+  x: { type: 'tween', ease: 'easeOut', duration: 1 },
 }
 
-const swipeConfidenceThreshold = 0
+export const constraints = { left: 0, right: 0 }
+
+const swipeThreshold = 0
 
 const swipePower = (offset: number, velocity: number) =>
   Math.abs(offset) * velocity
@@ -35,11 +34,7 @@ export const createDragEndHandler = (
 ) => void) => {
   return (e, { offset, velocity }) => {
     const swipe = swipePower(offset.x, velocity.x)
-
-    if (swipe < -swipeConfidenceThreshold) {
-      paginate(1)
-    } else if (swipe > swipeConfidenceThreshold) {
-      paginate(-1)
-    }
+    if (swipe < -swipeThreshold) return paginate(1)
+    if (swipe > swipeThreshold) return paginate(-1)
   }
 }

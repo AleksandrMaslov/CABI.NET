@@ -5,7 +5,12 @@ import { ReactNode, useEffect, useState } from 'react'
 import { useInfinitePagination } from 'src/hooks'
 
 import classes from './FramerSlider.module.css'
-import { createDragEndHandler, transition, variants } from './settings'
+import {
+  constraints,
+  createDragEndHandler,
+  transition,
+  variants,
+} from './settings'
 
 interface FramerSliderProps<T> {
   fallbackItem: ReactNode
@@ -67,8 +72,8 @@ function FramerSlider<T>({
             variants={variants}
             transition={transition}
             dragElastic={1}
+            dragConstraints={constraints}
             onDragEnd={dragEndHandler}
-            dragConstraints={{ left: 0, right: 0 }}
             onAnimationStart={animationStartHandler}
             onAnimationComplete={animationCompleteHandler}
           >
