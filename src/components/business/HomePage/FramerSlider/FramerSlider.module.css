@@ -8,6 +8,7 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  user-select: none;
 }
 
 .icon {

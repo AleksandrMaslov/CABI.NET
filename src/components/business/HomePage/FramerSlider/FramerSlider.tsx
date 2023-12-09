@@ -23,10 +23,10 @@ function FramerSlider<T>({
   const rootClasses = [classes.framerSlider]
   if (className) rootClasses.push(className)
 
-  const [index, [page, direction], paginate] = useInfinitePagination(
-    0,
-    items.length,
-  )
+  const number = items.length
+  const hasControls = number > 1
+
+  const [index, [page, direction], paginate] = useInfinitePagination(0, number)
 
   const dragEndHandler = createDragEndHandler(paginate)
 
@@ -35,7 +35,7 @@ function FramerSlider<T>({
       <div className={classes.overflow}>
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
-            drag="x"
+            drag={hasControls && 'x'}
             initial="initial"
             animate="center"
             exit="exit"
@@ -47,20 +47,24 @@ function FramerSlider<T>({
             onDragEnd={dragEndHandler}
             dragConstraints={{ left: 0, right: 0 }}
           >
-            {(!renderItem || !items.length) && fallbackItem}
+            {(!renderItem || !number) && fallbackItem}
 
-            {renderItem && items.length && renderItem(items[index])}
+            {renderItem && number && renderItem(items[index])}
           </motion.div>
         </AnimatePresence>
       </div>
 
-      <button className={classes.arrow} onClick={() => paginate(1)}>
-        <Icon className={classes.icon} icon="arrow" size="8rem" />
-      </button>
+      {hasControls && (
+        <>
+          <button className={classes.arrow} onClick={() => paginate(1)}>
+            <Icon className={classes.icon} icon="arrow" size="8rem" />
+          </button>
 
-      <button className={classes.arrow} onClick={() => paginate(-1)}>
-        <Icon className={classes.icon} icon="arrow" size="8rem" />
-      </button>
+          <button className={classes.arrow} onClick={() => paginate(-1)}>
+            <Icon className={classes.icon} icon="arrow" size="8rem" />
+          </button>
+        </>
+      )}
     </div>
   )
 }
