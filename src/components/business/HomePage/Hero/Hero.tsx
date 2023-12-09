@@ -3,8 +3,7 @@ import { FC } from 'react'
 
 import { hero_img } from 'src/assets'
 
-import Cover from '../Cover/Cover'
-import Title from '../Title/Title'
+import { Cover, Title } from '../..'
 
 import classes from './Hero.module.css'
 

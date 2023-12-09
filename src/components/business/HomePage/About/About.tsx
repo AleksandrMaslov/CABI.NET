@@ -3,8 +3,7 @@ import { FC } from 'react'
 
 import { about_img } from 'src/assets'
 
-import Breaker from '../Breaker/Breaker'
-import Title from '../Title/Title'
+import { Breaker, Title } from '../..'
 
 import classes from './About.module.css'
 

@@ -1,7 +1,7 @@
 import { Logo } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import Navbar from '../Navbar/Navbar'
+import { Navbar } from '../..'
 
 import classes from './Header.module.css'
 

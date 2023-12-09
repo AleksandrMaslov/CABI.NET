@@ -5,7 +5,7 @@ import { plan_bg } from 'src/assets'
 import { IMarkerData } from 'src/models'
 import { SpacesService } from 'src/services'
 
-import Breaker from '../Breaker/Breaker'
+import { Breaker } from '../..'
 
 import classes from './Plan.module.css'
 

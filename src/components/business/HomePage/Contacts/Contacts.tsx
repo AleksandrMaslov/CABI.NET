@@ -1,8 +1,7 @@
 import { Marker } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import Breaker from '../Breaker/Breaker'
-import Businesscard from '../Businesscard/Businesscard'
+import { Breaker, Businesscard } from '../..'
 
 import classes from './Contacts.module.css'
 

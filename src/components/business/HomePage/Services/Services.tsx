@@ -5,12 +5,14 @@ import { CategoriesEnum } from 'src/data'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 
-import Breaker from '../Breaker/Breaker'
-import FallbackCard from '../FallbackCard/FallbackCard'
-import FramerSlider from '../FramerSlider/FramerSlider'
-import PageIndicator from '../PageIndicator/PageIndicator'
-import Tab from '../Tab/Tab'
-import Tickers from '../Tickers/Tickers'
+import {
+  Breaker,
+  FallbackCard,
+  FramerSlider,
+  PageIndicator,
+  Tab,
+  Tickers,
+} from '../..'
 
 import classes from './Services.module.css'
 

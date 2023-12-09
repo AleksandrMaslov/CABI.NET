@@ -3,9 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { IAdvantage } from 'src/models'
 import { AdvantagesService } from 'src/services'
 
-import Advantage from '../Advantage/Advantage'
-import Breaker from '../Breaker/Breaker'
-import Grid from '../Grid/Grid'
+import { Advantage, Breaker, Grid } from '../..'
 
 import classes from './Advantages.module.css'
 

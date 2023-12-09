@@ -1,7 +1,7 @@
 import { Icon } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import Ticker from '../Ticker/Ticker'
+import { Ticker } from '../..'
 
 import classes from './Tickers.module.css'
 

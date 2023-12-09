@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { request_bg } from 'src/assets'
 
-import RequestForm from '../RequestForm/RequestForm'
+import { RequestForm } from '../..'
 
 import classes from './Request.module.css'
 

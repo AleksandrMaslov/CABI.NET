@@ -1,7 +1,7 @@
 import { Anchor } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import Contact from '../Contact/Contact'
+import { Contact } from '../..'
 
 import classes from './Businesscard.module.css'
 
