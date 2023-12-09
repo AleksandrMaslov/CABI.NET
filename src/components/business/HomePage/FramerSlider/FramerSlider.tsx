@@ -33,7 +33,6 @@ function FramerSlider<T>({
       <div className={classes.overflow}>
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
-            className={classes.wrapper}
             drag="x"
             initial="initial"
             animate="center"

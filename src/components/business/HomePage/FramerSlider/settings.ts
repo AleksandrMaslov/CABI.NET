@@ -1,14 +1,14 @@
 export const variants = {
   initial: (direction: number) => ({
-    x: direction > 0 ? '99%' : '-101%',
+    x: direction > 0 ? '100%' : '-100%',
   }),
 
   center: {
-    x: '-1%',
+    x: '0%',
   },
 
   exit: (direction: number) => ({
-    x: direction < 0 ? '99%' : '-101%',
+    x: direction < 0 ? '100%' : '-100%',
   }),
 }
 
@@ -19,9 +19,9 @@ export const transition = {
   },
 }
 
-export const swipeConfidenceThreshold = 10000
+const swipeConfidenceThreshold = 0
 
-export const swipePower = (offset: number, velocity: number) =>
+const swipePower = (offset: number, velocity: number) =>
   Math.abs(offset) * velocity
 
 export const createDragEndHandler = (
