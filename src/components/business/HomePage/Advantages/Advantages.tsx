@@ -1,14 +1,20 @@
+import { Icon } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
+import { Grid } from 'src/components/ui'
 import { IAdvantage } from 'src/models'
 import { AdvantagesService } from 'src/services'
 
-import { Advantage, Breaker, Grid } from '../..'
+import { Breaker } from '../..'
 
 import classes from './Advantages.module.css'
 
 interface AdvantagesProps {
   className?: string
+}
+
+interface AdvantageItemProps {
+  advantage: IAdvantage
 }
 
 const Advantages: FC<AdvantagesProps> = ({ className }) => {
@@ -33,7 +39,7 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
         <Grid
           items={advantages}
           renderItem={(item: IAdvantage) => (
-            <Advantage key={item.title} advantage={item} />
+            <AdvantageItem key={item.title} advantage={item} />
           )}
           rows={3}
           cols={4}
@@ -41,6 +47,20 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
         />
       </div>
     </section>
+  )
+}
+
+const AdvantageItem: FC<AdvantageItemProps> = ({ advantage }) => {
+  const { icon, title, content } = advantage
+
+  return (
+    <article className={classes.item}>
+      <Icon icon={icon} size="8.5rem" />
+
+      <h4 className={classes.title}>{title}</h4>
+
+      <p className={classes.content}>{content}</p>
+    </article>
   )
 }
 

@@ -1,9 +1,8 @@
+import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 
 import { CategoriesEnum, tabs } from 'src/data'
 import { IGroupedSpace } from 'src/models'
-
-import { Tab } from '../..'
 
 import classes from './Tabs.module.css'
 
@@ -11,6 +10,12 @@ interface TabsProps {
   items: IGroupedSpace[]
   setFiltered: (items: IGroupedSpace[]) => void
   className?: string
+}
+
+interface TabItemProps {
+  label: string
+  onClick: (label: string) => void
+  selected?: boolean
 }
 
 const Tabs: FC<TabsProps> = ({ items, setFiltered, className }) => {
@@ -36,7 +41,7 @@ const Tabs: FC<TabsProps> = ({ items, setFiltered, className }) => {
   return (
     <div className={rootClasses.join(' ')}>
       {tabs.map(label => (
-        <Tab
+        <TabItem
           key={label}
           label={label}
           onClick={handleFilterClick}
@@ -44,6 +49,22 @@ const Tabs: FC<TabsProps> = ({ items, setFiltered, className }) => {
         />
       ))}
     </div>
+  )
+}
+
+const TabItem: FC<TabItemProps> = ({ label, onClick, selected }) => {
+  return (
+    <button className={classes.item} onClick={() => onClick(label)}>
+      <h4 className={classes.label}>{label}</h4>
+
+      {selected && (
+        <motion.div
+          className={classes.border}
+          layoutId="tab"
+          transition={{ duration: 0.1 }}
+        />
+      )}
+    </button>
   )
 }
 

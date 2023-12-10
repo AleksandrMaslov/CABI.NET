@@ -1,17 +1,11 @@
 import { SpaceCard } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
+import { FramerSlider, PageIndicator } from 'src/components/ui'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 
-import {
-  Breaker,
-  FallbackCard,
-  FramerSlider,
-  PageIndicator,
-  Tabs,
-  Tickers,
-} from '../..'
+import { Breaker, FallbackCard, Tabs, Tickers } from '../..'
 
 import classes from './Services.module.css'
 

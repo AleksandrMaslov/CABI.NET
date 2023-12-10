@@ -5,14 +5,14 @@ import { IGroupedSpace } from 'src/models'
 
 import { Title } from '../..'
 
-import classes from './SpacesLegend.module.css'
+import classes from './PlanLegend.module.css'
 
-interface SpacesLegendProps {
+interface PlanLegendProps {
   spaces: IGroupedSpace[]
   className?: string
 }
 
-const SpacesLegend: FC<SpacesLegendProps> = ({ spaces, className }) => {
+const PlanLegend: FC<PlanLegendProps> = ({ spaces, className }) => {
   const rootClasses = [classes.spacesLegend]
   if (className) rootClasses.push(className)
 
@@ -39,4 +39,4 @@ const SpacesLegend: FC<SpacesLegendProps> = ({ spaces, className }) => {
   )
 }
 
-export default SpacesLegend
+export default PlanLegend

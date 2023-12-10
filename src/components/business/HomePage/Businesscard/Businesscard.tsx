@@ -1,12 +1,16 @@
 import { Anchor } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import { Contact } from '../..'
-
 import classes from './Businesscard.module.css'
 
 interface BusinesscardProps {
   className?: string
+}
+
+interface ContactProps {
+  title: string
+  content: string
+  href?: string
 }
 
 const Businesscard: FC<BusinesscardProps> = ({ className }) => {
@@ -37,6 +41,17 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
 
       <div className={classes.milk} />
       <div className={classes.orange} />
+    </div>
+  )
+}
+
+const Contact: FC<ContactProps> = ({ title, content, href }) => {
+  return (
+    <div className={classes.contact}>
+      <p>{title}</p>
+      <Anchor href={href} className={classes.anchor} lineColor="white">
+        {content}
+      </Anchor>
     </div>
   )
 }

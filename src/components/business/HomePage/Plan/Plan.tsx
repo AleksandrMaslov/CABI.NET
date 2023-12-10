@@ -5,7 +5,7 @@ import { plan_bg } from 'src/assets/home'
 import { IGroupedSpace, IMarkerData } from 'src/models'
 import { SpacesService } from 'src/services'
 
-import { Breaker, SpacesLegend } from '../..'
+import { Breaker, PlanLegend } from '../..'
 
 import classes from './Plan.module.css'
 
@@ -39,7 +39,7 @@ const Plan: FC<PlanProps> = ({ className }) => {
             )}
           </div>
 
-          <SpacesLegend className={classes.legend} spaces={spaces} />
+          <PlanLegend className={classes.legend} spaces={spaces} />
         </div>
       </div>
     </section>
