@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from 'react'
 import { FramerSlider, PageIndicator } from 'src/components/ui'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
+import { cacheImgs } from 'src/utils'
 
 import { Breaker, FallbackCard, Tabs, Tickers } from '../..'
 
@@ -22,7 +23,9 @@ const Services: FC<ServicesProps> = ({ className }) => {
   const [page, setPage] = useState<number>(0)
 
   useEffect(() => {
-    setSpaces(SpacesService.getCommercial())
+    const spaces = SpacesService.getCommercial()
+    setSpaces(spaces)
+    cacheImgs(spaces.map(space => space.img))
   }, [])
 
   return (
