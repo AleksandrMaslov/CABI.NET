@@ -11,6 +11,8 @@
 }
 
 .overline {
+  z-index: 100;
+  position: relative;
   height: 2.5rem;
   background-color: var(--black);
 }

@@ -13,6 +13,8 @@
   gap: 4rem;
   border-left: 0.15rem solid var(--black);
   border-right: 0.15rem solid var(--black);
+
+  list-style: none;
 }
 
 .actions {

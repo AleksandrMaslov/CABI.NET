@@ -1,4 +1,5 @@
 import { Anchor, Button, Icon } from 'cabinet_ui_kit'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import classes from './Navbar.module.css'
@@ -7,32 +8,62 @@ interface NavbarProps {
   className?: string
 }
 
+const variants = {
+  hidden: { opacity: 0, y: -50 },
+
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: delay * 0.04, bounce: 0 },
+  }),
+}
+
 const Navbar: FC<NavbarProps> = ({ className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
   return (
     <nav className={rootClasses.join(' ')}>
-      <ul className={classes.anchors}>
-        <Anchor href="#services">УСЛУГИ</Anchor>
-        <Anchor href="#plan">ПЛАН КОВОРКИНГА</Anchor>
-        <Anchor href="#contacts">КОНТАКТЫ</Anchor>
-      </ul>
+      <motion.ul className={classes.anchors}>
+        <motion.li custom={1} variants={variants}>
+          <Anchor href="#services">УСЛУГИ</Anchor>
+        </motion.li>
+        <motion.li custom={2} variants={variants}>
+          <Anchor href="#plan">ПЛАН КОВОРКИНГА</Anchor>
+        </motion.li>
+        <motion.li custom={3} variants={variants}>
+          <Anchor href="#contacts">КОНТАКТЫ</Anchor>
+        </motion.li>
+      </motion.ul>
 
       <ul className={classes.actions}>
         <div className={classes.social}>
-          <a href="#" className={classes.icon}>
+          <motion.a
+            href="#"
+            className={classes.icon}
+            custom={4}
+            variants={variants}
+          >
             <Icon icon="whatsapp" size="3.5rem" />
-          </a>
+          </motion.a>
 
-          <a href="#" className={classes.icon}>
+          <motion.a
+            href="#"
+            className={classes.icon}
+            custom={5}
+            variants={variants}
+          >
             <Icon icon="telegram" size="3.5rem" />
-          </a>
+          </motion.a>
         </div>
 
-        <Button label="СВЯЗАТЬСЯ" color="black" size="small" />
+        <motion.span custom={6} variants={variants}>
+          <Button label="СВЯЗАТЬСЯ" color="black" size="small" />
+        </motion.span>
 
-        <Button label="ВОЙТИ" size="small" />
+        <motion.span custom={7} variants={variants}>
+          <Button label="ВОЙТИ" size="small" />
+        </motion.span>
       </ul>
     </nav>
   )

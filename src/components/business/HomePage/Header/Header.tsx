@@ -10,6 +10,11 @@ interface HeaderProps {
   className?: string
 }
 
+const variants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { opacity: 1, y: 0, transition: { bounce: 0 } },
+}
+
 const Header: FC<HeaderProps> = ({ className }) => {
   const rootClasses = [classes.header]
   if (className) rootClasses.push(className)
@@ -18,12 +23,18 @@ const Header: FC<HeaderProps> = ({ className }) => {
   const height = useTransform(scrollY, [100, 300], ['13rem', '10rem'])
 
   return (
-    <motion.header className={rootClasses.join(' ')} style={{ height }}>
+    <motion.header
+      className={rootClasses.join(' ')}
+      style={{ height }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className={classes.overline} />
       <div className={classes.container}>
-        <a href="#" className={classes.logo}>
+        <motion.a href="#" className={classes.logo} variants={variants}>
           <Logo />
-        </a>
+        </motion.a>
 
         <Navbar />
       </div>
