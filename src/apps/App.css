@@ -8,5 +8,8 @@ body,
 #root {
   width: 100vw;
   margin: auto;
+}
+
+:root {
   overflow-x: hidden;
 }
