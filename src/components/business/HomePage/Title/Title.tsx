@@ -14,7 +14,13 @@ const Title: FC<TitleProps> = ({ text, className }) => {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <Icon icon="square" color="orange" size="2.5rem" />
+      <Icon
+        className={classes.icon}
+        icon="square"
+        color="orange"
+        size="2.5rem"
+      />
+
       <p className={classes.text}>{text}</p>
     </div>
   )
