@@ -24,7 +24,7 @@ export const slideVariants = {
 }
 
 export const slideTransition = {
-  x: { type: 'tween', ease: 'easeOut', duration: 1 },
+  x: { type: 'spring', bounce: 0, ease: 'easeOut', duration: 1 },
 }
 
 export const constraints = { left: 0, right: 0 }
