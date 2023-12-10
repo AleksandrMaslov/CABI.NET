@@ -14,7 +14,7 @@ const variants = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: delay * 0.04, bounce: 0 },
+    transition: { delay: delay * 0.1, bounce: 0 },
   }),
 }
 
@@ -25,13 +25,13 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
   return (
     <nav className={rootClasses.join(' ')}>
       <motion.ul className={classes.anchors}>
-        <motion.li custom={1} variants={variants}>
+        <motion.li custom={2} variants={variants}>
           <Anchor href="#services">УСЛУГИ</Anchor>
         </motion.li>
-        <motion.li custom={2} variants={variants}>
+        <motion.li custom={3} variants={variants}>
           <Anchor href="#plan">ПЛАН КОВОРКИНГА</Anchor>
         </motion.li>
-        <motion.li custom={3} variants={variants}>
+        <motion.li custom={4} variants={variants}>
           <Anchor href="#contacts">КОНТАКТЫ</Anchor>
         </motion.li>
       </motion.ul>
@@ -41,7 +41,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
           <motion.a
             href="#"
             className={classes.icon}
-            custom={4}
+            custom={5}
             variants={variants}
           >
             <Icon icon="whatsapp" size="3.5rem" />
@@ -50,18 +50,18 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
           <motion.a
             href="#"
             className={classes.icon}
-            custom={5}
+            custom={6}
             variants={variants}
           >
             <Icon icon="telegram" size="3.5rem" />
           </motion.a>
         </div>
 
-        <motion.span custom={6} variants={variants}>
+        <motion.span custom={7} variants={variants}>
           <Button label="СВЯЗАТЬСЯ" color="black" size="small" />
         </motion.span>
 
-        <motion.span custom={7} variants={variants}>
+        <motion.span custom={8} variants={variants}>
           <Button label="ВОЙТИ" size="small" />
         </motion.span>
       </ul>
