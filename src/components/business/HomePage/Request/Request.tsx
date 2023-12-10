@@ -1,7 +1,7 @@
 import { Img } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import { request_bg } from 'src/assets'
+import { request_bg } from 'src/assets/home'
 
 import { RequestForm } from '../..'
 

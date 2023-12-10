@@ -1,7 +1,7 @@
 import { Img } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
-import { hero_img } from 'src/assets'
+import { hero_img } from 'src/assets/home'
 
 import { Cover, Title } from '../..'
 

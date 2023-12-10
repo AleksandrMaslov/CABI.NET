@@ -1,7 +1,7 @@
 import { Img, Marker } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
-import { plan_bg } from 'src/assets'
+import { plan_bg } from 'src/assets/home'
 import { IGroupedSpace, IMarkerData } from 'src/models'
 import { SpacesService } from 'src/services'
 
