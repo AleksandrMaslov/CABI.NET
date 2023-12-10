@@ -1,0 +1,17 @@
+.spacesLegend {
+  width: 22rem;
+}
+
+.group:not(:last-child) {
+  margin-bottom: 5.2rem;
+}
+
+.list {
+  margin-top: 1.5rem;
+  list-style-type: square;
+  list-style-type: none;
+}
+
+.list li:not(:last-child) {
+  margin-bottom: 1rem;
+}
