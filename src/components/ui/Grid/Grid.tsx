@@ -4,7 +4,7 @@ import classes from './Grid.module.css'
 
 interface GridProps<T> {
   items: T[]
-  renderItem: (item: T) => ReactNode
+  renderItem: (item: T, index?: number) => ReactNode
   rows: number
   cols: number
   gap: string
