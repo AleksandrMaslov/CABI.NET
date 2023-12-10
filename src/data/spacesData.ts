@@ -43,7 +43,7 @@ const kitchen: IGroupedSpace = {
 const playroom: IGroupedSpace = {
   name: 'Детская комната',
   group: 'public',
-  coords: ['121.5rem', '52rem'],
+  coords: ['122.3rem', '52rem'],
 
   img: '',
   area: '',
@@ -62,7 +62,7 @@ const playroom: IGroupedSpace = {
 const veranda: IGroupedSpace = {
   name: 'Веранда',
   group: 'public',
-  coords: ['66.2rem', '90rem'],
+  coords: ['66.4rem', '90rem'],
 
   img: '',
   area: '',
@@ -81,7 +81,7 @@ const veranda: IGroupedSpace = {
 const vega: IGroupedSpace = {
   name: 'Вега',
   group: 'offices',
-  coords: ['105.7rem', '19rem'],
+  coords: ['106.5rem', '19rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '18,0 м2',
@@ -107,7 +107,7 @@ const vega: IGroupedSpace = {
 const persei: IGroupedSpace = {
   name: 'Персей',
   group: 'offices',
-  coords: ['97.5rem', '72rem'],
+  coords: ['98rem', '71rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '26,8 м2',
@@ -133,7 +133,7 @@ const persei: IGroupedSpace = {
 const kapella: IGroupedSpace = {
   name: 'Капелла',
   group: 'offices',
-  coords: ['120.5rem', '20rem'],
+  coords: ['122rem', '20.5rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '47,0 м2',
@@ -159,7 +159,7 @@ const kapella: IGroupedSpace = {
 const sirius: IGroupedSpace = {
   name: 'Сириус',
   group: 'offices',
-  coords: ['92rem', '17rem'],
+  coords: ['92rem', '16.6rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '18,7 м2',
@@ -185,7 +185,7 @@ const sirius: IGroupedSpace = {
 const mira: IGroupedSpace = {
   name: 'Мира',
   group: 'offices',
-  coords: ['23rem', '68.6rem'],
+  coords: ['23rem', '69rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '7,3 м2',
@@ -211,7 +211,7 @@ const mira: IGroupedSpace = {
 const alkor: IGroupedSpace = {
   name: 'Алькор',
   group: 'offices',
-  coords: ['11rem', '68rem'],
+  coords: ['11rem', '68.4rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '12,0 м2',
@@ -237,7 +237,7 @@ const alkor: IGroupedSpace = {
 const meridiana: IGroupedSpace = {
   name: 'Меридиана',
   group: 'offices',
-  coords: ['20rem', '50rem'],
+  coords: ['20.2rem', '50rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '17,7 м2',
@@ -263,7 +263,7 @@ const meridiana: IGroupedSpace = {
 const andromeda: IGroupedSpace = {
   name: 'Андромеда',
   group: 'meetingrooms',
-  coords: ['42rem', '19rem'],
+  coords: ['42.3rem', '19.1rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '17,2 м2',
@@ -288,7 +288,7 @@ const andromeda: IGroupedSpace = {
 const orion: IGroupedSpace = {
   name: 'Орион',
   group: 'meetingrooms',
-  coords: ['11.8rem', '26.5rem'],
+  coords: ['11.8rem', '26.7rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '10,8 м2',
@@ -313,7 +313,7 @@ const orion: IGroupedSpace = {
 const kassiopeia: IGroupedSpace = {
   name: 'Кассиопея',
   group: 'workspaces',
-  coords: ['67rem', '16.5rem'],
+  coords: ['68rem', '16.8rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '50,0 м2',
@@ -339,7 +339,7 @@ const kassiopeia: IGroupedSpace = {
 const lira: IGroupedSpace = {
   name: 'Лира',
   group: 'lectures',
-  coords: ['117rem', '68rem'],
+  coords: ['117rem', '67.6rem'],
 
   img: 'https://placehold.jp/600x600.png',
   area: '50,0 м2',

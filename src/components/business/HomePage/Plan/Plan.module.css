@@ -9,7 +9,10 @@
 }
 
 .wrapper {
-  border: 8rem solid var(--lightgrey);
+  border-top: 4rem solid var(--lightgrey);
+  border-bottom: 4rem solid var(--lightgrey);
+  border-left: 4rem solid var(--lightgrey);
+  border-right: 44rem solid var(--lightgrey);
   background-color: var(--lightgrey);
   position: relative;
   user-select: none;
