@@ -4,6 +4,7 @@
   background-position: bottom 0 left 0;
   background-image: url('../../../../assets/home/contacts_map.webp');
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .container {
