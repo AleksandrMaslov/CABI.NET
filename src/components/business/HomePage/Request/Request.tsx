@@ -1,4 +1,5 @@
 import { Img } from 'cabinet_ui_kit'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import { request_bg } from 'src/assets/home'
@@ -11,24 +12,41 @@ interface RequestProps {
   className?: string
 }
 
+const variants = {
+  hidden: { opacity: 0, y: 200 },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { bounce: 0 },
+  },
+}
+
 const Request: FC<RequestProps> = ({ className }) => {
   const rootClasses = [classes.request]
   if (className) rootClasses.push(className)
 
   return (
-    <section className={rootClasses.join(' ')}>
+    <motion.section
+      className={rootClasses.join(' ')}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.4, once: true }}
+    >
       <div className={classes.container}>
         <div className={classes.side}>
-          <div className={classes.text}>CAB</div>
+          <motion.div className={classes.text} variants={variants}>
+            CAB
+          </motion.div>
         </div>
 
         <div className={classes.square}></div>
 
-        <RequestForm className={classes.form}></RequestForm>
+        <RequestForm className={classes.form} />
 
         <Img className={classes.img} src={request_bg} />
       </div>
-    </section>
+    </motion.section>
   )
 }
 
