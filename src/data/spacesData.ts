@@ -1,3 +1,16 @@
+import {
+  lecture_lira,
+  meeting_andromeda,
+  meeting_orion,
+  office_alkor,
+  office_kapella,
+  office_meridiana,
+  office_mira,
+  office_persei,
+  office_sirius,
+  office_vega,
+  workspace_kasiopea,
+} from 'src/assets/spaces'
 import { IGroupedSpace } from 'src/models'
 
 const OPTIONS = {
@@ -83,7 +96,7 @@ const vega: IGroupedSpace = {
   group: 'offices',
   coords: ['106.5rem', '19rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_vega,
   area: '18,0 м2',
   workspaces: '7',
   screen: false,
@@ -109,7 +122,7 @@ const persei: IGroupedSpace = {
   group: 'offices',
   coords: ['98rem', '71rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_persei,
   area: '26,8 м2',
   workspaces: '4',
   screen: false,
@@ -135,7 +148,7 @@ const kapella: IGroupedSpace = {
   group: 'offices',
   coords: ['122rem', '20.5rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_kapella,
   area: '47,0 м2',
   workspaces: '5-6',
   screen: false,
@@ -161,7 +174,7 @@ const sirius: IGroupedSpace = {
   group: 'offices',
   coords: ['92rem', '16.6rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_sirius,
   area: '18,7 м2',
   workspaces: '5-6',
   screen: false,
@@ -187,7 +200,7 @@ const mira: IGroupedSpace = {
   group: 'offices',
   coords: ['23rem', '69rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_mira,
   area: '7,3 м2',
   workspaces: '3',
   screen: false,
@@ -213,7 +226,7 @@ const alkor: IGroupedSpace = {
   group: 'offices',
   coords: ['11rem', '68.4rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_alkor,
   area: '12,0 м2',
   workspaces: '6',
   screen: false,
@@ -239,7 +252,7 @@ const meridiana: IGroupedSpace = {
   group: 'offices',
   coords: ['20.2rem', '50rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: office_meridiana,
   area: '17,7 м2',
   workspaces: '5-6',
   screen: false,
@@ -265,7 +278,7 @@ const andromeda: IGroupedSpace = {
   group: 'meetingrooms',
   coords: ['42.3rem', '19.1rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: meeting_andromeda,
   area: '17,2 м2',
   workspaces: '10',
   screen: true,
@@ -290,7 +303,7 @@ const orion: IGroupedSpace = {
   group: 'meetingrooms',
   coords: ['11.8rem', '26.7rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: meeting_orion,
   area: '10,8 м2',
   workspaces: '6',
   screen: true,
@@ -315,7 +328,7 @@ const kassiopeia: IGroupedSpace = {
   group: 'workspaces',
   coords: ['68rem', '16.8rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: workspace_kasiopea,
   area: '50,0 м2',
   workspaces: '20',
   screen: false,
@@ -341,7 +354,7 @@ const lira: IGroupedSpace = {
   group: 'lectures',
   coords: ['117rem', '67.6rem'],
 
-  img: 'https://placehold.jp/600x600.png',
+  img: lecture_lira,
   area: '50,0 м2',
   workspaces: '20',
   screen: false,
