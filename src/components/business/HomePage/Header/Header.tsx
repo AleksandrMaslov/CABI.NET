@@ -11,7 +11,7 @@ interface HeaderProps {
 }
 
 const variants = {
-  hidden: { opacity: 0, y: -50 },
+  hidden: { opacity: 0, y: '-5rem' },
   visible: { opacity: 1, y: 0, transition: { bounce: 0 } },
 }
 

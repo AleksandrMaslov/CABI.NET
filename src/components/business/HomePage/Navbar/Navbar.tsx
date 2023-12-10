@@ -9,7 +9,7 @@ interface NavbarProps {
 }
 
 const variants = {
-  hidden: { opacity: 0, y: -50 },
+  hidden: { opacity: 0, y: '-5rem' },
 
   visible: (delay: number) => ({
     opacity: 1,

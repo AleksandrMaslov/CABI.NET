@@ -13,7 +13,7 @@ interface RequestProps {
 }
 
 const variants = {
-  hidden: { opacity: 0, y: 200 },
+  hidden: { opacity: 0, y: '20rem' },
 
   visible: {
     opacity: 1,

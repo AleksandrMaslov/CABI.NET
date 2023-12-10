@@ -13,7 +13,7 @@ interface HeroProps {
 }
 
 const variants = {
-  hidden: { opacity: 0, x: -200 },
+  hidden: { opacity: 0, x: '-20rem' },
 
   visible: (delay: number) => ({
     opacity: 1,
