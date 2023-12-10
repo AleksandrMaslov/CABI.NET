@@ -1,4 +1,5 @@
 import { Anchor, Logo } from 'cabinet_ui_kit'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import classes from './Footer.module.css'
@@ -7,18 +8,33 @@ interface FooterProps {
   className?: string
 }
 
+const variants = {
+  hidden: { opacity: 0, y: 50 },
+
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: delay * 0.1, bounce: 0, duration: 1 },
+  }),
+}
+
 const Footer: FC<FooterProps> = ({ className }) => {
   const rootClasses = [classes.footer]
   if (className) rootClasses.push(className)
 
   return (
-    <footer className={rootClasses.join(' ')}>
+    <motion.footer
+      className={rootClasses.join(' ')}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.5, once: true }}
+    >
       <div className={classes.container}>
-        <a href="#">
+        <motion.a href="#" variants={variants} custom={2}>
           <Logo color="white" />
-        </a>
+        </motion.a>
 
-        <h6 className={classes.header}>
+        <motion.h6 className={classes.header} variants={variants} custom={4}>
           © 2021 Сoworking. Дизайн сайта - &nbsp;
           <Anchor
             className={classes.anchor}
@@ -30,13 +46,13 @@ const Footer: FC<FooterProps> = ({ className }) => {
             Ирина Маслова
           </Anchor>
           . Все права защищены.
-        </h6>
+        </motion.h6>
 
         <Anchor href="#" underlined lineColor="white">
           <h6 className={classes.header}>Политика конфиденциальности</h6>
         </Anchor>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
 
