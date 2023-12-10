@@ -1,4 +1,5 @@
 import { Icon } from 'cabinet_ui_kit'
+import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 
 import { Grid } from 'src/components/ui'
@@ -15,6 +16,17 @@ interface AdvantagesProps {
 
 interface AdvantageItemProps {
   advantage: IAdvantage
+  index?: number
+}
+
+const variants = {
+  hidden: { opacity: 0, y: -100 },
+
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: delay * 0.1, bounce: 0 },
+  }),
 }
 
 const Advantages: FC<AdvantagesProps> = ({ className }) => {
@@ -38,8 +50,8 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
 
         <Grid
           items={advantages}
-          renderItem={(item: IAdvantage) => (
-            <AdvantageItem key={item.title} advantage={item} />
+          renderItem={(item: IAdvantage, i?: number) => (
+            <AdvantageItem key={item.title} advantage={item} index={i} />
           )}
           rows={3}
           cols={4}
@@ -50,17 +62,24 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
   )
 }
 
-const AdvantageItem: FC<AdvantageItemProps> = ({ advantage }) => {
+const AdvantageItem: FC<AdvantageItemProps> = ({ advantage, index }) => {
   const { icon, title, content } = advantage
 
   return (
-    <article className={classes.item}>
+    <motion.article
+      className={classes.item}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 1, once: true }}
+      variants={variants}
+      custom={index! % 4}
+    >
       <Icon icon={icon} size="8.5rem" />
 
       <h4 className={classes.title}>{title}</h4>
 
       <p className={classes.content}>{content}</p>
-    </article>
+    </motion.article>
   )
 }
 
