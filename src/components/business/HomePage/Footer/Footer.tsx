@@ -14,7 +14,9 @@ const Footer: FC<FooterProps> = ({ className }) => {
   return (
     <footer className={rootClasses.join(' ')}>
       <div className={classes.container}>
-        <Logo color="white" />
+        <a href="#">
+          <Logo color="white" />
+        </a>
 
         <h6 className={classes.header}>
           © 2021 Сoworking. Дизайн сайта - &nbsp;

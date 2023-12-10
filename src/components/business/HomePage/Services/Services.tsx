@@ -33,7 +33,7 @@ const Services: FC<ServicesProps> = ({ className }) => {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <div className={classes.container}>
+      <div className={classes.container} id="services">
         <Breaker number="02" title="Услуги" />
 
         <h2>НАШЕ ПРОСТРАНСТВО</h2>

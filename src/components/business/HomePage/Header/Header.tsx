@@ -17,7 +17,9 @@ const Header: FC<HeaderProps> = ({ className }) => {
     <header className={rootClasses.join(' ')}>
       <div className={classes.overline} />
       <div className={classes.container}>
-        <Logo className={classes.logo} />
+        <a href="#" className={classes.logo}>
+          <Logo />
+        </a>
 
         <Navbar />
       </div>

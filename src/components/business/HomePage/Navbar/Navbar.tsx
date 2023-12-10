@@ -14,9 +14,9 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
   return (
     <nav className={rootClasses.join(' ')}>
       <ul className={classes.anchors}>
-        <Anchor href="#">УСЛУГИ</Anchor>
-        <Anchor href="#">ПЛАН КОВОРКИНГА</Anchor>
-        <Anchor href="#">КОНТАКТЫ</Anchor>
+        <Anchor href="#services">УСЛУГИ</Anchor>
+        <Anchor href="#plan">ПЛАН КОВОРКИНГА</Anchor>
+        <Anchor href="#contacts">КОНТАКТЫ</Anchor>
       </ul>
 
       <ul className={classes.actions}>
@@ -24,6 +24,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
           <a href="#" className={classes.icon}>
             <Icon icon="whatsapp" size="3.5rem" />
           </a>
+
           <a href="#" className={classes.icon}>
             <Icon icon="telegram" size="3.5rem" />
           </a>

@@ -15,7 +15,7 @@ const Contacts: FC<ContactsProps> = ({ className }) => {
 
   return (
     <section className={rootClasses.join(' ')}>
-      <div className={classes.container}>
+      <div className={classes.container} id="contacts">
         <Breaker number="05" title="Как с нами связаться" />
 
         <Businesscard className={classes.businesscard} />
