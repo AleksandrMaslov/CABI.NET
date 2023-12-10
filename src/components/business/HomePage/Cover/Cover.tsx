@@ -26,7 +26,7 @@ const Cover: FC<CoverProps> = ({ className }) => {
       className={rootClasses.join(' ')}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0, once: true }}
+      viewport={{ amount: 0.2, once: true }}
       variants={variants}
     >
       <motion.h4
