@@ -1,4 +1,5 @@
 import { Anchor } from 'cabinet_ui_kit'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import classes from './Businesscard.module.css'
@@ -13,12 +14,28 @@ interface ContactProps {
   href?: string
 }
 
+const variants = {
+  hidden: { opacity: 0, y: 200 },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { bounce: 0 },
+  },
+}
+
 const Businesscard: FC<BusinesscardProps> = ({ className }) => {
   const rootClasses = [classes.businesscard]
   if (className) rootClasses.push(className)
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <motion.div
+      className={rootClasses.join(' ')}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.5, once: true }}
+      variants={variants}
+    >
       <div className={classes.content}>
         <h2>Контакты</h2>
 
@@ -41,7 +58,7 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
 
       <div className={classes.milk} />
       <div className={classes.orange} />
-    </div>
+    </motion.div>
   )
 }
 
