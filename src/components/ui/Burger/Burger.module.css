@@ -1,0 +1,61 @@
+.burger {
+  --height: max(20px, calc(20px + (35 - 20) * (0.0625vw - 0.2px)));
+  --width: calc(var(--height) * 1.5);
+  --thickness: 0.6rem;
+
+  width: var(--width);
+  height: var(--height);
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  transform-origin: center;
+  margin: auto;
+  left: 0;
+  width: var(--width);
+  height: var(--thickness);
+  background-color: var(--black);
+}
+
+.item::after,
+.item::before {
+  z-index: 5;
+  position: absolute;
+  content: '';
+  font-size: 0.2rem;
+  height: var(--thickness);
+  background-color: var(--black);
+  transform-origin: center;
+  transition:
+    width 0.2s ease-out,
+    transform 0.2s ease-out;
+}
+
+.item::before {
+  width: var(--width);
+  top: 0;
+  right: 0;
+}
+
+.item::after {
+  bottom: 0;
+  right: 0;
+  width: calc(var(--width) / 2);
+}
+
+.item[data-opened='true']::before {
+  width: calc(var(--width) / 2);
+}
+
+.item[data-opened='true']::after {
+  transform: translateX(-100%);
+}
+
+@media (width < 1200px) {
+  .burger {
+    display: flex;
+  }
+}
