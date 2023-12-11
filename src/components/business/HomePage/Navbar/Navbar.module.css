@@ -35,6 +35,12 @@
 }
 
 @media (width < 1200px) {
+  .anchors {
+    display: none;
+  }
+}
+
+@media (width < 992px) {
   .navbar {
     margin: 2rem 0;
     position: absolute;
@@ -51,6 +57,7 @@
   }
 
   .anchors {
+    display: flex;
     border: none;
   }
 }
