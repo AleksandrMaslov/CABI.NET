@@ -5,6 +5,8 @@ import { FC } from 'react'
 import classes from './Navbar.module.css'
 
 interface NavbarProps {
+  opened?: boolean
+  toggleOpened?: () => void
   className?: string
 }
 
@@ -12,16 +14,21 @@ interface NavItemProps {
   title: string
   href: string
   order: number
+  onClick: () => void
 }
 
 interface SocialItemProps {
   icon: 'whatsapp' | 'telegram'
   href: string
   order: number
+  onClick: () => void
 }
 
-const variants = {
-  hidden: { opacity: 0, y: '-5rem' },
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: '-5rem',
+  },
 
   visible: (delay: number) => ({
     opacity: 1,
@@ -56,52 +63,70 @@ const socials: { icon: 'whatsapp' | 'telegram'; href: string }[] = [
   },
 ]
 
-const Navbar: FC<NavbarProps> = ({ className }) => {
+const Navbar: FC<NavbarProps> = ({ opened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
+  // onClick={toggleOpened}
+
   return (
-    <nav className={rootClasses.join(' ')}>
-      <motion.ul className={classes.anchors}>
+    <nav className={rootClasses.join(' ')} data-opened={opened}>
+      <ul className={classes.anchors}>
         {anchors.map((anchor, i) => (
-          <NavItem key={anchor.title} {...anchor} order={i + 2} />
+          <NavItem
+            key={anchor.title}
+            {...anchor}
+            order={i + 2}
+            onClick={toggleOpened!}
+          />
         ))}
-      </motion.ul>
+      </ul>
 
       <ul className={classes.actions}>
         <div className={classes.social}>
           {socials.map((social, i) => (
-            <SocialItem key={social.icon} {...social} order={i + 5} />
+            <SocialItem
+              key={social.icon}
+              {...social}
+              order={i + 5}
+              onClick={toggleOpened!}
+            />
           ))}
         </div>
 
-        <motion.span custom={7} variants={variants}>
-          <Button label="СВЯЗАТЬСЯ" color="black" size="small" />
+        <motion.span custom={7} variants={itemVariants}>
+          <Button
+            label="СВЯЗАТЬСЯ"
+            color="black"
+            size="small"
+            onClick={toggleOpened}
+          />
         </motion.span>
 
-        <motion.span custom={8} variants={variants}>
-          <Button label="ВОЙТИ" size="small" />
+        <motion.span custom={8} variants={itemVariants}>
+          <Button label="ВОЙТИ" size="small" onClick={toggleOpened} />
         </motion.span>
       </ul>
     </nav>
   )
 }
 
-const NavItem: FC<NavItemProps> = ({ title, href, order }) => {
+const NavItem: FC<NavItemProps> = ({ title, href, order, onClick }) => {
   return (
-    <motion.li custom={order} variants={variants}>
+    <motion.li custom={order} variants={itemVariants} onClick={onClick}>
       <Anchor href={href}>{title}</Anchor>
     </motion.li>
   )
 }
 
-const SocialItem: FC<SocialItemProps> = ({ icon, href, order }) => {
+const SocialItem: FC<SocialItemProps> = ({ icon, href, order, onClick }) => {
   return (
     <motion.a
       href={href}
       custom={order}
-      variants={variants}
+      variants={itemVariants}
       className={classes.icon}
+      onClick={onClick}
     >
       <Icon icon={icon} size="3.5rem" />
     </motion.a>

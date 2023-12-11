@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--white);
-  border-bottom: 0.15rem solid var(--black);
+  border-bottom: 1.5px solid var(--black);
 }
 
 .overline {
@@ -18,12 +18,18 @@
 }
 
 .container {
+  position: relative;
   flex: 1 1 auto;
   display: flex;
   justify-content: space-between;
-  margin: 0rem 20rem;
+  margin: 0rem max(20px, calc(20px + (200 - 20) * (0.0625vw - 0.2px)));
 }
 
 .logo {
+  margin: auto 0;
+  width: max(130px, calc(130px + (225 - 130) * (0.0625vw - 0.2px)));
+}
+
+.burger {
   margin: auto 0;
 }

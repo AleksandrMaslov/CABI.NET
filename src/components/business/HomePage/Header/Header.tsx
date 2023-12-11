@@ -2,6 +2,8 @@ import { Logo } from 'cabinet_ui_kit'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { FC } from 'react'
 
+import { Burger } from 'src/components/ui'
+
 import { Navbar } from '../..'
 
 import classes from './Header.module.css'
@@ -33,10 +35,12 @@ const Header: FC<HeaderProps> = ({ className }) => {
       <div className={classes.overline} />
       <div className={classes.container}>
         <motion.a href="#" className={classes.logo} variants={variants}>
-          <Logo />
+          <Logo height="100%" />
         </motion.a>
 
-        <Navbar />
+        <Burger className={classes.burger}>
+          <Navbar />
+        </Burger>
       </div>
     </motion.header>
   )
