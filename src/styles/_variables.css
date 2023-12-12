@@ -1,4 +1,6 @@
 :root {
+  --logo-w: max(130px, calc(130px + (225 - 130) * (0.0625vw - 0.2px)));
   --m-container: max(20px, calc(20px + 180 * (0.0625vw - 0.2px)));
   --m-y-xl: max(70px, calc(70px + 100 * (0.0625vw - 0.2px)));
+  --m-y-l: max(30px, calc(30px + 60 * (0.0625vw - 0.2px)));
 }

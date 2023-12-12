@@ -30,27 +30,37 @@ const Footer: FC<FooterProps> = ({ className }) => {
       viewport={{ amount: 0.5, once: true }}
     >
       <div className={classes.container}>
-        <motion.a href="#" variants={variants} custom={2}>
+        <motion.a
+          className={classes.logo}
+          href="#"
+          variants={variants}
+          custom={2}
+        >
           <Logo color="white" />
         </motion.a>
 
-        <motion.h6 className={classes.header} variants={variants} custom={4}>
-          © 2021 Сoworking. Дизайн сайта - &nbsp;
-          <Anchor
-            className={classes.anchor}
-            href="https://www.behance.net/maslovairina"
-            target="_blank"
-            underlined
-            lineColor="white"
-          >
-            Ирина Маслова
-          </Anchor>
-          . Все права защищены.
-        </motion.h6>
+        <div className={classes.wrapper}>
+          <motion.h6 className={classes.title} variants={variants} custom={4}>
+            © 2021 Сoworking.
+            <span className={classes.signature}>
+              Дизайн сайта - &nbsp;
+              <Anchor
+                className={classes.anchor}
+                href="https://www.behance.net/maslovairina"
+                target="_blank"
+                underlined
+                lineColor="white"
+              >
+                Ирина Маслова
+              </Anchor>
+              . Все права защищены.
+            </span>
+          </motion.h6>
 
-        <Anchor href="#" underlined lineColor="white">
-          <h6 className={classes.header}>Политика конфиденциальности</h6>
-        </Anchor>
+          <Anchor href="#" underlined lineColor="white">
+            <h6 className={classes.policy}>Политика конфиденциальности</h6>
+          </Anchor>
+        </div>
       </div>
     </motion.footer>
   )
