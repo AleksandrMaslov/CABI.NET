@@ -2,15 +2,25 @@
 }
 
 .container {
-  margin: 0rem 20rem 17rem;
   display: flex;
   flex-direction: column;
-  gap: 9rem;
+  margin: 0rem max(20px, calc(20px + (200 - 20) * (0.0625vw - 0.2px)))
+    max(70px, calc(70px + (170 - 70) * (0.0625vw - 0.2px)));
+  gap: max(35px, calc(35px + (90 - 35) * (0.0625vw - 0.2px)));
 }
 
 .content {
   display: flex;
-  margin-left: 27rem;
+  flex-wrap: wrap-reverse;
+  justify-content: start;
+  row-gap: 40px;
+  column-gap: max(0px, calc(90 * (0.0625vw - 0.2px)));
+  margin-left: max(0px, calc(270 * (0.0625vw - 0.2px)));
+}
+
+.figure {
+  display: flex;
+  gap: 4rem;
 }
 
 .title {
@@ -22,14 +32,13 @@
 .img {
   height: 35rem;
   width: 35rem;
-  margin-left: 4rem;
-  margin-right: 9rem;
 }
 
 .wrapper {
+  flex: 1 1 54rem;
   display: flex;
   flex-direction: column;
-  gap: 4.5rem;
+  gap: max(20px, calc(20px + (45 - 20) * (0.0625vw - 0.2px)));
 }
 
 .text {

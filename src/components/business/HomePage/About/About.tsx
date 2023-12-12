@@ -21,9 +21,11 @@ const About: FC<AboutProps> = ({ className }) => {
         <Breaker number="01" title="Кто мы" />
 
         <div className={classes.content}>
-          <Title className={classes.title} text="ИДЕАЛЬНОЕ ПРОСТРАНСТВО" />
+          <div className={classes.figure}>
+            <Title className={classes.title} text="ИДЕАЛЬНОЕ ПРОСТРАНСТВО" />
 
-          <Img className={classes.img} src={about_img} />
+            <Img className={classes.img} src={about_img} />
+          </div>
 
           <div className={classes.wrapper}>
             <h2>О НАС</h2>
