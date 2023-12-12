@@ -1,2 +1,4 @@
 :root {
+  --m-container: max(20px, calc(20px + 180 * (0.0625vw - 0.2px)));
+  --m-y-xl: max(70px, calc(70px + 100 * (0.0625vw - 0.2px)));
 }

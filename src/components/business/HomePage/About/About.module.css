@@ -4,9 +4,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin: 0rem max(20px, calc(20px + (200 - 20) * (0.0625vw - 0.2px)))
-    max(70px, calc(70px + (170 - 70) * (0.0625vw - 0.2px)));
-  gap: max(35px, calc(35px + (90 - 35) * (0.0625vw - 0.2px)));
+  margin: 0rem var(--m-container) var(--m-y-xl);
+  gap: max(35px, calc(35px + 55 * (0.0625vw - 0.2px)));
 }
 
 .content {
@@ -38,7 +37,7 @@
   flex: 1 1 54rem;
   display: flex;
   flex-direction: column;
-  gap: max(20px, calc(20px + (45 - 20) * (0.0625vw - 0.2px)));
+  gap: max(20px, calc(20px + 25 * (0.0625vw - 0.2px)));
 }
 
 .text {
