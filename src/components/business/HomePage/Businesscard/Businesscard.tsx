@@ -37,7 +37,7 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
       variants={variants}
     >
       <div className={classes.content}>
-        <h2>Контакты</h2>
+        <h2 className={classes.title}>Контакты</h2>
 
         <Contact href="#" title="Адрес:" content="Воронцовские пруды, д.3" />
 

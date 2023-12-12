@@ -1,26 +1,51 @@
 .contacts {
-  height: 93.5rem;
-  background-size: auto 79.5rem;
-  background-position: bottom 0 left 0;
-  background-image: url('../../../../assets/home/contacts_map.webp');
-  background-repeat: no-repeat;
+  --map-height: max(280px, calc(280px + 515 * (0.0625vw - 0.2px)));
+  --scale: calc(var(--map-height) / 795);
+  --card-offset-y: calc(0.044 * var(--map-height));
+
+  --marker-offset-y: calc(0.81 * var(--map-height));
+  --marker-offset-x: calc(50% - var(--scale) * 180);
+
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: max(50px, calc(50px + 40 * (0.0625vw - 0.2px)));
 }
 
 .container {
-  flex: 1 1 auto;
+  display: flex;
+  margin: 0rem var(--m-container);
+}
+
+.wrapper {
   position: relative;
-  margin: 0rem 20rem;
+}
+
+.bg {
+  height: var(--map-height);
+  top: var(--scale);
 }
 
 .marker {
   position: absolute;
-  left: 58.5rem;
-  top: 78rem;
+  left: var(--marker-offset-x);
+  top: var(--marker-offset-y);
 }
 
 .businesscard {
   position: absolute;
-  top: 17.5rem;
-  right: 11rem;
+  top: var(--card-offset-y);
+  right: 15vw;
+}
+
+@media (width < 992px) {
+  .businesscard {
+    right: var(--m-container);
+  }
+}
+
+@media (width < 576px) {
+  .businesscard {
+    position: static;
+  }
 }
