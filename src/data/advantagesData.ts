@@ -34,7 +34,7 @@ const advantagesData: IAdvantage[] = [
   {
     icon: 'lock',
     title: 'Локкеры',
-    content: 'Бесплатное хранение вещей на время работы',
+    content: 'Бесплатное хранение ваших ценных вещей на время работы офиса',
   },
   {
     icon: 'mail',
