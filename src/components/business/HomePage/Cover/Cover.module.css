@@ -1,10 +1,11 @@
 .cover {
-  height: 92.5rem;
   color: var(--white);
   font-family: var(--font-special);
+
   background-image: url(../../../../assets/home/hero_bg.webp);
+  background-size: auto 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
 
   display: grid;
   grid-template-areas:
@@ -13,8 +14,9 @@
     'lightgreen . blue'
     'lightgreen . green'
     'lightgreen . .';
+
   grid-template-columns: 48rem auto 28.5rem;
-  grid-template-rows: 19rem 19rem 19rem 22rem auto;
+  grid-template-rows: repeat(3, 19rem) 22rem 15rem;
 }
 
 .centered {
@@ -30,7 +32,8 @@
 }
 
 .content {
-  font-size: 3.3rem;
+  font-size: max(15px, calc(15px + 18 * (0.0625vw - 0.2px)));
+  max-width: 30rem;
 }
 
 .lightgreen {
@@ -58,4 +61,32 @@
 .green {
   grid-area: green;
   background-color: var(--green);
+}
+
+@media (width < 768px) {
+  .cover {
+    --bg-height: max(160px, calc(260px + 100 * (0.0625vw - 0.2px)));
+    --square-height: max(100px, calc(100px + 25 * (0.0625vw - 0.2px)));
+
+    grid-template-areas:
+      '. .'
+      'black orange'
+      'blue green'
+      'lightgreen lightgreen';
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:
+      var(--bg-height) repeat(2, var(--square-height))
+      auto;
+
+    background-size: 100% auto;
+    background-position: top left;
+  }
+}
+
+@media (width < 540px) {
+  .cover {
+    background-size: auto calc(var(--bg-height) + 5px);
+    background-position: top left 40%;
+  }
 }

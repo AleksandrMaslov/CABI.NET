@@ -39,6 +39,7 @@ const Hero: FC<HeroProps> = ({ className }) => {
 
           <motion.div className={classes.text} custom={3} variants={variants}>
             <Title text="КОВОРКИНГ НА ЮГЕ МОСКВЫ" />
+
             <motion.h1 custom={4} variants={variants}>
               САМЫЕ ЛУЧШИЕ КВАДРАТНЫЕ МЕТРЫ В&nbsp;ГОРОДЕ.
             </motion.h1>

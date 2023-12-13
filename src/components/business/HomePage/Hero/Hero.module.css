@@ -3,25 +3,39 @@
 }
 
 .container {
-  margin: 17rem 20rem;
+  margin: var(--m-y-xl) var(--m-container);
   display: flex;
   flex-direction: column;
-  gap: 7.5rem;
+  gap: max(30px, calc(30px + 45 * (0.0625vw - 0.2px)));
 }
 
 .wrapper {
+  overflow: hidden;
   display: flex;
-  gap: 7.5rem;
+  gap: max(10px, calc(10px + 65 * (0.0625vw - 0.2px)));
 }
 
 .img {
+  --img-size: max(100px, calc(100px + 250 * (0.0625vw - 0.2px)));
   z-index: 10;
-  height: 35rem;
-  width: 35rem;
+  height: var(--img-size);
+  width: var(--img-size);
 }
 
 .text {
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  justify-content: space-between;
+  gap: max(5px, calc(5px + 25 * (0.0625vw - 0.2px)));
+}
+
+@media (width < 768px) {
+  .img {
+    display: none;
+    --img-size: 0;
+  }
+
+  .wrapper {
+    gap: 0;
+  }
 }
