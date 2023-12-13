@@ -53,9 +53,6 @@ const Advantages: FC<AdvantagesProps> = ({ className }) => {
           renderItem={(item: IAdvantage, i?: number) => (
             <AdvantageItem key={item.title} advantage={item} index={i} />
           )}
-          rows={3}
-          cols={4}
-          gap="3rem 4rem"
         />
       </div>
     </section>
@@ -74,11 +71,13 @@ const AdvantageItem: FC<AdvantageItemProps> = ({ advantage, index }) => {
       variants={variants}
       custom={index! % 4}
     >
-      <Icon icon={icon} size="8.5rem" />
+      <Icon className={classes.icon} icon={icon} size="8.5rem" />
 
-      <h4 className={classes.title}>{title}</h4>
+      <div className={classes.wrapper}>
+        <h4 className={classes.title}>{title}</h4>
 
-      <p className={classes.content}>{content}</p>
+        <p className={classes.content}>{content}</p>
+      </div>
     </motion.article>
   )
 }

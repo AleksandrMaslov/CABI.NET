@@ -2,10 +2,10 @@
 }
 
 .container {
-  margin: 0rem 20rem 17rem;
   display: flex;
   flex-direction: column;
-  gap: 9rem;
+  gap: var(--m-y-l);
+  margin: 0rem var(--m-container) var(--m-y-xl);
 }
 
 .header {
@@ -14,11 +14,27 @@
 }
 
 .item {
-  padding: 2rem;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: center;
+  row-gap: max(5px, calc(5px + 10 * (0.0625vw - 0.2px)));
+  column-gap: 3rem;
+  padding: max(0px, calc(20 * (0.0625vw - 0.2px)));
+}
+
+.icon {
+  --icon-size: max(40px, calc(40px + 50 * (0.0625vw - 0.2px)));
+  max-width: var(--icon-size);
+  max-height: var(--icon-size);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: max(0px, calc(0px + 15 * (0.0625vw - 0.2px)));
 }
 
 .title {
@@ -29,4 +45,29 @@
 .content {
   text-align: center;
   text-wrap: balance;
+  max-width: 32rem;
+}
+
+@media (width < 538px) {
+  .header {
+    text-align: left;
+  }
+
+  .item {
+    flex-direction: row;
+    justify-self: start;
+    align-items: start;
+  }
+
+  .content {
+    max-width: 60rem;
+  }
+
+  .wrapper {
+    align-items: start;
+  }
+
+  .content {
+    text-align: left;
+  }
 }
