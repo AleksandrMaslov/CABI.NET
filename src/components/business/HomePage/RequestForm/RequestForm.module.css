@@ -35,3 +35,9 @@
   font-weight: 300;
   font-size: 1.4rem;
 }
+
+@media (width < 1280px) {
+  .title {
+    font-size: var(--size-27-60-6rem);
+  }
+}

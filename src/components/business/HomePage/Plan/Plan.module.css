@@ -2,10 +2,10 @@
 }
 
 .container {
-  margin: 0rem 20rem 17rem;
   display: flex;
   flex-direction: column;
-  gap: 9rem;
+  gap: var(--m-y-l);
+  margin: 0 var(--m-container) var(--m-y-xl);
 }
 
 .content {

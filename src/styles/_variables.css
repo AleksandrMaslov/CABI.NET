@@ -3,4 +3,41 @@
   --m-container: max(20px, calc(20px + 180 * (0.0625vw - 0.2px)));
   --m-y-xl: max(70px, calc(70px + 100 * (0.0625vw - 0.2px)));
   --m-y-l: max(30px, calc(30px + 60 * (0.0625vw - 0.2px)));
+
+  --border-thick: max(1px, calc(1px + 0.5 * (0.0625vw - 0.2px)));
+
+  --size-0-270-inf: max(0px, calc(270 * (0.0625vw - 0.2px)));
+  --size-0-90-inf: max(0px, calc(90 * (0.0625vw - 0.2px)));
+  --size-0-40-inf: max(0px, calc(40 * (0.0625vw - 0.2px)));
+  --size-0-20-inf: max(0px, calc(20 * (0.0625vw - 0.2px)));
+  --size-0-15-inf: max(0px, calc(15 * (0.0625vw - 0.2px)));
+
+  --size-280-795-inf: max(280px, calc(280px + 515 * (0.0625vw - 0.2px)));
+  --size-260-360-inf: max(260px, calc(260px + 100 * (0.0625vw - 0.2px)));
+  --size-100-350-inf: max(100px, calc(100px + 250 * (0.0625vw - 0.2px)));
+  --size-100-150-inf: max(100px, calc(100px + 50 * (0.0625vw - 0.2px)));
+
+  --size-50-90-inf: max(50px, calc(50px + 40 * (0.0625vw - 0.2px)));
+  --size-40-90-inf: max(40px, calc(40px + 50 * (0.0625vw - 0.2px)));
+  --size-35-90-inf: max(35px, calc(35px + 55 * (0.0625vw - 0.2px)));
+  --size-30-80-inf: max(30px, calc(30px + 50 * (0.0625vw - 0.2px)));
+  --size-30-75-inf: max(30px, calc(30px + 45 * (0.0625vw - 0.2px)));
+  --size-30-50-inf: max(30px, calc(30px + 20 * (0.0625vw - 0.2px)));
+  --size-20-80-inf: max(20px, calc(20px + 60 * (0.0625vw - 0.2px)));
+  --size-20-45-inf: max(20px, calc(20px + 25 * (0.0625vw - 0.2px)));
+  --size-20-35-inf: max(20px, calc(20px + 15 * (0.0625vw - 0.2px)));
+  --size-15-95-inf: max(15px, calc(15px + 80 * (0.0625vw - 0.2px)));
+  --size-15-33-inf: max(15px, calc(15px + 18 * (0.0625vw - 0.2px)));
+  --size-15-25-inf: max(15px, calc(15px + 10 * (0.0625vw - 0.2px)));
+  --size-10-75-inf: max(10px, calc(10px + 65 * (0.0625vw - 0.2px)));
+  --size-10-30-inf: max(10px, calc(10px + 20 * (0.0625vw - 0.2px)));
+  --size-10-15-inf: max(10px, calc(10px + 5 * (0.0625vw - 0.2px)));
+  --size-5-30-inf: max(5px, calc(5px + 25 * (0.0625vw - 0.2px)));
+  --size-5-15-inf: max(5px, calc(5px + 10 * (0.0625vw - 0.2px)));
+
+  --size-27-60-6rem: clamp(
+    27px,
+    calc(27px + (60 - 27) * (0.0625vw - 0.2px)),
+    6rem
+  );
 }

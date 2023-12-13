@@ -1,5 +1,5 @@
 .contacts {
-  --map-height: max(280px, calc(280px + 515 * (0.0625vw - 0.2px)));
+  --map-height: var(--size-280-795-inf);
   --scale: calc(var(--map-height) / 795);
   --card-offset-y: calc(0.044 * var(--map-height));
 
@@ -9,12 +9,12 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: max(50px, calc(50px + 40 * (0.0625vw - 0.2px)));
+  gap: var(--size-50-90-inf);
 }
 
 .container {
   display: flex;
-  margin: 0rem var(--m-container);
+  margin: 0 var(--m-container);
 }
 
 .wrapper {

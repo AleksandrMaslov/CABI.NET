@@ -6,17 +6,17 @@
   margin: var(--m-y-xl) var(--m-container);
   display: flex;
   flex-direction: column;
-  gap: max(30px, calc(30px + 45 * (0.0625vw - 0.2px)));
+  gap: var(--size-30-75-inf);
 }
 
 .wrapper {
   overflow: hidden;
   display: flex;
-  gap: max(10px, calc(10px + 65 * (0.0625vw - 0.2px)));
+  gap: var(--size-10-75-inf);
 }
 
 .img {
-  --img-size: max(100px, calc(100px + 250 * (0.0625vw - 0.2px)));
+  --img-size: var(--size-100-350-inf);
   z-index: 10;
   height: var(--img-size);
   width: var(--img-size);
@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: max(5px, calc(5px + 25 * (0.0625vw - 0.2px)));
+  gap: var(--size-5-30-inf);
 }
 
 @media (width < 768px) {

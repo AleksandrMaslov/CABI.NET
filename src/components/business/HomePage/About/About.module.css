@@ -4,8 +4,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin: 0rem var(--m-container) var(--m-y-xl);
-  gap: max(35px, calc(35px + 55 * (0.0625vw - 0.2px)));
+  gap: var(--size-35-90-inf);
+  margin: 0 var(--m-container) var(--m-y-xl);
 }
 
 .content {
@@ -13,8 +13,8 @@
   flex-wrap: wrap-reverse;
   justify-content: start;
   row-gap: 40px;
-  column-gap: max(0px, calc(90 * (0.0625vw - 0.2px)));
-  margin-left: max(0px, calc(270 * (0.0625vw - 0.2px)));
+  column-gap: var(--size-0-90-inf);
+  margin-left: var(--size-0-270-inf);
 }
 
 .figure {
@@ -37,7 +37,7 @@
   flex: 1 1 54rem;
   display: flex;
   flex-direction: column;
-  gap: max(20px, calc(20px + 25 * (0.0625vw - 0.2px)));
+  gap: var(--size-20-45-inf);
 }
 
 .text {

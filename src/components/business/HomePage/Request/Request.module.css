@@ -2,7 +2,7 @@
 }
 
 .container {
-  margin: 0rem 0rem 17rem;
+  margin: 0 0 var(--m-y-xl);
   display: grid;
   grid-template-rows: 49.5rem 27.5rem;
   grid-template-columns: 29rem auto 89rem;

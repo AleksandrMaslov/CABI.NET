@@ -3,17 +3,17 @@
 }
 
 .container {
-  margin: 0rem 20rem 17rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 9rem;
-  text-align: center;
+  gap: var(--m-y-l);
+  margin: 0 var(--m-container) var(--m-y-xl);
 }
 
 .galery {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: var(--size-15-25-inf);
 }
 
 .tickers {

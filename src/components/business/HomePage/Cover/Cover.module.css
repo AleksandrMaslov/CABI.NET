@@ -32,7 +32,7 @@
 }
 
 .content {
-  font-size: max(15px, calc(15px + 18 * (0.0625vw - 0.2px)));
+  font-size: var(--size-15-33-inf);
   max-width: 30rem;
 }
 
@@ -65,8 +65,8 @@
 
 @media (width < 768px) {
   .cover {
-    --bg-height: max(160px, calc(260px + 100 * (0.0625vw - 0.2px)));
-    --square-height: max(100px, calc(100px + 25 * (0.0625vw - 0.2px)));
+    --bg-height: var(--size-260-360-inf);
+    --square-height: var(--size-100-150-inf);
 
     grid-template-areas:
       '. .'

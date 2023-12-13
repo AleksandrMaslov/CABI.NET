@@ -1,5 +1,5 @@
 .burger {
-  --height: max(20px, calc(20px + (35 - 20) * (0.0625vw - 0.2px)));
+  --height: var(--size-20-35-inf);
   --width: calc(var(--height) * 1.5);
   --thickness: 0.6rem;
 

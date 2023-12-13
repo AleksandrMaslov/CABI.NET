@@ -1,8 +1,8 @@
 .breaker {
   display: flex;
-  gap: max(15px, calc(15px + 80 * (0.0625vw - 0.2px)));
-  padding-top: max(10px, calc(10px + 5 * (0.0625vw - 0.2px)));
-  border-top: max(1px, calc(1px + 0.5 * (0.0625vw - 0.2px))) solid var(--black);
+  gap: var(--size-15-95-inf);
+  padding-top: var(--size-10-15-inf);
+  border-top: var(--border-thick) solid var(--black);
 }
 
 .header {
