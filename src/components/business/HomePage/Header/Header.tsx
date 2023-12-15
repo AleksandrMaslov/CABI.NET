@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import { Burger } from 'src/components/ui'
-import { useMediaQuery, useToggle } from 'src/hooks'
+import { useToggle } from 'src/hooks'
 import {
   useHeaderAnimation,
   useScrollHeaderAnimation,
@@ -24,8 +24,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
   if (className) rootClasses.push(className)
 
   const height = useScrollHeaderAnimation()
-  const isMobile = useMediaQuery('(width < 992px)')
-  const header = useHeaderAnimation(isMobile, isOpened, classes.logo)
+  const header = useHeaderAnimation(isOpened, classes.logo)
 
   return (
     <motion.header
@@ -44,7 +43,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
           />
         </a>
 
-        <Navbar opened={isOpened} toggleOpened={toggleOpened} />
+        <Navbar opened={isOpened} toggleOpened={toggleOpened} top={height} />
 
         <Burger
           className={classes.burger}

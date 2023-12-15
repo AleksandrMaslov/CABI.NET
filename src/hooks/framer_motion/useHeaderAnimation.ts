@@ -1,24 +1,28 @@
-import { useAnimate } from 'framer-motion'
+import { AnimationScope, stagger, useAnimate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
+import { useMediaQuery } from '..'
+
+const staggerItems = stagger(0.2, { startDelay: 0.15 })
+
 function useHeaderAnimation(
-  isMobile: boolean,
   isOpened: boolean,
   logoClassName: string,
-) {
+): AnimationScope<HTMLElement> {
+  const isMobile = useMediaQuery('(width < 992px)')
   const [scope, animate] = useAnimate()
   const [initial, setInitial] = useState<boolean>(true)
 
   useEffect(() => {
     animate(
-      `.${logoClassName}`,
+      `.${logoClassName}, li`,
       {
         opacity: [0, 1],
         y: ['-5rem', '0'],
       },
       {
-        type: 'spring',
         bounce: 0,
+        delay: staggerItems,
       },
     )
   }, [])
