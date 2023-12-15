@@ -1,8 +1,13 @@
 import { Logo } from 'cabinet_ui_kit'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import { Burger } from 'src/components/ui'
+import { useMediaQuery, useToggle } from 'src/hooks'
+import {
+  useHeaderAnimation,
+  useScrollHeaderAnimation,
+} from 'src/hooks/framer_motion'
 
 import { Navbar } from '../..'
 
@@ -12,35 +17,40 @@ interface HeaderProps {
   className?: string
 }
 
-const variants = {
-  hidden: { opacity: 0, y: '-5rem' },
-  visible: { opacity: 1, y: 0, transition: { bounce: 0 } },
-}
-
 const Header: FC<HeaderProps> = ({ className }) => {
+  const [isOpened, toggleOpened] = useToggle(false)
+
   const rootClasses = [classes.header]
   if (className) rootClasses.push(className)
 
-  const { scrollY } = useScroll()
-  const height = useTransform(scrollY, [100, 300], ['13rem', '10rem'])
+  const height = useScrollHeaderAnimation()
+  const isMobile = useMediaQuery('(width < 992px)')
+  const header = useHeaderAnimation(isMobile, isOpened, classes.logo)
 
   return (
     <motion.header
       className={rootClasses.join(' ')}
+      data-opened={isOpened}
       style={{ height }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      ref={header}
     >
       <div className={classes.overline} />
-      <div className={classes.container}>
-        <motion.a href="#" className={classes.logo} variants={variants}>
-          <Logo height="100%" />
-        </motion.a>
 
-        <Burger className={classes.burger}>
-          <Navbar />
-        </Burger>
+      <div className={classes.container}>
+        <a className={classes.logo} href="#">
+          <Logo
+            height="100%"
+            className={isOpened ? classes.logo_white : undefined}
+          />
+        </a>
+
+        <Navbar opened={isOpened} toggleOpened={toggleOpened} />
+
+        <Burger
+          className={classes.burger}
+          opened={isOpened}
+          toggleOpened={toggleOpened}
+        />
       </div>
     </motion.header>
   )
