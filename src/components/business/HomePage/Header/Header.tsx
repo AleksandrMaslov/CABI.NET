@@ -23,8 +23,11 @@ const Header: FC<HeaderProps> = ({ className }) => {
   const rootClasses = [classes.header]
   if (className) rootClasses.push(className)
 
+  const logoClasses = [classes.logo]
+  if (isOpened) logoClasses.push(classes.logo_white)
+
   const height = useScrollHeaderAnimation()
-  const header = useHeaderAnimation(isOpened, classes.logo)
+  const header = useHeaderAnimation(isOpened)
 
   return (
     <motion.header
@@ -36,12 +39,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
       <div className={classes.overline} />
 
       <div className={classes.container}>
-        <a className={classes.logo} href="#">
-          <Logo
-            height="100%"
-            className={isOpened ? classes.logo_white : undefined}
-          />
-        </a>
+        <Logo className={logoClasses.join(' ')} height="100%" href="#" />
 
         <Navbar opened={isOpened} toggleOpened={toggleOpened} top={height} />
 

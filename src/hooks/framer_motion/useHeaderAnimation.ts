@@ -5,17 +5,14 @@ import { useMediaQuery } from '..'
 
 const staggerItems = stagger(0.1, { startDelay: 0.1 })
 
-function useHeaderAnimation(
-  isOpened: boolean,
-  logoClassName: string,
-): AnimationScope<HTMLElement> {
+function useHeaderAnimation(isOpened: boolean): AnimationScope<HTMLElement> {
   const isMobile = useMediaQuery('(width < 992px)')
   const [scope, animate] = useAnimate()
   const [initial, setInitial] = useState<boolean>(true)
 
   useEffect(() => {
     animate(
-      `.${logoClassName}, li`,
+      `a, button`,
       {
         opacity: [0, 1],
         y: ['-5rem', '0'],
