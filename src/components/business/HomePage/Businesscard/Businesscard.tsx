@@ -36,7 +36,7 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
       viewport={{ amount: 0.5, once: true }}
       variants={variants}
     >
-      <div className={classes.content}>
+      <ul className={classes.content}>
         <h2 className={classes.title}>Контакты</h2>
 
         <Contact href="#" title="Адрес:" content="Воронцовские пруды, д.3" />
@@ -45,7 +45,7 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
 
         <Contact href="#" title="E-mail:" content="coworking@mail.ru" />
 
-        <div className={classes.social}>
+        <li className={classes.social}>
           <Anchor href="#" lineColor="white" underlined>
             Telegram
           </Anchor>
@@ -53,8 +53,8 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
           <Anchor href="#" lineColor="white" underlined>
             WhatsApp
           </Anchor>
-        </div>
-      </div>
+        </li>
+      </ul>
 
       <div className={classes.milk} />
       <div className={classes.orange} />
@@ -64,12 +64,12 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
 
 const Contact: FC<ContactProps> = ({ title, content, href }) => {
   return (
-    <div className={classes.contact}>
+    <li className={classes.contact}>
       <p>{title}</p>
       <Anchor href={href} className={classes.anchor} lineColor="white">
         {content}
       </Anchor>
-    </div>
+    </li>
   )
 }
 
