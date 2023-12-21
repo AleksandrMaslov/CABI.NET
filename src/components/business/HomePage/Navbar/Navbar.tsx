@@ -1,135 +1,73 @@
 import { Anchor, Button, Icon } from 'cabinet_ui_kit'
-import { motion } from 'framer-motion'
 import { FC } from 'react'
+
+import { navlinksData } from 'src/data'
+import { useMediaQuery } from 'src/hooks'
+import { useNavbarAnimation } from 'src/hooks/framer_motion'
 
 import classes from './Navbar.module.css'
 
 interface NavbarProps {
-  opened?: boolean
+  isOpened?: boolean
   toggleOpened?: () => void
   className?: string
 }
 
-interface NavItemProps {
-  title: string
-  href: string
-  order: number
-  onClick: () => void
-}
-
-interface SocialItemProps {
-  icon: 'whatsapp' | 'telegram'
-  href: string
-  order: number
-  onClick: () => void
-}
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: '-5rem',
-  },
-
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: delay * 0.1, bounce: 0 },
-  }),
-}
-
-const anchors = [
-  {
-    title: 'УСЛУГИ',
-    href: '#services',
-  },
-  {
-    title: 'ПЛАН КОВОРКИНГА',
-    href: '#plan',
-  },
-  {
-    title: 'КОНТАКТЫ',
-    href: '#contacts',
-  },
-]
-
-const socials: { icon: 'whatsapp' | 'telegram'; href: string }[] = [
-  {
-    icon: 'whatsapp',
-    href: '#',
-  },
-  {
-    icon: 'telegram',
-    href: '#',
-  },
-]
-
-const Navbar: FC<NavbarProps> = ({ opened, toggleOpened, className }) => {
+const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
-  // onClick={toggleOpened}
+  const isTabletOrMobile = useMediaQuery('(width < 992px)')
+  const navbar = useNavbarAnimation(isOpened!)
+
+  const clickHandler = () => {
+    if (toggleOpened && isTabletOrMobile) toggleOpened()
+  }
 
   return (
-    <nav className={rootClasses.join(' ')} data-opened={opened}>
+    <nav className={rootClasses.join(' ')} ref={navbar}>
       <ul className={classes.anchors}>
-        {anchors.map((anchor, i) => (
-          <NavItem
-            key={anchor.title}
-            {...anchor}
-            order={i + 2}
-            onClick={toggleOpened!}
-          />
+        {navlinksData.map(({ title, href }) => (
+          <Anchor
+            key={title}
+            href={href}
+            onClick={clickHandler}
+            className={isOpened ? classes.anchor_white : undefined}
+          >
+            {title}
+          </Anchor>
         ))}
       </ul>
 
-      <ul className={classes.actions}>
-        <div className={classes.social}>
-          {socials.map((social, i) => (
-            <SocialItem
-              key={social.icon}
-              {...social}
-              order={i + 5}
-              onClick={toggleOpened!}
-            />
-          ))}
+      <div className={classes.actions}>
+        <div className={classes.socials}>
+          <Icon
+            icon={'telegram'}
+            size="3.5rem"
+            href="#"
+            onClick={clickHandler}
+            className={isOpened ? classes.icon_white : undefined}
+          />
+
+          <Icon
+            icon={'whatsapp'}
+            size="3.5rem"
+            href="#"
+            onClick={clickHandler}
+            className={isOpened ? classes.icon_white : undefined}
+          />
         </div>
 
-        <motion.span custom={7} variants={itemVariants}>
-          <Button
-            label="СВЯЗАТЬСЯ"
-            color="black"
-            size="small"
-            onClick={toggleOpened}
-          />
-        </motion.span>
+        <Button
+          label="СВЯЗАТЬСЯ"
+          color="black"
+          size="small"
+          onClick={clickHandler}
+        />
 
-        <motion.span custom={8} variants={itemVariants}>
-          <Button label="ВОЙТИ" size="small" onClick={toggleOpened} />
-        </motion.span>
-      </ul>
+        <Button label="ВОЙТИ" size="small" onClick={clickHandler} />
+      </div>
     </nav>
-  )
-}
-
-const NavItem: FC<NavItemProps> = ({ title, href, order, onClick }) => {
-  return (
-    <motion.li custom={order} variants={itemVariants} onClick={onClick}>
-      <Anchor href={href}>{title}</Anchor>
-    </motion.li>
-  )
-}
-
-const SocialItem: FC<SocialItemProps> = ({ icon, href, order, onClick }) => {
-  return (
-    <motion.a
-      href={href}
-      custom={order}
-      variants={itemVariants}
-      className={classes.icon}
-      onClick={onClick}
-    >
-      <Icon icon={icon} size="3.5rem" />
-    </motion.a>
   )
 }
 
