@@ -6,7 +6,9 @@ import { useMediaQuery } from '..'
 const staggerItems = stagger(0.1, { startDelay: 0.1 })
 
 function useHeaderAnimation(isOpened: boolean): AnimationScope<HTMLElement> {
-  const isMobile = useMediaQuery('(width < 992px)')
+  const isMobile = useMediaQuery('(width < 576px)')
+  const isTablet = useMediaQuery('(width < 992px)')
+
   const [scope, animate] = useAnimate()
   const [initial, setInitial] = useState<boolean>(true)
 
@@ -43,7 +45,7 @@ function useHeaderAnimation(isOpened: boolean): AnimationScope<HTMLElement> {
     )
 
     if (initial) setInitial(false)
-  }, [isMobile, isOpened])
+  }, [isMobile, isTablet, isOpened])
 
   return scope
 }

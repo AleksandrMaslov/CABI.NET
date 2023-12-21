@@ -2,7 +2,7 @@ import { Logo } from 'cabinet_ui_kit'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 
-import { Burger } from 'src/components/ui'
+import { Burger, MenuBlure } from 'src/components/ui'
 import { useToggle } from 'src/hooks'
 import {
   useHeaderAnimation,
@@ -41,13 +41,15 @@ const Header: FC<HeaderProps> = ({ className }) => {
       <div className={classes.container}>
         <Logo className={logoClasses.join(' ')} height="100%" href="#" />
 
-        <Navbar opened={isOpened} toggleOpened={toggleOpened} top={height} />
+        <Navbar isOpened={isOpened} toggleOpened={toggleOpened} />
 
         <Burger
           className={classes.burger}
-          opened={isOpened}
+          isOpened={isOpened}
           toggleOpened={toggleOpened}
         />
+
+        {isOpened && <MenuBlure top={height} />}
       </div>
     </motion.header>
   )

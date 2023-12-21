@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--white);
-  border-bottom: 1.5px solid var(--black);
+  border-bottom: var(--border-thick) var(--black) solid;
 }
 
 .overline {
@@ -28,16 +28,16 @@
   margin: auto 0;
   width: var(--logo-w);
 }
+@media (width < 576px) {
+  .logo_white {
+    --color: var(--white);
+  }
+}
 
 .burger {
   margin: auto 0;
 }
-
 @media (width < 992px) {
-  .logo_white {
-    --color: var(--white);
-  }
-
   .burger {
     display: flex;
   }
