@@ -49,7 +49,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
           toggleOpened={toggleOpened}
         />
 
-        {isOpened && <MenuBlure top={height} />}
+        {isOpened && <MenuBlure top={height} toggleOpened={toggleOpened} />}
       </div>
     </motion.header>
   )

@@ -5,13 +5,14 @@ import classes from './MenuBlure.module.css'
 
 interface MenuBlureProps {
   top?: MotionValue<string>
+  toggleOpened: () => void
 }
 
-const MenuBlure: FC<MenuBlureProps> = ({ top }) => {
+const MenuBlure: FC<MenuBlureProps> = ({ top, toggleOpened }) => {
   return (
     <motion.span
       className={classes.menuBlure}
-      onClick={e => e.stopPropagation()}
+      onClick={toggleOpened}
       style={{ top }}
     />
   )
