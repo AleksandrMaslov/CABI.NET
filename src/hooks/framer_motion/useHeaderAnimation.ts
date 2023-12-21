@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { useMediaQuery } from '..'
 
-const staggerItems = stagger(0.2, { startDelay: 0.15 })
+const staggerItems = stagger(0.1, { startDelay: 0.1 })
 
 function useHeaderAnimation(
   isOpened: boolean,
