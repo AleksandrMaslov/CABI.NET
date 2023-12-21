@@ -46,16 +46,18 @@
   width: calc(var(--width) / 2);
 }
 
-.item[data-opened='true'],
-.item[data-opened='true']::before,
-.item[data-opened='true']::after {
-  background-color: var(--white);
-}
-
 .item[data-opened='true']::before {
   width: calc(var(--width) / 2);
 }
 
 .item[data-opened='true']::after {
   transform: translateX(-100%);
+}
+
+@media (width < 576px) {
+  .item[data-opened='true'],
+  .item[data-opened='true']::before,
+  .item[data-opened='true']::after {
+    background-color: var(--white);
+  }
 }
