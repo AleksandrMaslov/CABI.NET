@@ -1,5 +1,6 @@
 export { default as Burger } from './Burger/Burger'
 export { default as FramerSlider } from './FramerSlider/FramerSlider'
 export { default as Grid } from './Grid/Grid'
+export { default as MenuBlure } from './MenuBlure/MenuBlure'
 export { default as PageIndicator } from './PageIndicator/PageIndicator'
 export { default as Ticker } from './Ticker/Ticker'
