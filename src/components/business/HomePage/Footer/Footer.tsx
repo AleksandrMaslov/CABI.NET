@@ -30,14 +30,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
       viewport={{ amount: 0.5, once: true }}
     >
       <div className={classes.container}>
-        <motion.a
-          className={classes.logo}
-          href="#"
-          variants={variants}
-          custom={2}
-        >
-          <Logo color="white" />
-        </motion.a>
+        <Logo color="white" href="#" />
 
         <div className={classes.wrapper}>
           <motion.h6 className={classes.title} variants={variants} custom={4}>
