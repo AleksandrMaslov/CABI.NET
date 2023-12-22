@@ -4,10 +4,7 @@ import { FC } from 'react'
 
 import { Burger, MenuBlure } from 'src/components/ui'
 import { useToggle } from 'src/hooks'
-import {
-  useHeaderAnimation,
-  useScrollHeaderAnimation,
-} from 'src/hooks/framer_motion'
+import { useHeaderAnimation, useScrollAnimation } from 'src/hooks/framer_motion'
 
 import { Navbar } from '../..'
 
@@ -26,7 +23,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
   const logoClasses = [classes.logo]
   if (isOpened) logoClasses.push(classes.logo_white)
 
-  const height = useScrollHeaderAnimation()
+  const height = useScrollAnimation([100, 300], ['13rem', '10rem'])
   const header = useHeaderAnimation(isOpened)
 
   return (
