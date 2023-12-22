@@ -37,11 +37,12 @@ const Breaker: FC<BreakerProps> = ({ number, title, className }) => {
       initial="hidden"
       whileInView="visible"
       variants={lineVariants}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 1 }}
     >
       <motion.h4 className={classes.header} variants={titleVariants}>
         {number}
       </motion.h4>
+
       <motion.h4 className={classes.header} variants={titleVariants}>
         {title}
       </motion.h4>
