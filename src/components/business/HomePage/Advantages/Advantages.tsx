@@ -69,7 +69,7 @@ const AdvantageItem: FC<AdvantageItemProps> = ({ advantage, index }) => {
       whileInView="visible"
       viewport={{ amount: 1, once: true }}
       variants={variants}
-      custom={index! % 4}
+      custom={index! % 2}
     >
       <Icon className={classes.icon} icon={icon} size="8.5rem" />
 
