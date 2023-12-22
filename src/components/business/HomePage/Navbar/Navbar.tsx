@@ -3,6 +3,7 @@ import { FC } from 'react'
 
 import { navlinksData } from 'src/data'
 import { useMediaQuery } from 'src/hooks'
+import { useFramerAnimation } from 'src/hooks/framer_motion'
 
 import classes from './Navbar.module.css'
 
@@ -16,14 +17,28 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
-  const isTabletOrMobile = useMediaQuery('(width < 992px)')
+  const isNotDesktop = useMediaQuery('(width < 992px)')
 
   const clickHandler = () => {
-    if (toggleOpened && isTabletOrMobile) toggleOpened()
+    if (toggleOpened && isNotDesktop) toggleOpened()
   }
 
+  const navbar = useFramerAnimation({
+    selectors: `a, button`,
+    keyframes: isNotDesktop
+      ? {
+          opacity: [0, 1],
+          x: ['10rem', '0'],
+        }
+      : {
+          opacity: [0, 1],
+          y: ['-5rem', '0'],
+        },
+    once: !isNotDesktop,
+  })
+
   return (
-    <nav className={rootClasses.join(' ')} data-opened={isOpened}>
+    <nav className={rootClasses.join(' ')} data-opened={isOpened} ref={navbar}>
       <Navlinks isOpened={isOpened} onClick={clickHandler} />
 
       <div className={classes.actions}>

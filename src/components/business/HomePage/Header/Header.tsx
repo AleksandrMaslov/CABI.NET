@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import { Burger, MenuBlure } from 'src/components/ui'
-import { useToggle } from 'src/hooks'
-import { useHeaderAnimation, useScrollAnimation } from 'src/hooks/framer_motion'
+import { useMediaQuery, useToggle } from 'src/hooks'
+import { useFramerAnimation, useScrollAnimation } from 'src/hooks/framer_motion'
 
 import { Navbar } from '../..'
 
@@ -15,6 +15,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ className }) => {
+  const isMobile = useMediaQuery('(width < 576px)')
   const [isOpened, toggleOpened] = useToggle(false)
 
   const rootClasses = [classes.header]
@@ -24,7 +25,21 @@ const Header: FC<HeaderProps> = ({ className }) => {
   if (isOpened) logoClasses.push(classes.logo_white)
 
   const height = useScrollAnimation([100, 300], ['13rem', '10rem'])
-  const header = useHeaderAnimation(isOpened)
+
+  const header = useFramerAnimation({
+    keyframes: { backgroundColor: ['#fff', '#1f1f1f'] },
+    condition: isMobile,
+    trigger: isOpened,
+  })
+
+  const container = useFramerAnimation({
+    selectors: `.${classes.logo}`,
+    keyframes: {
+      opacity: [0, 1],
+      y: ['-5rem', '0'],
+    },
+    once: true,
+  }) as React.RefObject<HTMLDivElement>
 
   return (
     <motion.header
@@ -35,7 +50,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
     >
       <div className={classes.overline} />
 
-      <div className={classes.container}>
+      <div className={classes.container} ref={container}>
         <Logo className={logoClasses.join(' ')} height="100%" href="#" />
 
         <Navbar isOpened={isOpened} toggleOpened={toggleOpened} />
