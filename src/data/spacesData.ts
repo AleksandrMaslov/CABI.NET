@@ -37,7 +37,7 @@ const SALES = {
 const kitchen: IGroupedSpace = {
   name: 'Кухня',
   group: 'public',
-  coords: ['38rem', '73.5rem'],
+  coords: ['26%', '75%'],
 
   img: '',
   area: '',
@@ -56,7 +56,7 @@ const kitchen: IGroupedSpace = {
 const playroom: IGroupedSpace = {
   name: 'Детская комната',
   group: 'public',
-  coords: ['122.3rem', '52rem'],
+  coords: ['90%', '53%'],
 
   img: '',
   area: '',
@@ -75,7 +75,7 @@ const playroom: IGroupedSpace = {
 const veranda: IGroupedSpace = {
   name: 'Веранда',
   group: 'public',
-  coords: ['66.4rem', '90rem'],
+  coords: ['48.9%', '91%'],
 
   img: '',
   area: '',
@@ -94,7 +94,7 @@ const veranda: IGroupedSpace = {
 const vega: IGroupedSpace = {
   name: 'Вега',
   group: 'offices',
-  coords: ['106.5rem', '19rem'],
+  coords: ['78.6%', '19%'],
 
   img: office_vega,
   area: '18,0 м2',
@@ -120,7 +120,7 @@ const vega: IGroupedSpace = {
 const persei: IGroupedSpace = {
   name: 'Персей',
   group: 'offices',
-  coords: ['98rem', '71rem'],
+  coords: ['72.4%', '68%'],
 
   img: office_persei,
   area: '26,8 м2',
@@ -146,7 +146,7 @@ const persei: IGroupedSpace = {
 const kapella: IGroupedSpace = {
   name: 'Капелла',
   group: 'offices',
-  coords: ['122rem', '20.5rem'],
+  coords: ['89.5%', '18%'],
 
   img: office_kapella,
   area: '47,0 м2',
@@ -172,7 +172,7 @@ const kapella: IGroupedSpace = {
 const sirius: IGroupedSpace = {
   name: 'Сириус',
   group: 'offices',
-  coords: ['92rem', '16.6rem'],
+  coords: ['68.8%', '18%'],
 
   img: office_sirius,
   area: '18,7 м2',
@@ -198,7 +198,7 @@ const sirius: IGroupedSpace = {
 const mira: IGroupedSpace = {
   name: 'Мира',
   group: 'offices',
-  coords: ['23rem', '69rem'],
+  coords: ['16.7%', '70.2%'],
 
   img: office_mira,
   area: '7,3 м2',
@@ -224,7 +224,7 @@ const mira: IGroupedSpace = {
 const alkor: IGroupedSpace = {
   name: 'Алькор',
   group: 'offices',
-  coords: ['11rem', '68.4rem'],
+  coords: ['7.7%', '67.5%'],
 
   img: office_alkor,
   area: '12,0 м2',
@@ -250,7 +250,7 @@ const alkor: IGroupedSpace = {
 const meridiana: IGroupedSpace = {
   name: 'Меридиана',
   group: 'offices',
-  coords: ['20.2rem', '50rem'],
+  coords: ['14.4%', '51%'],
 
   img: office_meridiana,
   area: '17,7 м2',
@@ -276,7 +276,7 @@ const meridiana: IGroupedSpace = {
 const andromeda: IGroupedSpace = {
   name: 'Андромеда',
   group: 'meetingrooms',
-  coords: ['42.3rem', '19.1rem'],
+  coords: ['30.9%', '19.2%'],
 
   img: meeting_andromeda,
   area: '17,2 м2',
@@ -301,7 +301,7 @@ const andromeda: IGroupedSpace = {
 const orion: IGroupedSpace = {
   name: 'Орион',
   group: 'meetingrooms',
-  coords: ['11.8rem', '26.7rem'],
+  coords: ['8.2%', '26.9%'],
 
   img: meeting_orion,
   area: '10,8 м2',
@@ -326,7 +326,7 @@ const orion: IGroupedSpace = {
 const kassiopeia: IGroupedSpace = {
   name: 'Кассиопея',
   group: 'workspaces',
-  coords: ['68rem', '16.8rem'],
+  coords: ['50%', '19.5%'],
 
   img: workspace_kasiopea,
   area: '50,0 м2',
@@ -352,7 +352,7 @@ const kassiopeia: IGroupedSpace = {
 const lira: IGroupedSpace = {
   name: 'Лира',
   group: 'lectures',
-  coords: ['117rem', '67.6rem'],
+  coords: ['86.4%', '68.6%'],
 
   img: lecture_lira,
   area: '50,0 м2',
