@@ -37,7 +37,7 @@ const SALES = {
 const kitchen: IGroupedSpace = {
   name: 'Кухня',
   group: 'public',
-  coords: ['26%', '75%'],
+  coords: ['26.5%', '74.6%'],
 
   img: '',
   area: '',
@@ -56,7 +56,7 @@ const kitchen: IGroupedSpace = {
 const playroom: IGroupedSpace = {
   name: 'Детская комната',
   group: 'public',
-  coords: ['90%', '53%'],
+  coords: ['89.8%', '53%'],
 
   img: '',
   area: '',
@@ -75,7 +75,7 @@ const playroom: IGroupedSpace = {
 const veranda: IGroupedSpace = {
   name: 'Веранда',
   group: 'public',
-  coords: ['48.9%', '91%'],
+  coords: ['48.9%', '92%'],
 
   img: '',
   area: '',
@@ -94,7 +94,7 @@ const veranda: IGroupedSpace = {
 const vega: IGroupedSpace = {
   name: 'Вега',
   group: 'offices',
-  coords: ['78.6%', '19%'],
+  coords: ['78.2%', '19%'],
 
   img: office_vega,
   area: '18,0 м2',
@@ -120,7 +120,7 @@ const vega: IGroupedSpace = {
 const persei: IGroupedSpace = {
   name: 'Персей',
   group: 'offices',
-  coords: ['72.4%', '68%'],
+  coords: ['72.2%', '67.6%'],
 
   img: office_persei,
   area: '26,8 м2',
@@ -146,7 +146,7 @@ const persei: IGroupedSpace = {
 const kapella: IGroupedSpace = {
   name: 'Капелла',
   group: 'offices',
-  coords: ['89.5%', '18%'],
+  coords: ['89%', '18%'],
 
   img: office_kapella,
   area: '47,0 м2',
@@ -172,7 +172,7 @@ const kapella: IGroupedSpace = {
 const sirius: IGroupedSpace = {
   name: 'Сириус',
   group: 'offices',
-  coords: ['68.8%', '18%'],
+  coords: ['68.4%', '18%'],
 
   img: office_sirius,
   area: '18,7 м2',
@@ -198,7 +198,7 @@ const sirius: IGroupedSpace = {
 const mira: IGroupedSpace = {
   name: 'Мира',
   group: 'offices',
-  coords: ['16.7%', '70.2%'],
+  coords: ['16.7%', '69.9%'],
 
   img: office_mira,
   area: '7,3 м2',
@@ -224,7 +224,7 @@ const mira: IGroupedSpace = {
 const alkor: IGroupedSpace = {
   name: 'Алькор',
   group: 'offices',
-  coords: ['7.7%', '67.5%'],
+  coords: ['8.2%', '67.5%'],
 
   img: office_alkor,
   area: '12,0 м2',
@@ -250,7 +250,7 @@ const alkor: IGroupedSpace = {
 const meridiana: IGroupedSpace = {
   name: 'Меридиана',
   group: 'offices',
-  coords: ['14.4%', '51%'],
+  coords: ['14.9%', '51%'],
 
   img: office_meridiana,
   area: '17,7 м2',
@@ -276,7 +276,7 @@ const meridiana: IGroupedSpace = {
 const andromeda: IGroupedSpace = {
   name: 'Андромеда',
   group: 'meetingrooms',
-  coords: ['30.9%', '19.2%'],
+  coords: ['31.1%', '19.2%'],
 
   img: meeting_andromeda,
   area: '17,2 м2',
@@ -301,7 +301,7 @@ const andromeda: IGroupedSpace = {
 const orion: IGroupedSpace = {
   name: 'Орион',
   group: 'meetingrooms',
-  coords: ['8.2%', '26.9%'],
+  coords: ['8.75%', '26.9%'],
 
   img: meeting_orion,
   area: '10,8 м2',
@@ -393,11 +393,11 @@ export const spacesData: IGroupedSpace[] = [
 ]
 
 export enum CategoriesEnum {
-  public = 'ОБЩЕСТВЕННЫЕ',
   offices = 'ОФИСЫ',
   meetingrooms = 'ПЕРЕГОВОРНЫЕ',
   workspaces = 'РАБОЧИЕ МЕСТА В ОПЕНСПЕЙСАХ',
   lectures = 'ЛЕКТОРИИ',
+  public = 'ОБЩЕСТВЕННЫЕ',
 }
 
 export const tabs = Object.values(CategoriesEnum).filter(
