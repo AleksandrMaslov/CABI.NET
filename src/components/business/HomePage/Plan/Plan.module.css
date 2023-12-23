@@ -9,18 +9,25 @@
 }
 
 .content {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: auto 40rem;
+  display: flex;
+  gap: 16rem;
 }
 
 .wrapper {
-  border: 4rem solid transparent;
-  background-color: var(--lightgrey);
+  flex: 1 1 auto;
+  height: fit-content;
   position: relative;
   user-select: none;
 }
 
-.legend {
-  margin-left: 10rem;
+.marker {
+  --size: var(--size-10-30-inf);
+  height: var(--size) !important;
+  width: var(--size) !important;
+}
+
+@media (width < 1280px) {
+  .legend {
+    display: none !important;
+  }
 }

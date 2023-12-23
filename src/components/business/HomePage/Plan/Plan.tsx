@@ -34,7 +34,11 @@ const Plan: FC<PlanProps> = ({ className }) => {
 
             {SpacesService.extractMarkersData(spaces).map(
               (props: IMarkerData) => (
-                <Marker key={props.tooltip} {...props} />
+                <Marker
+                  className={classes.marker}
+                  key={props.tooltip}
+                  {...props}
+                />
               ),
             )}
           </div>

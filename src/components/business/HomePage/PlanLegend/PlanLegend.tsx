@@ -13,13 +13,13 @@ interface PlanLegendProps {
 }
 
 const PlanLegend: FC<PlanLegendProps> = ({ spaces, className }) => {
-  const rootClasses = [classes.spacesLegend]
+  const rootClasses = [classes.planLegend]
   if (className) rootClasses.push(className)
 
   return (
     <div className={rootClasses.join(' ')}>
       {Object.entries(CategoriesEnum).map(([key, category]) => (
-        <div className={classes.group} key={key}>
+        <article key={key}>
           <Title text={category} />
 
           <ul className={classes.list}>
@@ -33,7 +33,7 @@ const PlanLegend: FC<PlanLegendProps> = ({ spaces, className }) => {
                 )
               })}
           </ul>
-        </div>
+        </article>
       ))}
     </div>
   )
