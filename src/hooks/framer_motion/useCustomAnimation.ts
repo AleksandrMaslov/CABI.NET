@@ -14,7 +14,7 @@ interface IFramerAnimationSettings {
   selectors?: string
 }
 
-function useFramerAnimation(
+function useCustomAnimation(
   userSettings: IFramerAnimationSettings,
 ): AnimationScope<HTMLElement | HTMLDivElement> {
   const { initial, once, condition, trigger, selectors, keyframes } = {
@@ -91,4 +91,4 @@ const defaultSettings = {
   selectors: undefined,
 }
 
-export default useFramerAnimation
+export default useCustomAnimation

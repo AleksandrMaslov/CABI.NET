@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import { Burger, MenuBlure } from 'src/components/ui'
 import { useMediaQuery, useToggle } from 'src/hooks'
-import { useFramerAnimation, useScrollAnimation } from 'src/hooks/framer_motion'
+import { useCustomAnimation, useScrollAnimation } from 'src/hooks/framer_motion'
 
 import { Navbar } from '../..'
 
@@ -26,13 +26,13 @@ const Header: FC<HeaderProps> = ({ className }) => {
 
   const height = useScrollAnimation([100, 300], ['13rem', '10rem'])
 
-  const header = useFramerAnimation({
+  const header = useCustomAnimation({
     keyframes: { backgroundColor: ['#fff', '#1f1f1f'] },
     condition: isMobile,
     trigger: isOpened,
   })
 
-  const container = useFramerAnimation({
+  const container = useCustomAnimation({
     selectors: `.${classes.logo}`,
     keyframes: {
       opacity: [0, 1],

@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { navlinksData } from 'src/data'
 import { useMediaQuery } from 'src/hooks'
-import { useFramerAnimation } from 'src/hooks/framer_motion'
+import { useCustomAnimation } from 'src/hooks/framer_motion'
 
 import classes from './Navbar.module.css'
 
@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
     if (toggleOpened && isNotDesktop) toggleOpened()
   }
 
-  const navbar = useFramerAnimation({
+  const navbar = useCustomAnimation({
     selectors: `a, button`,
     keyframes: isNotDesktop
       ? {
