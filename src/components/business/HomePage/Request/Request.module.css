@@ -4,8 +4,8 @@
 .container {
   margin: 0 0 var(--m-y-xl);
   display: grid;
-  grid-template-rows: 49.5rem 27.5rem;
-  grid-template-columns: 29rem auto 89rem;
+  grid-template-columns: var(--size-105-290-inf) 74.5rem auto;
+  grid-template-rows: auto var(--size-115-275-inf);
   grid-template-areas:
     'side form img'
     'square form img';
@@ -53,4 +53,37 @@
 .img {
   grid-area: img;
   background-color: var(--grey);
+}
+
+@media (width < 1280px) {
+  .container {
+    grid-template-columns: 29rem minmax(var(--size-320-745-inf), 1fr) auto;
+  }
+}
+
+@media (width < 768px) {
+  .container {
+    grid-template-areas:
+      'side form'
+      'square form'
+      'img img';
+  }
+}
+
+@media (width < 576px) {
+  .text {
+    top: calc(0px - var(--size-25-80-inf));
+    left: calc(0px - var(--size-15-95-inf));
+    font-size: var(--size-120-420-inf);
+    writing-mode: horizontal-tb;
+  }
+
+  .container {
+    grid-template-columns: var(--size-105-290-inf) auto;
+    grid-template-rows: var(--size-115-275-inf) auto auto;
+    grid-template-areas:
+      'square side'
+      'form form'
+      'img img';
+  }
 }

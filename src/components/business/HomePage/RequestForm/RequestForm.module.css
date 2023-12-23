@@ -11,7 +11,7 @@
 }
 
 .recommendation {
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   font-size: 2rem;
 }
 
@@ -23,7 +23,7 @@
   margin-top: 5rem;
   display: flex;
   align-items: center;
-  gap: 5rem;
+  column-gap: 5rem;
 }
 
 .btn {
@@ -37,7 +37,37 @@
 }
 
 @media (width < 1280px) {
+  .container {
+    margin: var(--size-50-105-inf) var(--size-20-105-inf);
+  }
+
   .title {
     font-size: var(--size-27-60-6rem);
+    margin-bottom: var(--size-15-20-inf);
+  }
+
+  .recommendation {
+    font-size: var(--size-15-20-inf);
+    margin-bottom: var(--size-30-50-inf);
+  }
+
+  .wrapper {
+    flex-direction: column;
+    row-gap: var(--size-20-45-inf);
+    margin-top: var(--size-30-50-inf);
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .note {
+    font-size: max(12px, var(--size-10-15-inf));
+  }
+}
+
+@media (width < 576px) {
+  .container {
+    margin: var(--size-50-105-inf) var(--size-20-370-inf);
   }
 }
