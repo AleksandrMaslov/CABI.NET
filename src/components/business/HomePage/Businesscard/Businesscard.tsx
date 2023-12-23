@@ -33,7 +33,7 @@ const Businesscard: FC<BusinesscardProps> = ({ className }) => {
       className={rootClasses.join(' ')}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.5, once: true }}
+      viewport={{ amount: 0.1, once: true }}
       variants={variants}
     >
       <ul className={classes.content}>

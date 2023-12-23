@@ -14,7 +14,7 @@ const variants = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: delay * 0.1, bounce: 0, duration: 1 },
+    transition: { delay: delay * 0.1, bounce: 0, duration: 0.5 },
   }),
 }
 
@@ -27,13 +27,13 @@ const Footer: FC<FooterProps> = ({ className }) => {
       className={rootClasses.join(' ')}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.5, once: true }}
+      viewport={{ amount: 0.2, once: true }}
     >
       <div className={classes.container}>
         <Logo color="white" href="#" />
 
         <div className={classes.wrapper}>
-          <motion.h6 className={classes.title} variants={variants} custom={4}>
+          <motion.h6 className={classes.title} variants={variants} custom={2}>
             © 2021 Сoworking.
             <span className={classes.signature}>
               Дизайн сайта - &nbsp;
