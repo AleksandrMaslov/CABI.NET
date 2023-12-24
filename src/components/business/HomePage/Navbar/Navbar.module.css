@@ -33,10 +33,6 @@
   }
 }
 
-li {
-  list-style: none;
-}
-
 .navlinks {
   font-family: var(--font-special);
   font-weight: 500;
