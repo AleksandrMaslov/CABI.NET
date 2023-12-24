@@ -9,7 +9,6 @@
 }
 
 .overflow {
-  display: flex;
   position: relative;
   overflow: hidden;
   user-select: none;
@@ -61,4 +60,10 @@
 
 .arrow:last-child:active {
   transform: scale(0.9) translate(-50%, -50%);
+}
+
+@media (width < 768px) {
+  .arrow {
+    display: none;
+  }
 }

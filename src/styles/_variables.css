@@ -35,11 +35,13 @@
   --size-20-45-inf: max(20px, calc(20px + 25 * (0.0625vw - 0.2px)));
   --size-20-35-inf: max(20px, calc(20px + 15 * (0.0625vw - 0.2px)));
   --size-15-95-inf: max(15px, calc(15px + 80 * (0.0625vw - 0.2px)));
+  --size-15-40-inf: max(15px, calc(15px + 25 * (0.0625vw - 0.2px)));
   --size-15-33-inf: max(15px, calc(15px + 18 * (0.0625vw - 0.2px)));
   --size-15-25-inf: max(15px, calc(15px + 10 * (0.0625vw - 0.2px)));
   --size-15-20-inf: max(15px, calc(15px + 5 * (0.0625vw - 0.2px)));
   --size-10-75-inf: max(10px, calc(10px + 65 * (0.0625vw - 0.2px)));
   --size-10-30-inf: max(10px, calc(10px + 20 * (0.0625vw - 0.2px)));
+  --size-10-20-inf: max(10px, calc(10px + 10 * (0.0625vw - 0.2px)));
   --size-10-15-inf: max(10px, calc(10px + 5 * (0.0625vw - 0.2px)));
   --size-5-30-inf: max(5px, calc(5px + 25 * (0.0625vw - 0.2px)));
   --size-5-15-inf: max(5px, calc(5px + 10 * (0.0625vw - 0.2px)));

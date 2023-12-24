@@ -33,19 +33,24 @@ const Services: FC<ServicesProps> = ({ className }) => {
       <div className={classes.container} id="services">
         <Breaker number="02" title="Услуги" />
 
-        <h2>НАШЕ ПРОСТРАНСТВО</h2>
+        <h2 className={classes.header}>НАШЕ ПРОСТРАНСТВО</h2>
 
         <div className={classes.galery}>
           <Tabs items={spaces} setFiltered={setFiltered} />
 
           <FramerSlider
+            className={classes.slider}
             fallbackItem={<FallbackCard />}
             items={filtered}
             renderItem={(space: IGroupedSpace) => <SpaceCard space={space} />}
             setPage={setPage}
           />
 
-          <PageIndicator current={page} total={filtered.length} />
+          <PageIndicator
+            className={classes.indicator}
+            current={page}
+            total={filtered.length}
+          />
         </div>
 
         <Tickers className={classes.tickers} />

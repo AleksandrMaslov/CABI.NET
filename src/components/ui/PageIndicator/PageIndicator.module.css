@@ -5,5 +5,5 @@
 }
 
 .indicator {
-  font-size: 3rem;
+  font-size: var(--size-15-33-inf);
 }

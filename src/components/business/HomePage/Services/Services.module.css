@@ -16,6 +16,27 @@
   gap: var(--size-15-25-inf);
 }
 
+.slider {
+  order: 2;
+  width: 100%;
+}
+
+.indicator {
+  order: 3;
+}
+
 .tickers {
   margin-left: -20rem;
+}
+
+@media (width < 768px) {
+  .indicator {
+    order: 1;
+  }
+}
+
+@media (width < 576px) {
+  .header {
+    text-align: left;
+  }
 }
