@@ -1,9 +1,11 @@
-import { Anchor, Button, Icon } from 'cabinet_ui_kit'
-import { FC } from 'react'
+import { Anchor, Button, Icon, Modal } from 'cabinet_ui_kit'
+import { FC, ReactNode, useState } from 'react'
 
 import { navlinksData } from 'src/data'
 import { useMediaQuery } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
+
+import { CallbackForm, LoginForm } from '../..'
 
 import classes from './Navbar.module.css'
 
@@ -17,11 +19,10 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
-  const isNotDesktop = useMediaQuery('(width < 992px)')
+  const [isModalVisible, setModalVisible] = useState<boolean>(false)
+  const [modalContent, setModalContent] = useState<ReactNode>(null)
 
-  const clickHandler = () => {
-    if (toggleOpened && isNotDesktop) toggleOpened()
-  }
+  const isNotDesktop = useMediaQuery('(width < 992px)')
 
   const navbar = useCustomAnimation({
     selectors: `a, button`,
@@ -37,28 +38,42 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
     once: !isNotDesktop,
   })
 
+  const toggleMenu = () => {
+    if (toggleOpened && isNotDesktop) toggleOpened()
+  }
+
+  const buttonClickHandler = (content: ReactNode) => {
+    toggleMenu()
+    setModalContent(content)
+    setModalVisible(true)
+  }
+
   return (
     <nav className={rootClasses.join(' ')} data-opened={isOpened} ref={navbar}>
-      <Navlinks isOpened={isOpened} onClick={clickHandler} />
+      <Navlinks isOpened={isOpened} onClick={toggleMenu} />
 
       <div className={classes.actions}>
-        <Socials isOpened={isOpened} onClick={clickHandler} />
+        <Socials isOpened={isOpened} onClick={toggleMenu} />
 
         <Button
           className={classes.button}
           label="СВЯЗАТЬСЯ"
           color="black"
           size="small"
-          onClick={clickHandler}
+          onClick={() => buttonClickHandler(<CallbackForm />)}
         />
 
         <Button
           className={classes.button}
           label="ВОЙТИ"
           size="small"
-          onClick={clickHandler}
+          onClick={() => buttonClickHandler(<LoginForm />)}
         />
       </div>
+
+      {isModalVisible && (
+        <Modal setVisible={setModalVisible}>{modalContent}</Modal>
+      )}
     </nav>
   )
 }
