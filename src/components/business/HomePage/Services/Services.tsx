@@ -29,7 +29,7 @@ const Services: FC<ServicesProps> = ({ className }) => {
   }, [])
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <section className={rootClasses.join(' ')}>
       <div className={classes.container} id="services">
         <Breaker number="02" title="Услуги" />
 
@@ -55,7 +55,7 @@ const Services: FC<ServicesProps> = ({ className }) => {
 
         <Tickers className={classes.tickers} />
       </div>
-    </div>
+    </section>
   )
 }
 
