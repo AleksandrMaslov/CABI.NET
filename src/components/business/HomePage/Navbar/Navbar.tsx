@@ -2,7 +2,7 @@ import { Anchor, Button, Icon, Modal } from 'cabinet_ui_kit'
 import { FC, ReactNode, useState } from 'react'
 
 import { navlinksData } from 'src/data'
-import { useMediaQuery } from 'src/hooks'
+import { useDelayedUnmount, useMediaQuery } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
 
 import { CallbackForm, LoginForm } from '../..'
@@ -21,6 +21,7 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
 
   const [isModalVisible, setModalVisible] = useState<boolean>(false)
   const [modalContent, setModalContent] = useState<ReactNode>(null)
+  const isDelayedVisible = useDelayedUnmount(isModalVisible, 250)
 
   const isNotDesktop = useMediaQuery('(width < 992px)')
 
@@ -71,8 +72,10 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
         />
       </div>
 
-      {isModalVisible && (
-        <Modal setVisible={setModalVisible}>{modalContent}</Modal>
+      {isDelayedVisible && (
+        <Modal isVisible={isModalVisible} setVisible={setModalVisible}>
+          {modalContent}
+        </Modal>
       )}
     </nav>
   )
