@@ -38,6 +38,7 @@
   background-size: 15rem;
   background-position: top -6rem left 2.5rem;
   background-image: url('../../../../assets/home/request_text_bg.webp');
+  user-select: none;
 }
 
 .square {
