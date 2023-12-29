@@ -1,4 +1,5 @@
 export { default as useDelayedUnmount } from './useDelayedUnmount'
+export { default as useFetching } from './useFetching'
 export { default as useInfinitePagination } from './useInfinitePagination'
 export { default as useInput } from './useInput'
 export { default as useInputValidation } from './useInputValidation'
