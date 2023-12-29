@@ -13,27 +13,20 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
 
+  const [isLoading, setLoading] = useState<boolean>(false)
   const [usernameProps, usernameSettings] = useInput({ isEmpty: true })
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [textProps, textSettings] = useInput()
-
-  const isFormValid = usernameSettings.isValid && telSettings.isValid
-
-  const [isLoading, setLoading] = useState<boolean>(false)
-
-  const reset = () => {
-    usernameSettings.reset()
-    telSettings.reset()
-    textSettings.reset()
-  }
 
   const submitHandler: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
 
     setLoading(true)
     setTimeout(() => {
+      usernameSettings.reset()
+      telSettings.reset()
+      textSettings.reset()
       setLoading(false)
-      reset()
     }, 1000)
   }
 
@@ -80,7 +73,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
             label="ОТПРАВИТЬ ЗАЯВКУ"
             color="lightgrey"
             isLoading={isLoading}
-            disabled={!isFormValid}
+            disabled={!usernameSettings.isValid || !telSettings.isValid}
           />
 
           <p className={classes.note}>
