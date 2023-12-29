@@ -1,7 +1,10 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useState } from 'react'
+import { FC, FormEventHandler, useContext, useState } from 'react'
 
+import { ModalContext } from 'src/context'
 import { useInput } from 'src/hooks'
+
+import { Confirmation } from '../..'
 
 import classes from './RequestForm.module.css'
 
@@ -12,6 +15,8 @@ interface RequestFormProps {
 const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
+
+  const { openModal } = useContext(ModalContext)
 
   const [isLoading, setLoading] = useState<boolean>(false)
   const [usernameProps, usernameSettings] = useInput({ isEmpty: true })
@@ -27,7 +32,8 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
       telSettings.reset()
       textSettings.reset()
       setLoading(false)
-    }, 1000)
+      openModal(<Confirmation />)
+    }, 1500)
   }
 
   return (

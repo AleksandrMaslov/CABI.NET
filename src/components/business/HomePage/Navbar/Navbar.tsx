@@ -1,11 +1,12 @@
-import { Anchor, Button, Icon, Modal } from 'cabinet_ui_kit'
-import { FC, ReactNode, useState } from 'react'
+import { Anchor, Button, Icon } from 'cabinet_ui_kit'
+import { FC, ReactNode, useContext } from 'react'
 
+import { ModalContext } from 'src/context'
 import { navlinksData } from 'src/data'
-import { useDelayedUnmount, useMediaQuery } from 'src/hooks'
+import { useMediaQuery } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
 
-import { CallbackForm, LoginForm } from '../..'
+import { ApplicationForm, LoginForm } from '../..'
 
 import classes from './Navbar.module.css'
 
@@ -19,9 +20,7 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
-  const [isModalVisible, setModalVisible] = useState<boolean>(false)
-  const [modalContent, setModalContent] = useState<ReactNode>(null)
-  const isDelayedVisible = useDelayedUnmount(isModalVisible, 250)
+  const { openModal } = useContext(ModalContext)
 
   const isNotDesktop = useMediaQuery('(width < 992px)')
 
@@ -45,9 +44,11 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
 
   const buttonClickHandler = (content: ReactNode) => {
     toggleMenu()
-    setModalContent(content)
-    setModalVisible(true)
+    openModal(content)
   }
+
+  const callbackBtnClickHandler = () => buttonClickHandler(<ApplicationForm />)
+  const loginBtnClickHandler = () => buttonClickHandler(<LoginForm />)
 
   return (
     <nav className={rootClasses.join(' ')} data-opened={isOpened} ref={navbar}>
@@ -61,22 +62,16 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
           label="СВЯЗАТЬСЯ"
           color="black"
           size="small"
-          onClick={() => buttonClickHandler(<CallbackForm />)}
+          onClick={callbackBtnClickHandler}
         />
 
         <Button
           className={classes.button}
           label="ВОЙТИ"
           size="small"
-          onClick={() => buttonClickHandler(<LoginForm />)}
+          onClick={loginBtnClickHandler}
         />
       </div>
-
-      {isDelayedVisible && (
-        <Modal isVisible={isModalVisible} setVisible={setModalVisible}>
-          {modalContent}
-        </Modal>
-      )}
     </nav>
   )
 }

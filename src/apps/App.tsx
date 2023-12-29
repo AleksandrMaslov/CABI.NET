@@ -2,13 +2,16 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { RouterProvider } from 'react-router-dom'
 
 import { ErrorBoundaryGeneral } from 'src/components/errors'
+import { ModalProvider } from 'src/context'
 import router from 'src/router/router'
 import './App.css'
 
 function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryGeneral}>
-      <RouterProvider router={router} />
+      <ModalProvider>
+        <RouterProvider router={router} />
+      </ModalProvider>
     </ErrorBoundary>
   )
 }
