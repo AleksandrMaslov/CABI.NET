@@ -1,2 +1,20 @@
 .applicationForm {
+  width: var(--size-240-450-inf);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-15-40-inf);
+}
+
+.title {
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.note {
+  color: var(--grey);
 }

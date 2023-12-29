@@ -16,6 +16,7 @@
   --size-320-745-inf: max(320px, calc(320px + 425 * (0.0625vw - 0.2px)));
   --size-280-795-inf: max(280px, calc(280px + 515 * (0.0625vw - 0.2px)));
   --size-260-360-inf: max(260px, calc(260px + 100 * (0.0625vw - 0.2px)));
+  --size-240-450-inf: max(240px, calc(240px + 210 * (0.0625vw - 0.2px)));
   --size-200-550-inf: max(200px, calc(200px + 350 * (0.0625vw - 0.2px)));
   --size-120-420-inf: max(120px, calc(120px + 300 * (0.0625vw - 0.2px)));
   --size-115-275-inf: max(115px, calc(115px + 160 * (0.0625vw - 0.2px)));
