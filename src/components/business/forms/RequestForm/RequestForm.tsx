@@ -36,7 +36,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
     await sendData()
-    if (!error) return openModal(<Warning />)
+    if (error) return openModal(<Warning />)
     resetForm()
     openModal(<Confirmation />)
   }
