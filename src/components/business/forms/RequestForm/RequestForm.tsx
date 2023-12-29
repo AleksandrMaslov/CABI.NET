@@ -1,5 +1,7 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC } from 'react'
+import { FC, FormEventHandler, useState } from 'react'
+
+import { useInput } from 'src/hooks'
 
 import classes from './RequestForm.module.css'
 
@@ -11,8 +13,32 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
 
+  const [usernameProps, usernameSettings] = useInput({ isEmpty: true })
+  const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
+  const [textProps, textSettings] = useInput()
+
+  const isFormValid = usernameSettings.isValid && telSettings.isValid
+
+  const [isLoading, setLoading] = useState<boolean>(false)
+
+  const reset = () => {
+    usernameSettings.reset()
+    telSettings.reset()
+    textSettings.reset()
+  }
+
+  const submitHandler: FormEventHandler<HTMLFormElement> = e => {
+    e.preventDefault()
+
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      reset()
+    }, 1000)
+  }
+
   return (
-    <form className={rootClasses.join(' ')} onSubmit={e => e.preventDefault()}>
+    <form className={rootClasses.join(' ')} onSubmit={submitHandler}>
       <div className={classes.container}>
         <h2 className={classes.title}>Не можете определиться?</h2>
 
@@ -25,24 +51,27 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
           className={classes.input}
           placeholder="Ваше имя*"
           name="username"
-          id="name"
-          required
+          id="username"
+          disabled={isLoading}
+          {...usernameProps}
         />
 
         <Input
           className={classes.input}
           placeholder="Телефон*"
-          type="tel"
           name="tel"
           id="tel"
-          required
+          disabled={isLoading}
+          {...telProps}
         />
 
         <Input
           className={classes.input}
           placeholder="Пожелания"
-          name="text"
-          id="wishes"
+          name="comments"
+          id="comments"
+          disabled={isLoading}
+          {...textProps}
         />
 
         <div className={classes.wrapper}>
@@ -50,6 +79,8 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
             className={classes.btn}
             label="ОТПРАВИТЬ ЗАЯВКУ"
             color="lightgrey"
+            isLoading={isLoading}
+            disabled={!isFormValid}
           />
 
           <p className={classes.note}>
