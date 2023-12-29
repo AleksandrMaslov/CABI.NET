@@ -1,12 +1,20 @@
 import { SpaceCard } from 'cabinet_ui_kit'
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 
 import { FramerSlider, PageIndicator } from 'src/components/ui'
+import { ModalContext } from 'src/context'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 import { cacheImgs } from 'src/utils'
 
-import { Breaker, FallbackCard, Tabs, Tickers } from '../..'
+import {
+  ApplicationForm,
+  Breaker,
+  FallbackCard,
+  LoginForm,
+  Tabs,
+  Tickers,
+} from '../..'
 
 import classes from './Services.module.css'
 
@@ -15,6 +23,8 @@ interface ServicesProps {
 }
 
 const Services: FC<ServicesProps> = ({ className }) => {
+  const { openModal } = useContext(ModalContext)
+
   const rootClasses = [classes.services]
   if (className) rootClasses.push(className)
 
@@ -27,6 +37,9 @@ const Services: FC<ServicesProps> = ({ className }) => {
     setSpaces(spaces)
     cacheImgs(spaces.map(space => space.img))
   }, [])
+
+  const bookBtnClickHandler = () => openModal(<LoginForm />)
+  const requestBtnClickHandler = () => openModal(<ApplicationForm />)
 
   return (
     <section className={rootClasses.join(' ')}>
@@ -42,7 +55,13 @@ const Services: FC<ServicesProps> = ({ className }) => {
             className={classes.slider}
             fallbackItem={<FallbackCard />}
             items={filtered}
-            renderItem={(space: IGroupedSpace) => <SpaceCard space={space} />}
+            renderItem={(space: IGroupedSpace) => (
+              <SpaceCard
+                space={space}
+                onBookClick={bookBtnClickHandler}
+                onRequestClick={requestBtnClickHandler}
+              />
+            )}
             setPage={setPage}
           />
 
