@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import {
@@ -17,7 +18,11 @@ const HomePage: FC = () => {
     <>
       <Header />
 
-      <main>
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, bounce: 0 }}
+      >
         <Hero />
         <About />
         <Services />
@@ -25,7 +30,7 @@ const HomePage: FC = () => {
         <Advantages />
         <Request />
         <Contacts />
-      </main>
+      </motion.main>
 
       <Footer />
     </>
