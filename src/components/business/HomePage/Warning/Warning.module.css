@@ -1,6 +1,6 @@
 .warning {
   margin: 0 var(--size-30-0-inf);
-  width: var(--size-200-450-inf);
+  width: var(--size-200-550-inf);
   display: flex;
   flex-direction: column;
   gap: 3rem;
