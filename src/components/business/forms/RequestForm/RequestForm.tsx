@@ -1,10 +1,11 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useContext, useState } from 'react'
+import { FC, FormEventHandler, useContext } from 'react'
 
 import { ModalContext } from 'src/context'
-import { useInput } from 'src/hooks'
+import { useFetching, useInput } from 'src/hooks'
+import { ServerDummyService } from 'src/services'
 
-import { Confirmation } from '../..'
+import { Confirmation, Warning } from '../..'
 
 import classes from './RequestForm.module.css'
 
@@ -13,27 +14,31 @@ interface RequestFormProps {
 }
 
 const RequestForm: FC<RequestFormProps> = ({ className }) => {
+  const { openModal } = useContext(ModalContext)
+
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
 
-  const { openModal } = useContext(ModalContext)
-
-  const [isLoading, setLoading] = useState<boolean>(false)
   const [usernameProps, usernameSettings] = useInput({ isEmpty: true })
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [textProps, textSettings] = useInput()
 
-  const submitHandler: FormEventHandler<HTMLFormElement> = e => {
-    e.preventDefault()
+  const [sendData, isLoading, error] = useFetching(async () => {
+    await ServerDummyService.sendApplicationData()
+  })
 
-    setLoading(true)
-    setTimeout(() => {
-      usernameSettings.reset()
-      telSettings.reset()
-      textSettings.reset()
-      setLoading(false)
-      openModal(<Confirmation />)
-    }, 1500)
+  const resetForm = () => {
+    usernameSettings.reset()
+    telSettings.reset()
+    textSettings.reset()
+  }
+
+  const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
+    e.preventDefault()
+    await sendData()
+    if (!error) return openModal(<Warning />)
+    resetForm()
+    openModal(<Confirmation />)
   }
 
   return (
