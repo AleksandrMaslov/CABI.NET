@@ -23,8 +23,8 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [commentsProps, commentsSettings] = useInput()
 
-  const [sendData, isLoading, error] = useFetching(async () => {
-    await ServerDummyService.sendApplicationData()
+  const [sendData, isLoading, error] = useFetching(async formData => {
+    await ServerDummyService.sendApplicationData(formData)
   })
 
   const resetForm = () => {
@@ -35,7 +35,12 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
-    await sendData()
+    await sendData({
+      username: usernameProps.value,
+      tel: telProps.value,
+      comments: commentsProps.value,
+    })
+
     if (error) return openModal(<Warning />)
     resetForm()
     openModal(<Confirmation />)

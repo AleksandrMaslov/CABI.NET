@@ -24,14 +24,20 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
   const [emailProps, emailSettings] = useInput({ isEmail: true })
   const [commentsProps] = useInput()
 
-  const [sendData, isLoading, error] = useFetching(async () => {
-    await ServerDummyService.sendApplicationData()
+  const [sendData, isLoading, error] = useFetching(async formData => {
+    await ServerDummyService.sendApplicationData(formData)
   })
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
-    await sendData()
+    await sendData({
+      username: usernameProps.value,
+      tel: telProps.value,
+      email: emailProps.value,
+      comments: commentsProps.value,
+    })
     await closeModal()
+
     if (error) return openModal(<Warning />)
     openModal(<Confirmation />)
   }
