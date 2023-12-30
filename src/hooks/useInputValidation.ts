@@ -34,16 +34,32 @@ const useInputValidation: TUseInputValidation = (validations, value) => {
     for (const validation in validations) {
       switch (validation) {
         case 'isEmpty':
+          if (value && !emptyError) break
+          if (!value && emptyError) break
           value ? setEmptyError('') : setEmptyError(ValidationErrorsEnum.Empty)
           break
 
         case 'isEmail':
+          if (!value) {
+            if (!emailError) break
+            setEmailError('')
+            break
+          }
+          if (isEmailValid(value) && !emailError) break
+          if (!isEmailValid(value) && emailError) break
           isEmailValid(value)
             ? setEmailError('')
             : setEmailError(ValidationErrorsEnum.Email)
           break
 
         case 'isTel':
+          if (!value) {
+            if (!telError) break
+            setTelError('')
+            break
+          }
+          if (isTelValid(value) && !telError) break
+          if (!isTelValid(value) && telError) break
           isTelValid(value)
             ? setTelError('')
             : setTelError(ValidationErrorsEnum.Tel)
