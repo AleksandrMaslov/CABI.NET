@@ -21,7 +21,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
 
   const [usernameProps, usernameSettings] = useInput({ isEmpty: true })
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
-  const [textProps, textSettings] = useInput()
+  const [commentsProps, commentsSettings] = useInput()
 
   const [sendData, isLoading, error] = useFetching(async () => {
     await ServerDummyService.sendApplicationData()
@@ -30,7 +30,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const resetForm = () => {
     usernameSettings.reset()
     telSettings.reset()
-    textSettings.reset()
+    commentsSettings.reset()
   }
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
@@ -75,7 +75,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
           name="comments"
           id="comments"
           disabled={isLoading}
-          {...textProps}
+          {...commentsProps}
         />
 
         <div className={classes.wrapper}>
