@@ -2,12 +2,12 @@ import { ReactNode, createContext } from 'react'
 
 interface IModalContext {
   openModal: (children: ReactNode) => void
-  closeModal: () => void
+  closeModal: () => Promise<void>
 }
 
 const ModalContext = createContext<IModalContext>({
   openModal: () => {},
-  closeModal: () => {},
+  closeModal: async () => {},
 })
 
 export default ModalContext
