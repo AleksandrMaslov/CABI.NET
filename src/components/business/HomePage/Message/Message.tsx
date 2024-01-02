@@ -8,17 +8,14 @@ interface MessageProps {
   className?: string
 }
 
-const Message: FC<MessageProps> = ({ className }) => {
+const Message: FC<MessageProps> = ({ title, content, className }) => {
   const rootClasses = [classes.message]
   if (className) rootClasses.push(className)
 
   return (
     <div className={rootClasses.join(' ')}>
-      <h2 className={classes.header}>
-        Спасибо, ваша заявка успешно отправлена!
-      </h2>
-
-      <p className={classes.text}>Мы свяжемся с вами в ближайшее время.</p>
+      <h2 className={classes.header}>{title}</h2>
+      <p className={classes.text}>{content}</p>
     </div>
   )
 }
