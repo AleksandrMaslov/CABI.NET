@@ -30,6 +30,8 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
+    if (isLoading) return
+
     await sendData({
       username: usernameProps.value,
       tel: telProps.value,
