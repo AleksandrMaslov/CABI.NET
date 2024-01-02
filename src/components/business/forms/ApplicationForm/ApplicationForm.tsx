@@ -5,7 +5,7 @@ import { ModalContext } from 'src/context'
 import { useFetching, useInput } from 'src/hooks'
 import { ServerDummyService } from 'src/services'
 
-import { Confirmation, Warning } from '../..'
+import { Message } from '../..'
 
 import classes from './ApplicationForm.module.css'
 
@@ -38,8 +38,20 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
     })
     await closeModal()
 
-    if (error) return openModal(<Warning />)
-    openModal(<Confirmation />)
+    if (error)
+      return openModal(
+        <Message
+          title="Произошла ошибка!"
+          content="Обратитесь в службу поддержки."
+        />,
+      )
+
+    openModal(
+      <Message
+        title="Спасибо, ваша заявка успешно отправлена!"
+        content="Мы свяжемся с вами в ближайшее время."
+      />,
+    )
   }
 
   return (

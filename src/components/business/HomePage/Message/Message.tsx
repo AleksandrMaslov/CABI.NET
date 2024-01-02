@@ -1,13 +1,15 @@
 import { FC } from 'react'
 
-import classes from './Confirmation.module.css'
+import classes from './Message.module.css'
 
-interface ConfirmationProps {
+interface MessageProps {
+  title: string
+  content: string
   className?: string
 }
 
-const Confirmation: FC<ConfirmationProps> = ({ className }) => {
-  const rootClasses = [classes.confirmation]
+const Message: FC<MessageProps> = ({ className }) => {
+  const rootClasses = [classes.message]
   if (className) rootClasses.push(className)
 
   return (
@@ -21,4 +23,4 @@ const Confirmation: FC<ConfirmationProps> = ({ className }) => {
   )
 }
 
-export default Confirmation
+export default Message
