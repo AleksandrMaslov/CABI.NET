@@ -11,6 +11,17 @@ import { Message } from '../..'
 
 import classes from './ApplicationForm.module.css'
 
+const errorMessage = (
+  <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
+)
+
+const confirmMessage = (
+  <Message
+    title="Спасибо, ваша заявка успешно отправлена!"
+    content="Мы свяжемся с вами в ближайшее время."
+  />
+)
+
 interface ApplicationFormProps {
   className?: string
 }
@@ -36,30 +47,18 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
     e.preventDefault()
     if (isLoading) return
 
-    await sendData({
+    const data = {
       username: usernameProps.value,
       tel: telProps.value,
       email: emailProps.value,
       comments: commentsProps.value,
-    })
+    }
 
+    await sendData(data)
     await closeModal()
-
     //TODO: не обрабатывает ошибку из-за асинхронности стейта
-    if (error)
-      return openModal(
-        <Message
-          title="Произошла ошибка!"
-          content="Обратитесь в службу поддержки."
-        />,
-      )
-
-    openModal(
-      <Message
-        title="Спасибо, ваша заявка успешно отправлена!"
-        content="Мы свяжемся с вами в ближайшее время."
-      />,
-    )
+    if (error) return openModal(errorMessage)
+    openModal(confirmMessage)
   }
 
   return (
