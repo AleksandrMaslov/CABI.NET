@@ -2,7 +2,7 @@
   width: var(--size-240-450-inf);
   display: flex;
   flex-direction: column;
-  gap: var(--size-15-40-inf);
+  gap: var(--size-30-50-inf);
 }
 
 .title {
