@@ -1,13 +1,7 @@
 import { useState } from 'react'
 
-import { IObject } from 'src/models'
+import { IFetchState, IObject } from 'src/models'
 import { getErrorMessage } from 'src/utils'
-
-interface IFetchState<T> {
-  isLoading?: boolean
-  error?: string
-  data?: T
-}
 
 type TFetchArgs<T> = [
   callback: (params?: IObject) => Promise<T>,
