@@ -1,23 +1,21 @@
-import { IApplication, IUser } from 'src/models'
+import { IApplicationData, IAuthData, ILoginData, IUser } from 'src/models'
 import { delay } from 'src/utils'
 
 //Service should be replaced with real server requests
 
 export default class ServerDummyService {
-  public static async sendApplicationData(data: IApplication) {
+  public static async sendApplicationData(data: IApplicationData) {
     // eslint-disable-next-line no-console
     console.log('Application Data:', data)
 
     // request (post: application data) -> response
     // throw on error
+
     await delay(1500)
     return
   }
 
-  public static async login(data: {
-    login: string
-    password: string
-  }): Promise<IUser | null> {
+  public static async login(data: ILoginData): Promise<IUser | undefined> {
     // eslint-disable-next-line no-console
     console.log('Login Data:', data)
 
@@ -29,6 +27,26 @@ export default class ServerDummyService {
 
     await delay(1500)
     return {
+      login: 'guest@mail.com',
+      name: 'Dear Guest',
+      avatar: '',
+      token: 'dummy_token',
+    }
+  }
+
+  public static async auth(data: IAuthData): Promise<IUser | undefined> {
+    // eslint-disable-next-line no-console
+    console.log('Auth Data:', data)
+
+    // request (post: auth data) -> response
+    // throw on error
+
+    // return IUser on success
+    // return null on failure
+
+    await delay(1500)
+    return {
+      login: 'guest@mail.com',
       name: 'Dear Guest',
       avatar: '',
       token: 'dummy_token',
