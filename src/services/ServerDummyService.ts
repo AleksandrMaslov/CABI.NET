@@ -23,7 +23,7 @@ export default class ServerDummyService {
     // throw on error
 
     // return IUser on success
-    // return null on failure
+    // return undefined on failure
 
     await delay(1500)
     return {
@@ -42,7 +42,7 @@ export default class ServerDummyService {
     // throw on error
 
     // return IUser on success
-    // return null on failure
+    // return undefined on failure
 
     await delay(1500)
     return {
