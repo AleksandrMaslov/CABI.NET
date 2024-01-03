@@ -1,4 +1,7 @@
 export type { default as IAdvantage } from './IAdvantage'
+export type { default as IApplication } from './IApplication'
 export type { default as IGroupedSpace } from './IGroupedSpace'
+export type { default as ILogin } from './ILogin'
 export type { default as IMarkerData } from './IMarkerData'
 export type { default as IObject } from './IObject'
+export type { default as IUser } from './IUser'
