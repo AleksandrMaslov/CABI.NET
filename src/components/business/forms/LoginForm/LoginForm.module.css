@@ -1,2 +1,32 @@
 .loginForm {
+  width: var(--size-240-450-inf);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-15-40-inf);
+}
+
+.title {
+  line-height: 1;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.links {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 2rem;
+  color: var(--orange);
 }
