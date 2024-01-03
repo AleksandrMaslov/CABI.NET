@@ -2,8 +2,10 @@ import { Button, Input } from 'cabinet_ui_kit'
 import { FC, FormEventHandler, useContext } from 'react'
 
 import { ModalContext } from 'src/context'
-import { useFetching, useInput } from 'src/hooks'
+import { useFetch, useInput } from 'src/hooks'
+import { IApplication } from 'src/models'
 import { ServerDummyService } from 'src/services'
+import { isInterfaceInstance } from 'src/utils'
 
 import { Message } from '../..'
 
@@ -24,8 +26,10 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
   const [emailProps, emailSettings] = useInput({ isEmail: true })
   const [commentsProps] = useInput()
 
-  const [sendData, isLoading, error] = useFetching(async formData => {
-    await ServerDummyService.sendApplicationData(formData)
+  const [sendData, { isLoading, error }] = useFetch<void>(async data => {
+    if (!isInterfaceInstance<IApplication>(data))
+      throw new Error('Application data error.')
+    return ServerDummyService.sendApplicationData(data)
   })
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
@@ -38,8 +42,10 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
       email: emailProps.value,
       comments: commentsProps.value,
     })
+
     await closeModal()
 
+    //TODO: не обрабатывает ошибку из-за асинхронности стейта
     if (error)
       return openModal(
         <Message

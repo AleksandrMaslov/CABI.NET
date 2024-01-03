@@ -2,8 +2,10 @@ import { Button, Input } from 'cabinet_ui_kit'
 import { FC, FormEventHandler, useContext } from 'react'
 
 import { ModalContext } from 'src/context'
-import { useFetching, useInput } from 'src/hooks'
+import { useFetch, useInput } from 'src/hooks'
+import { IApplication } from 'src/models'
 import { ServerDummyService } from 'src/services'
+import { isInterfaceInstance } from 'src/utils'
 
 import { Message } from '../..'
 
@@ -23,8 +25,10 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [commentsProps, commentsSettings] = useInput()
 
-  const [sendData, isLoading, error] = useFetching(async formData => {
-    await ServerDummyService.sendApplicationData(formData)
+  const [sendData, { isLoading, error }] = useFetch<void>(async data => {
+    if (!isInterfaceInstance<IApplication>(data))
+      throw new Error('Application data error.')
+    return ServerDummyService.sendApplicationData(data)
   })
 
   const resetForm = () => {
@@ -43,6 +47,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
       comments: commentsProps.value,
     })
 
+    //TODO: не обрабатывает ошибку из-за асинхронности стейта
     if (error)
       return openModal(
         <Message
