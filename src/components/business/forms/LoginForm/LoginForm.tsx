@@ -1,15 +1,26 @@
 import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useContext, useState } from 'react'
+import { FC, FormEventHandler, useContext, useEffect, useState } from 'react'
 
 import { ModalContext } from 'src/context'
-import { useFetch, useInput } from 'src/hooks'
-import { ILogin, IUser } from 'src/models'
+import { useFetchModal, useInput } from 'src/hooks'
+import useLocalStorage from 'src/hooks/useLocalStorage'
+import { IAuthData, ILoginData, IUser } from 'src/models'
 import { ServerDummyService } from 'src/services'
-import { isInterfaceInstance } from 'src/utils'
 
 import { Message } from '../..'
 
 import classes from './LoginForm.module.css'
+
+const errorMsg = (
+  <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
+)
+
+const loginErrorMsg = (
+  <Message
+    title="Ошибка авторизации."
+    content="Убедитесь, что указанные данные верны."
+  />
+)
 
 interface LoginFormProps {
   className?: string
@@ -21,52 +32,64 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const rootClasses = [classes.loginForm]
   if (className) rootClasses.push(className)
 
+  const {
+    value: localUser,
+    saveValue: saveUser,
+    removeValue: removeUser,
+  } = useLocalStorage<IUser>('user')
+
   const [loginProps, loginSettings] = useInput({ isEmpty: true })
   const [passwordProps, passwordSettings] = useInput({ isEmpty: true })
   const [isRemember, setRemember] = useState<boolean>(false)
 
-  const [login, { isLoading, error, data: user }] = useFetch<IUser | null>(
-    async data => {
-      if (!isInterfaceInstance<ILogin>(data))
-        throw new Error('Login data error.')
-      return ServerDummyService.login(data)
-    },
-  )
-
-  const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
-    e.preventDefault()
-    if (isLoading) return
-
-    await login({
-      login: loginProps.value,
-      password: passwordProps.value,
-    })
-
-    await closeModal()
-
-    //TODO: не обрабатывает ошибку из-за асинхронности стейта
-    if (error)
-      return openModal(
-        <Message
-          title="Произошла ошибка!"
-          content="Обратитесь в службу поддержки."
-        />,
-      )
-
-    if (!user)
-      return openModal(
-        <Message
-          title="Ошибка авторизации."
-          content="Убедитесь, что указанные данные верны."
-        />,
-      )
-
-    if (isRemember) {
-      //TODO: сохранить токен в localStorage
+  const callback = (user: IUser | undefined) => {
+    if (!user) {
+      removeUser()
+      return openModal(loginErrorMsg)
     }
+    if (isRemember) saveUser(user)
 
     //TODO: navigate - личный кабинет
   }
+
+  const [login, { isLoading: isLogging }] = useFetchModal<
+    ILoginData,
+    IUser | undefined
+  >({
+    query: async data => {
+      return ServerDummyService.login(data!)
+    },
+    callback,
+    errorMsg,
+  })
+
+  const [auth, { isLoading: isAuthing }] = useFetchModal<
+    IAuthData,
+    IUser | undefined
+  >({
+    query: async data => {
+      return ServerDummyService.auth(data!)
+    },
+    callback,
+    errorMsg,
+  })
+
+  const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
+    e.preventDefault()
+    login({
+      login: loginProps.value,
+      password: passwordProps.value,
+    })
+  }
+
+  useEffect(() => {
+    if (!localUser) return
+    const { login, token } = localUser
+    loginProps.setValue(login)
+    passwordProps.setValue('XXXXXXXXXX')
+    setRemember(true)
+    auth({ token })
+  }, [])
 
   return (
     <form className={rootClasses.join(' ')} onSubmit={submitHandler}>
@@ -79,7 +102,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
         id="login"
         bordered
         icon="cross"
-        disabled={isLoading}
+        disabled={isLogging || isAuthing}
         {...loginProps}
       />
 
@@ -90,14 +113,14 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
         bordered
         password
         icon="eye"
-        disabled={isLoading}
+        disabled={isLogging || isAuthing}
         {...passwordProps}
       />
 
       <Button
         className={classes.btn}
         label="ОТПРАВИТЬ ЗАЯВКУ"
-        isLoading={isLoading}
+        isLoading={isLogging || isAuthing}
         disabled={!loginSettings.isValid || !passwordSettings.isValid}
       />
 
@@ -106,17 +129,28 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
           label="Запомнить меня"
           id="remember"
           name="remember"
+          checked={isRemember}
           onChange={setRemember}
+          // TODO: disabled property
+          // disabled={isLogging || isAuthing}
         />
 
         <div className={classes.links}>
-          {/* TODO: recovery route or modal*/}
-          <Anchor className={classes.link} lineColor="orange">
+          <Anchor
+            className={classes.link}
+            lineColor="orange"
+            // TODO: recovery route or modal
+            // TODO: disabled property
+          >
             Забыли пароль?
           </Anchor>
 
-          {/* TODO: registration route or modal*/}
-          <Anchor className={classes.link} lineColor="orange">
+          <Anchor
+            className={classes.link}
+            lineColor="orange"
+            // TODO: recovery route or modal
+            // TODO: disabled property
+          >
             Регистрация
           </Anchor>
         </div>

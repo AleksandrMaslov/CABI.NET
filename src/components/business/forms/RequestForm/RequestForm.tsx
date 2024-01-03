@@ -1,21 +1,19 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useContext } from 'react'
+import { FC, FormEventHandler } from 'react'
 
-import { ModalContext } from 'src/context'
-import { useFetch, useInput } from 'src/hooks'
-import { IApplication } from 'src/models'
+import { useFetchModal, useInput } from 'src/hooks'
+import { IApplicationData } from 'src/models'
 import { ServerDummyService } from 'src/services'
-import { isInterfaceInstance } from 'src/utils'
 
 import { Message } from '../..'
 
 import classes from './RequestForm.module.css'
 
-const errorMessage = (
+const errorMsg = (
   <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
 )
 
-const confirmMessage = (
+const successMsg = (
   <Message
     title="Спасибо, ваша заявка успешно отправлена!"
     content="Мы свяжемся с вами в ближайшее время."
@@ -27,8 +25,6 @@ interface RequestFormProps {
 }
 
 const RequestForm: FC<RequestFormProps> = ({ className }) => {
-  const { openModal } = useContext(ModalContext)
-
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
 
@@ -36,33 +32,30 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [commentsProps, commentsSettings] = useInput()
 
-  const [sendData, { isLoading, error }] = useFetch<void>(async data => {
-    if (!isInterfaceInstance<IApplication>(data))
-      throw new Error('Application data error.')
-    return ServerDummyService.sendApplicationData(data)
-  })
+  const query = async (data: IApplicationData | undefined) => {
+    await ServerDummyService.sendApplicationData(data!)
+  }
 
-  const resetForm = () => {
+  const callback = () => {
     usernameSettings.reset()
     telSettings.reset()
     commentsSettings.reset()
   }
 
+  const [submit, { isLoading }] = useFetchModal<IApplicationData, void>({
+    query,
+    callback,
+    successMsg,
+    errorMsg,
+  })
+
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
-    if (isLoading) return
-
-    const data = {
+    submit({
       username: usernameProps.value,
       tel: telProps.value,
       comments: commentsProps.value,
-    }
-
-    await sendData(data)
-    //TODO: не обрабатывает ошибку из-за асинхронности стейта
-    if (error) return openModal(errorMessage)
-    resetForm()
-    openModal(confirmMessage)
+    })
   }
 
   return (
