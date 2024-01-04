@@ -1,10 +1,13 @@
 import { ReactNode } from 'react'
 import { LoaderFunction, Navigate } from 'react-router-dom'
 
-import { HomePage } from 'src/pages'
+import { BookingPage, HomePage, RecoverPage, RegisterPage } from 'src/pages'
 
 export const enum RoutesEnum {
   HOME = '/',
+  BOOKING = '/booking',
+  RECOVER = '/recover',
+  REGISTER = '/register',
   DEFAULT = '*',
 }
 
@@ -23,6 +26,24 @@ export const routes: IRoute[] = [
     navbar: true,
     path: RoutesEnum.HOME,
     element: <HomePage />,
+  },
+  {
+    name: 'Registration',
+    navbar: true,
+    path: RoutesEnum.REGISTER,
+    element: <RegisterPage />,
+  },
+  {
+    name: 'Cabinet',
+    navbar: false,
+    path: RoutesEnum.BOOKING,
+    element: <BookingPage />,
+  },
+  {
+    name: 'Recover',
+    navbar: false,
+    path: RoutesEnum.RECOVER,
+    element: <RecoverPage />,
   },
   {
     name: RoutesEnum.DEFAULT,
