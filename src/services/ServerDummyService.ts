@@ -45,11 +45,7 @@ export default class ServerDummyService {
     // return undefined on failure
 
     await delay(1500)
-    return {
-      login: 'guest@mail.com',
-      name: 'Dear Guest',
-      avatar: '',
-      token: 'dummy_token',
-    }
+    // always undefined to show authorization error handler
+    return undefined
   }
 }

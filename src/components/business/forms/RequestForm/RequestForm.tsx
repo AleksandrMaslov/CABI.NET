@@ -1,7 +1,8 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler } from 'react'
+import { FC, FormEventHandler, useContext } from 'react'
 
-import { useFetchModal, useInput } from 'src/hooks'
+import { ModalContext } from 'src/context'
+import { useFetch, useInput } from 'src/hooks'
 import { IApplicationData } from 'src/models'
 import { ServerDummyService } from 'src/services'
 
@@ -25,6 +26,8 @@ interface RequestFormProps {
 }
 
 const RequestForm: FC<RequestFormProps> = ({ className }) => {
+  const { openModal } = useContext(ModalContext)
+
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
 
@@ -32,21 +35,24 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [commentsProps, commentsSettings] = useInput()
 
-  const query = async (data: IApplicationData | undefined) => {
-    await ServerDummyService.sendApplicationData(data!)
-  }
-
-  const callback = () => {
+  const callback = async () => {
     usernameSettings.reset()
     telSettings.reset()
     commentsSettings.reset()
+
+    openModal(successMsg)
   }
 
-  const [submit, { isLoading }] = useFetchModal<IApplicationData, void>({
-    query,
+  const onError = async () => {
+    openModal(errorMsg)
+  }
+
+  const [submit, { isLoading }] = useFetch<IApplicationData, void>({
+    query: async data => {
+      await ServerDummyService.sendApplicationData(data!)
+    },
     callback,
-    successMsg,
-    errorMsg,
+    onError,
   })
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {

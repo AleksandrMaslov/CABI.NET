@@ -1,7 +1,6 @@
 export type { default as IAdvantage } from './IAdvantage'
 export type { default as IApplicationData } from './IApplicationData'
 export type { default as IAuthData } from './IAuthData'
-export type { default as IFetchState } from './IFetchState'
 export type { default as IGroupedSpace } from './IGroupedSpace'
 export type { default as ILoginData } from './ILoginData'
 export type { default as IMarkerData } from './IMarkerData'

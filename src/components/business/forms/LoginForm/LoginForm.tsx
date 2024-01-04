@@ -1,11 +1,19 @@
 import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useContext, useEffect, useState } from 'react'
+import {
+  FC,
+  FormEventHandler,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
 import { ModalContext } from 'src/context'
-import { useFetchModal, useInput } from 'src/hooks'
+import { useFetch, useInput } from 'src/hooks'
 import useLocalStorage from 'src/hooks/useLocalStorage'
 import { IAuthData, ILoginData, IUser } from 'src/models'
 import { ServerDummyService } from 'src/services'
+import { delay } from 'src/utils'
 
 import { Message } from '../..'
 
@@ -22,6 +30,13 @@ const loginErrorMsg = (
   />
 )
 
+const authErrorMsg = (
+  <Message
+    title="Ошибка авторизации."
+    content="Попробуйте авторизироваться еще раз."
+  />
+)
+
 interface LoginFormProps {
   className?: string
 }
@@ -32,46 +47,55 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const rootClasses = [classes.loginForm]
   if (className) rootClasses.push(className)
 
+  const [loginProps, loginSettings] = useInput({ isEmpty: true })
+  const [passwordProps, passwordSettings] = useInput({ isEmpty: true })
+  const [isRemember, setRemember] = useState<boolean>(false)
+
   const {
     value: localUser,
     saveValue: saveUser,
     removeValue: removeUser,
   } = useLocalStorage<IUser>('user')
 
-  const [loginProps, loginSettings] = useInput({ isEmpty: true })
-  const [passwordProps, passwordSettings] = useInput({ isEmpty: true })
-  const [isRemember, setRemember] = useState<boolean>(false)
-
-  const callback = (user: IUser | undefined) => {
-    if (!user) {
-      removeUser()
-      return openModal(loginErrorMsg)
-    }
-    if (isRemember) saveUser(user)
-
+  const authorizationRequestHandler = async (
+    user: IUser | undefined,
+    msg: ReactNode,
+  ) => {
+    await closeModal()
+    if (!user) return authorizationErrorHandler(msg)
+    if (isRemember && user !== localUser) saveUser(user)
     //TODO: navigate - личный кабинет
   }
 
-  const [login, { isLoading: isLogging }] = useFetchModal<
+  const authorizationErrorHandler = async (msg: ReactNode) => {
+    removeUser()
+    openModal(msg)
+    await delay(1000)
+    await closeModal()
+    return openModal(<LoginForm />)
+  }
+
+  const authorizationRequestErrorHandler = async () => {
+    await closeModal()
+    openModal(errorMsg)
+  }
+
+  const [login, { isLoading: isLogging }] = useFetch<
     ILoginData,
     IUser | undefined
   >({
-    query: async data => {
-      return ServerDummyService.login(data!)
-    },
-    callback,
-    errorMsg,
+    query: async data => ServerDummyService.login(data!),
+    callback: async user => authorizationRequestHandler(user, loginErrorMsg),
+    onError: authorizationRequestErrorHandler,
   })
 
-  const [auth, { isLoading: isAuthing }] = useFetchModal<
+  const [auth, { isLoading: isAuthing }] = useFetch<
     IAuthData,
     IUser | undefined
   >({
-    query: async data => {
-      return ServerDummyService.auth(data!)
-    },
-    callback,
-    errorMsg,
+    query: async data => ServerDummyService.auth(data!),
+    callback: async user => authorizationRequestHandler(user, authErrorMsg),
+    onError: authorizationRequestErrorHandler,
   })
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {

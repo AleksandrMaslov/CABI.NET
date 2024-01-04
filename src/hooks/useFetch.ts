@@ -1,36 +1,45 @@
 import { useState } from 'react'
 
-import { IFetchState, IObject } from 'src/models'
 import { getErrorMessage } from 'src/utils'
 
-type TFetchArgs<T> = [
-  callback: (params?: IObject) => Promise<T>,
-  defaultState?: IFetchState<T>,
-]
+interface IFetchState<T> {
+  isLoading?: boolean
+  error?: string
+  data?: T
+}
 
-type TFetchResult<T> = [(params?: IObject) => Promise<void>, IFetchState<T>]
+interface IFetchArgs<I, T> {
+  query: (data?: I) => Promise<T>
+  callback?: (data?: T) => Promise<void>
+  onError?: () => Promise<void>
+}
 
-function useFetch<T>(
-  ...[callback, defaultState = {}]: TFetchArgs<T>
-): TFetchResult<T> {
-  const [state, setState] = useState<IFetchState<T>>(defaultState)
+type TFetchResult<I, T> = [(data: I) => Promise<void>, IFetchState<T>]
 
-  const fetch = async (params?: IObject) => {
+function useFetch<I, T>({
+  query,
+  callback,
+  onError,
+}: IFetchArgs<I, T>): TFetchResult<I, T> {
+  const [state, setState] = useState<IFetchState<T>>({})
+
+  const submit = async (data: I) => {
     try {
       setState({ isLoading: true })
+      const response = await query(data)
+      setState({ data: response })
 
-      const data = await callback(params)
-      setState({
-        data,
-      })
+      if (callback) await callback(response)
     } catch (error) {
-      setState({
-        error: getErrorMessage(error),
-      })
+      setState({ error: getErrorMessage(error) })
+
+      if (onError) await onError()
+    } finally {
+      setState(prev => ({ ...prev, isLoading: false }))
     }
   }
 
-  return [fetch, state]
+  return [submit, state]
 }
 
 export default useFetch
