@@ -1,0 +1,7 @@
+.tempBlock {
+  margin: 10rem auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
