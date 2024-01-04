@@ -18,12 +18,11 @@ const successMsg = (
   />
 )
 
-const useRequestForm = (
+type TUseRequestForm = (
   resetFormCallback: () => void,
-): [
-  (data: IApplicationData) => Promise<void>,
-  isLoading: boolean | undefined,
-] => {
+) => [(data: IApplicationData) => Promise<void>, isLoading: boolean | undefined]
+
+const useRequestForm: TUseRequestForm = resetFormCallback => {
   const { openModal } = useContext(ModalContext)
 
   const callback = async () => {

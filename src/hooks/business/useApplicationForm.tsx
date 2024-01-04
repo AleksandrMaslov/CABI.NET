@@ -17,10 +17,13 @@ const successMsg = (
     content="Мы свяжемся с вами в ближайшее время."
   />
 )
-const useApplicationForm = (): [
+
+type TUseApplicationForm = () => [
   (data: IApplicationData) => Promise<void>,
   isLoading: boolean | undefined,
-] => {
+]
+
+const useApplicationForm: TUseApplicationForm = () => {
   const { openModal, closeModal } = useContext(ModalContext)
 
   const callback = async () => {
