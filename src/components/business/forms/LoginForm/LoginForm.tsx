@@ -1,49 +1,16 @@
 import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
-import {
-  FC,
-  FormEventHandler,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import { FC, FormEventHandler, useEffect, useState } from 'react'
 
-import { ModalContext } from 'src/context'
-import { useFetch, useInput } from 'src/hooks'
-import useLocalStorage from 'src/hooks/useLocalStorage'
-import { IAuthData, ILoginData, IUser } from 'src/models'
-import { ServerDummyService } from 'src/services'
-import { delay } from 'src/utils'
-
-import { Message } from '../..'
+import { useInput } from 'src/hooks'
+import { useFormAuth, useFormLogin } from 'src/hooks/business'
 
 import classes from './LoginForm.module.css'
-
-const errorMsg = (
-  <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
-)
-
-const loginErrorMsg = (
-  <Message
-    title="Ошибка авторизации."
-    content="Убедитесь, что указанные данные верны."
-  />
-)
-
-const authErrorMsg = (
-  <Message
-    title="Ошибка авторизации."
-    content="Попробуйте авторизироваться еще раз."
-  />
-)
 
 interface LoginFormProps {
   className?: string
 }
 
 const LoginForm: FC<LoginFormProps> = ({ className }) => {
-  const { openModal, closeModal } = useContext(ModalContext)
-
   const rootClasses = [classes.loginForm]
   if (className) rootClasses.push(className)
 
@@ -51,52 +18,9 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const [passwordProps, passwordSettings] = useInput({ isEmpty: true })
   const [isRemember, setRemember] = useState<boolean>(false)
 
-  const {
-    value: localUser,
-    saveValue: saveUser,
-    removeValue: removeUser,
-  } = useLocalStorage<IUser>('user')
-
-  const authorizationRequestHandler = async (
-    user: IUser | undefined,
-    msg: ReactNode,
-  ) => {
-    await closeModal()
-    if (!user) return authorizationErrorHandler(msg)
-    if (isRemember && user !== localUser) saveUser(user)
-    //TODO: navigate - личный кабинет
-  }
-
-  const authorizationErrorHandler = async (msg: ReactNode) => {
-    removeUser()
-    openModal(msg)
-    await delay(1000)
-    await closeModal()
-    return openModal(<LoginForm />)
-  }
-
-  const authorizationRequestErrorHandler = async () => {
-    await closeModal()
-    openModal(errorMsg)
-  }
-
-  const [login, { isLoading: isLogging }] = useFetch<
-    ILoginData,
-    IUser | undefined
-  >({
-    query: async data => ServerDummyService.login(data!),
-    callback: async user => authorizationRequestHandler(user, loginErrorMsg),
-    onError: authorizationRequestErrorHandler,
-  })
-
-  const [auth, { isLoading: isAuthing }] = useFetch<
-    IAuthData,
-    IUser | undefined
-  >({
-    query: async data => ServerDummyService.auth(data!),
-    callback: async user => authorizationRequestHandler(user, authErrorMsg),
-    onError: authorizationRequestErrorHandler,
-  })
+  const [login, isLogging] = useFormLogin(isRemember)
+  const [reauthorize, isAuthing] = useFormAuth(isRemember)
+  const isLoading = isLogging || isAuthing
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
@@ -107,12 +31,11 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   }
 
   useEffect(() => {
-    if (!localUser) return
-    const { login, token } = localUser
-    loginProps.setValue(login)
-    passwordProps.setValue('XXXXXXXXXX')
-    setRemember(true)
-    auth({ token })
+    reauthorize({
+      setLogin: loginProps.setValue,
+      setPassword: passwordProps.setValue,
+      setRemember,
+    })
   }, [])
 
   return (
@@ -126,7 +49,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
         id="login"
         bordered
         icon="cross"
-        disabled={isLogging || isAuthing}
+        disabled={isLoading}
         {...loginProps}
       />
 
@@ -137,14 +60,14 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
         bordered
         password
         icon="eye"
-        disabled={isLogging || isAuthing}
+        disabled={isLoading}
         {...passwordProps}
       />
 
       <Button
         className={classes.btn}
         label="ОТПРАВИТЬ ЗАЯВКУ"
-        isLoading={isLogging || isAuthing}
+        isLoading={isLoading}
         disabled={!loginSettings.isValid || !passwordSettings.isValid}
       />
 
@@ -156,7 +79,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
           checked={isRemember}
           onChange={setRemember}
           // TODO: disabled property
-          // disabled={isLogging || isAuthing}
+          // disabled={isLoading}
         />
 
         <div className={classes.links}>
