@@ -5,7 +5,7 @@ import { TempBlock } from 'src/components/business'
 const RegisterPage: FC = () => {
   return (
     <>
-      <TempBlock title="RegisterPage" />
+      <TempBlock title="Registeration Page" />
     </>
   )
 }
