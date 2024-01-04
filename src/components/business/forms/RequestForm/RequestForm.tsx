@@ -17,6 +17,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [usernameProps, usernameSettings] = useInput({ isEmpty: true })
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [commentsProps, commentsSettings] = useInput()
+  const isFormNotValid = !usernameSettings.isValid || !telSettings.isValid
 
   const [submit, isLoading] = useRequestForm(() => {
     usernameSettings.reset()
@@ -76,7 +77,7 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
             label="ОТПРАВИТЬ ЗАЯВКУ"
             color="lightgrey"
             isLoading={isLoading}
-            disabled={!usernameSettings.isValid || !telSettings.isValid}
+            disabled={isFormNotValid}
           />
 
           <p className={classes.note}>

@@ -17,6 +17,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const [loginProps, loginSettings] = useInput({ isEmpty: true })
   const [passwordProps, passwordSettings] = useInput({ isEmpty: true })
   const [isRemember, setRemember] = useState<boolean>(false)
+  const isFormNotValid = !loginSettings.isValid || !passwordSettings.isValid
 
   const [login, isLogging] = useFormLogin(isRemember)
   const [reauthorize, isAuthing] = useFormAuth(isRemember)
@@ -67,8 +68,8 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
       <Button
         className={classes.btn}
         label="ОТПРАВИТЬ ЗАЯВКУ"
+        disabled={isFormNotValid}
         isLoading={isLoading}
-        disabled={!loginSettings.isValid || !passwordSettings.isValid}
       />
 
       <div className={classes.wrapper}>
@@ -76,10 +77,9 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
           label="Запомнить меня"
           id="remember"
           name="remember"
+          disabled={isLoading}
           checked={isRemember}
           onChange={setRemember}
-          // TODO: disabled property
-          // disabled={isLoading}
         />
 
         <div className={classes.links}>

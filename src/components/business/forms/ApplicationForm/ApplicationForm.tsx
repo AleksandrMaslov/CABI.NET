@@ -18,6 +18,8 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [emailProps, emailSettings] = useInput({ isEmail: true })
   const [commentsProps] = useInput()
+  const isFormNotValid =
+    !usernameSettings.isValid || !telSettings.isValid || !emailSettings.isValid
 
   const [submit, isLoading] = useApplicationForm()
 
@@ -71,11 +73,7 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
         className={classes.btn}
         label="ОТПРАВИТЬ ЗАЯВКУ"
         isLoading={isLoading}
-        disabled={
-          !usernameSettings.isValid ||
-          !telSettings.isValid ||
-          !emailSettings.isValid
-        }
+        disabled={isFormNotValid}
       />
 
       <p className={classes.note}>
