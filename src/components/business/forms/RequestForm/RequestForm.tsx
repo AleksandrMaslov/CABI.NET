@@ -1,33 +1,16 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useContext } from 'react'
+import { FC, FormEventHandler } from 'react'
 
-import { ModalContext } from 'src/context'
-import { useFetch, useInput } from 'src/hooks'
-import { IApplicationData } from 'src/models'
-import { ServerDummyService } from 'src/services'
-
-import { Message } from '../..'
+import { useInput } from 'src/hooks'
+import { useRequestForm } from 'src/hooks/business'
 
 import classes from './RequestForm.module.css'
-
-const errorMsg = (
-  <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
-)
-
-const successMsg = (
-  <Message
-    title="Спасибо, ваша заявка успешно отправлена!"
-    content="Мы свяжемся с вами в ближайшее время."
-  />
-)
 
 interface RequestFormProps {
   className?: string
 }
 
 const RequestForm: FC<RequestFormProps> = ({ className }) => {
-  const { openModal } = useContext(ModalContext)
-
   const rootClasses = [classes.requestForm]
   if (className) rootClasses.push(className)
 
@@ -35,24 +18,10 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [telProps, telSettings] = useInput({ isEmpty: true, isTel: true })
   const [commentsProps, commentsSettings] = useInput()
 
-  const callback = async () => {
+  const [submit, isLoading] = useRequestForm(() => {
     usernameSettings.reset()
     telSettings.reset()
     commentsSettings.reset()
-
-    openModal(successMsg)
-  }
-
-  const onError = async () => {
-    openModal(errorMsg)
-  }
-
-  const [submit, { isLoading }] = useFetch<IApplicationData, void>({
-    query: async data => {
-      await ServerDummyService.sendApplicationData(data!)
-    },
-    callback,
-    onError,
   })
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
