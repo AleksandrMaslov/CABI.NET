@@ -86,8 +86,8 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
           <Anchor
             className={classes.link}
             lineColor="orange"
+            disabled={isLoading}
             // TODO: recovery route or modal
-            // TODO: disabled property
           >
             Забыли пароль?
           </Anchor>
@@ -95,8 +95,8 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
           <Anchor
             className={classes.link}
             lineColor="orange"
+            disabled={isLoading}
             // TODO: recovery route or modal
-            // TODO: disabled property
           >
             Регистрация
           </Anchor>
