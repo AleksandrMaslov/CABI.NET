@@ -3,6 +3,7 @@ import { FC, FormEventHandler, useEffect, useState } from 'react'
 
 import { useInput } from 'src/hooks'
 import { useFormAuth, useFormLogin } from 'src/hooks/business'
+import { RoutesEnum } from 'src/router/routes'
 
 import classes from './LoginForm.module.css'
 
@@ -87,7 +88,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
             className={classes.link}
             lineColor="orange"
             disabled={isLoading}
-            // TODO: recovery route or modal
+            onClick={() => window.location.assign(`.${RoutesEnum.RECOVER}`)}
           >
             Забыли пароль?
           </Anchor>
@@ -96,7 +97,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
             className={classes.link}
             lineColor="orange"
             disabled={isLoading}
-            // TODO: recovery route or modal
+            onClick={() => window.location.assign(`.${RoutesEnum.REGISTER}`)}
           >
             Регистрация
           </Anchor>
