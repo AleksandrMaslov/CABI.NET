@@ -1,33 +1,16 @@
 import { Button, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useContext } from 'react'
+import { FC, FormEventHandler } from 'react'
 
-import { ModalContext } from 'src/context'
-import { useFetch, useInput } from 'src/hooks'
-import { IApplicationData } from 'src/models'
-import { ServerDummyService } from 'src/services'
-
-import { Message } from '../..'
+import { useInput } from 'src/hooks'
+import { useApplicationForm } from 'src/hooks/business'
 
 import classes from './ApplicationForm.module.css'
-
-const errorMsg = (
-  <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
-)
-
-const successMsg = (
-  <Message
-    title="Спасибо, ваша заявка успешно отправлена!"
-    content="Мы свяжемся с вами в ближайшее время."
-  />
-)
 
 interface ApplicationFormProps {
   className?: string
 }
 
 const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
-  const { openModal, closeModal } = useContext(ModalContext)
-
   const rootClasses = [classes.applicationForm]
   if (className) rootClasses.push(className)
 
@@ -36,23 +19,7 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
   const [emailProps, emailSettings] = useInput({ isEmail: true })
   const [commentsProps] = useInput()
 
-  const callback = async () => {
-    await closeModal()
-    openModal(successMsg)
-  }
-
-  const onError = async () => {
-    await closeModal()
-    openModal(errorMsg)
-  }
-
-  const [submit, { isLoading }] = useFetch<IApplicationData, void>({
-    query: async data => {
-      await ServerDummyService.sendApplicationData(data!)
-    },
-    callback,
-    onError,
-  })
+  const [submit, isLoading] = useApplicationForm()
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
