@@ -3,6 +3,7 @@ import { ReactNode, useContext } from 'react'
 import { LoginForm, Message } from 'src/components/business'
 import { ModalContext } from 'src/context'
 import { IAuthData, IUser } from 'src/models'
+import { RoutesEnum } from 'src/router/routes'
 import { delay } from 'src/utils'
 
 import useLocalStorage from '../useLocalStorage'
@@ -47,7 +48,7 @@ const useAuthorization: TUseAuthorization = isRemember => {
     await closeModal()
     if (!user) return authorizationErrorHandler(msg)
     if (isRemember && user !== localUser) saveLocalUser(user)
-    //TODO: navigate - личный кабинет
+    window.location.assign(RoutesEnum.BOOKING)
   }
 
   const authorizationRequestErrorHandler = async () => {
