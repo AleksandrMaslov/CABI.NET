@@ -6,6 +6,7 @@ import { IAuthData, IUser } from 'src/models'
 import { RoutesEnum } from 'src/router/routes'
 import { delay } from 'src/utils'
 
+import { useNavigate } from '..'
 import useLocalStorage from '../useLocalStorage'
 
 const fakePassword = 'XXXXXXXXXX'
@@ -34,6 +35,7 @@ type TUseAuthorization = (
 
 const useAuthorization: TUseAuthorization = isRemember => {
   const { openModal, closeModal } = useContext(ModalContext)
+  const navigate = useNavigate()
 
   const {
     value: localUser,
@@ -48,7 +50,8 @@ const useAuthorization: TUseAuthorization = isRemember => {
     await closeModal()
     if (!user) return authorizationErrorHandler(msg)
     if (isRemember && user !== localUser) saveLocalUser(user)
-    window.location.assign(RoutesEnum.BOOKING)
+    //TODO: Private AuthContext
+    navigate(RoutesEnum.BOOKING)
   }
 
   const authorizationRequestErrorHandler = async () => {

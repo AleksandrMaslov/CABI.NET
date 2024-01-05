@@ -1,7 +1,7 @@
 import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
 import { FC, FormEventHandler, useEffect, useState } from 'react'
 
-import { useInput } from 'src/hooks'
+import { useInput, useNavigate } from 'src/hooks'
 import { useFormAuth, useFormLogin } from 'src/hooks/business'
 import { RoutesEnum } from 'src/router/routes'
 
@@ -12,6 +12,7 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ className }) => {
+  const navigate = useNavigate()
   const rootClasses = [classes.loginForm]
   if (className) rootClasses.push(className)
 
@@ -88,7 +89,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
             className={classes.link}
             lineColor="orange"
             disabled={isLoading}
-            onClick={() => window.location.assign(`.${RoutesEnum.RECOVER}`)}
+            onClick={() => navigate(RoutesEnum.RECOVER)}
           >
             Забыли пароль?
           </Anchor>
@@ -97,7 +98,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
             className={classes.link}
             lineColor="orange"
             disabled={isLoading}
-            onClick={() => window.location.assign(`.${RoutesEnum.REGISTER}`)}
+            onClick={() => navigate(RoutesEnum.REGISTER)}
           >
             Регистрация
           </Anchor>
