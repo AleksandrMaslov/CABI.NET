@@ -1,7 +1,7 @@
-import { ReactNode, useContext } from 'react'
+import { ReactNode } from 'react'
 
 import { LoginForm, Message } from 'src/components/business'
-import { ModalContext } from 'src/context'
+import { useModal } from 'src/context/modal'
 import { IAuthData, IUser } from 'src/models'
 import { RoutesEnum } from 'src/router/routes'
 import { delay } from 'src/utils'
@@ -34,7 +34,7 @@ type TUseAuthorization = (
 ]
 
 const useAuthorization: TUseAuthorization = isRemember => {
-  const { openModal, closeModal } = useContext(ModalContext)
+  const { openModal, closeModal } = useModal()
   const navigate = useNavigate()
 
   const {

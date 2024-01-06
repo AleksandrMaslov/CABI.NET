@@ -1,7 +1,7 @@
 import { Anchor, Button, Icon } from 'cabinet_ui_kit'
-import { FC, ReactNode, useContext } from 'react'
+import { FC, ReactNode } from 'react'
 
-import { ModalContext } from 'src/context'
+import { useModal } from 'src/context/modal'
 import { navlinksData } from 'src/data'
 import { useMediaQuery } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
@@ -20,7 +20,7 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
-  const { openModal } = useContext(ModalContext)
+  const { openModal } = useModal()
 
   const isNotDesktop = useMediaQuery('(width < 992px)')
 

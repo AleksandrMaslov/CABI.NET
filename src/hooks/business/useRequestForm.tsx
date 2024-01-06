@@ -1,7 +1,5 @@
-import { useContext } from 'react'
-
 import { Message } from 'src/components/business'
-import { ModalContext } from 'src/context'
+import { useModal } from 'src/context/modal'
 import { IApplicationData } from 'src/models'
 import { ServerDummyService } from 'src/services'
 
@@ -23,7 +21,7 @@ type TUseRequestForm = (
 ) => [(data: IApplicationData) => Promise<void>, isLoading: boolean | undefined]
 
 const useRequestForm: TUseRequestForm = resetFormCallback => {
-  const { openModal } = useContext(ModalContext)
+  const { openModal } = useModal()
 
   const callback = async () => {
     resetFormCallback()

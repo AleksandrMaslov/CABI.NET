@@ -1,8 +1,8 @@
 import { SpaceCard } from 'cabinet_ui_kit'
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { FramerSlider, PageIndicator } from 'src/components/ui'
-import { ModalContext } from 'src/context'
+import { useModal } from 'src/context/modal'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 import { cacheImgs } from 'src/utils'
@@ -23,7 +23,7 @@ interface ServicesProps {
 }
 
 const Services: FC<ServicesProps> = ({ className }) => {
-  const { openModal } = useContext(ModalContext)
+  const { openModal } = useModal()
 
   const rootClasses = [classes.services]
   if (className) rootClasses.push(className)

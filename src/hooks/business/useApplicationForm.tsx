@@ -1,7 +1,5 @@
-import { useContext } from 'react'
-
 import { Message } from 'src/components/business'
-import { ModalContext } from 'src/context'
+import { useModal } from 'src/context/modal'
 import { IApplicationData } from 'src/models'
 import { ServerDummyService } from 'src/services'
 
@@ -24,7 +22,7 @@ type TUseApplicationForm = () => [
 ]
 
 const useApplicationForm: TUseApplicationForm = () => {
-  const { openModal, closeModal } = useContext(ModalContext)
+  const { openModal, closeModal } = useModal()
 
   const callback = async () => {
     await closeModal()
