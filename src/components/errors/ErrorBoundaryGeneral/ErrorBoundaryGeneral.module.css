@@ -1,11 +1,9 @@
 .errorBoundaryGeneral {
-  grid-area: main;
-  color: var(--font-dark-color);
+  margin: 10rem auto;
+  width: fit-content;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 .reset {

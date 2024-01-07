@@ -1,2 +1,2 @@
 export { default as ErrorBoundaryGeneral } from '../errors/ErrorBoundaryGeneral/ErrorBoundaryGeneral'
-export { ErrorRouteElement } from './ErrorRouteElement/ErrorRouteElement'
+export { default as ErrorRouteElement } from './ErrorRouteElement/ErrorRouteElement'

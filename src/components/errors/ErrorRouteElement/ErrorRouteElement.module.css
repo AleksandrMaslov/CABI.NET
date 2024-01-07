@@ -1,6 +1,7 @@
 .errorRouteElement {
+  margin: 10rem auto;
+  width: fit-content;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
 }
