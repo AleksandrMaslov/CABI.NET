@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { IListeners } from 'src/models'
 import { getErrorMessage } from 'src/utils'
 
 interface IFetchState<T> {
@@ -9,12 +10,15 @@ interface IFetchState<T> {
 }
 
 interface IFetchArgs<I, T> {
-  query: (data?: I) => Promise<T>
+  query: (data?: I, listeners?: IListeners<T>) => Promise<T>
   callback?: (data?: T) => Promise<void>
-  onError?: () => Promise<void>
+  onError?: (error?: string) => Promise<void>
 }
 
-type TFetchResult<I, T> = [(data: I) => Promise<void>, IFetchState<T>]
+type TFetchResult<I, T> = [
+  (data?: I, listeners?: IListeners<T>) => Promise<void>,
+  IFetchState<T>,
+]
 
 function useFetch<I, T>({
   query,
@@ -23,23 +27,26 @@ function useFetch<I, T>({
 }: IFetchArgs<I, T>): TFetchResult<I, T> {
   const [state, setState] = useState<IFetchState<T>>({})
 
-  const submit = async (data: I) => {
+  const fetch = async (data?: I, listeners?: IListeners<T>) => {
     try {
       setState({ isLoading: true })
       const response = await query(data)
       setState({ data: response })
 
+      if (listeners?.onSuccess) await listeners.onSuccess(response)
       if (callback) await callback(response)
     } catch (error) {
-      setState({ error: getErrorMessage(error) })
+      const msg = getErrorMessage(error)
+      setState({ error: msg })
 
-      if (onError) await onError()
+      if (listeners?.onError) await listeners?.onError(msg)
+      if (onError) await onError(msg)
     } finally {
       setState(prev => ({ ...prev, isLoading: false }))
     }
   }
 
-  return [submit, state]
+  return [fetch, state]
 }
 
 export default useFetch
