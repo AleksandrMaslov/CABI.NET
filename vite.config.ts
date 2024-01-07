@@ -34,16 +34,21 @@ export default defineConfig({
   css: {
     modules: {
       localsConvention: 'camelCase',
+      // generateScopedName: '[name]__[local]___[hash:base64:5]',
       generateScopedName: (name, filename) => {
+        const hashCode = (str: string) =>
+          [...str].reduce((s, c) => (Math.imul(31, s) + c.charCodeAt(0)) | 0, 0)
+        const sufix = String(Math.abs(hashCode(filename))).slice(0, 5)
+
         filename = filename.split('/').slice(-1)[0].split('.')[0]
         filename = `${filename[0].toLowerCase()}${filename.slice(1)}`
 
         const lowerFilename = filename.toLowerCase()
         const lowerName = name.toLocaleLowerCase()
-        if (lowerName.includes(lowerFilename)) return name
-        if (lowerFilename === lowerName) return filename
 
-        return `${filename}__${name}`
+        if (lowerName.includes(lowerFilename)) return `${name}__${sufix}`
+        if (lowerFilename === lowerName) return `${filename}__${sufix}`
+        return `${filename}__${name}___${sufix}`
       },
     },
   },
