@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import classes from './TempBlock.module.css'
@@ -12,11 +13,16 @@ const TempBlock: FC<TempBlockProps> = ({ title, className }) => {
   if (className) rootClasses.push(className)
 
   return (
-    <section className={rootClasses.join(' ')}>
+    <motion.section
+      className={rootClasses.join(' ')}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, bounce: 0 }}
+    >
       <h2>{title}</h2>
       <p>This page is under construction.</p>
       <p>Please be patient.</p>
-    </section>
+    </motion.section>
   )
 }
 
