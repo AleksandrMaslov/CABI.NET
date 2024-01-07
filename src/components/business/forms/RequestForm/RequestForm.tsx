@@ -19,19 +19,23 @@ const RequestForm: FC<RequestFormProps> = ({ className }) => {
   const [commentsProps, commentsSettings] = useInput()
   const isFormNotValid = !usernameSettings.isValid || !telSettings.isValid
 
-  const [submit, isLoading] = useRequestForm(() => {
-    usernameSettings.reset()
-    telSettings.reset()
-    commentsSettings.reset()
-  })
-
+  const [submit, isLoading] = useRequestForm()
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
-    submit({
-      username: usernameProps.value,
-      tel: telProps.value,
-      comments: commentsProps.value,
-    })
+    submit(
+      {
+        username: usernameProps.value,
+        tel: telProps.value,
+        comments: commentsProps.value,
+      },
+      {
+        onSuccess: async () => {
+          usernameSettings.reset()
+          telSettings.reset()
+          commentsSettings.reset()
+        },
+      },
+    )
   }
 
   return (

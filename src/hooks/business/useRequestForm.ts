@@ -3,20 +3,20 @@ import {
   errorMessage,
 } from 'src/components/business/messages'
 import { useModal } from 'src/context/modal'
-import { IApplicationData } from 'src/models'
+import { IApplicationData, IListeners } from 'src/models'
 import { ServerDummyService } from 'src/services'
 
 import { useFetch } from '..'
 
-type TUseRequestForm = (
-  resetFormCallback: () => void,
-) => [(data: IApplicationData) => Promise<void>, isLoading: boolean | undefined]
+type TUseRequestForm = () => [
+  (data: IApplicationData, listeners?: IListeners<void>) => Promise<void>,
+  isLoading: boolean | undefined,
+]
 
-const useRequestForm: TUseRequestForm = resetFormCallback => {
+const useRequestForm: TUseRequestForm = () => {
   const { openModal } = useModal()
 
   const callback = async () => {
-    resetFormCallback()
     openModal(applicationSuccessMessage)
   }
 

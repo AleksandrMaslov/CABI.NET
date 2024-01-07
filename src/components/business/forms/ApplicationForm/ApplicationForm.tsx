@@ -22,7 +22,6 @@ const ApplicationForm: FC<ApplicationFormProps> = ({ className }) => {
     !usernameSettings.isValid || !telSettings.isValid || !emailSettings.isValid
 
   const [submit, isLoading] = useApplicationForm()
-
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
     submit({
