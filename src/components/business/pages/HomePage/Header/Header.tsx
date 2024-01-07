@@ -6,7 +6,7 @@ import { Burger, MenuBlure } from 'src/components/ui'
 import { useMediaQuery, useToggle } from 'src/hooks'
 import { useCustomAnimation, useScrollAnimation } from 'src/hooks/framer_motion'
 
-import { Navbar } from '../..'
+import { Navbar } from '..'
 
 import classes from './Header.module.css'
 

@@ -2,8 +2,7 @@ import { Img } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
 import { about_img } from 'src/assets/home'
-
-import { Breaker, Title } from '../..'
+import { Breaker, Title } from 'src/components/ui'
 
 import classes from './About.module.css'
 

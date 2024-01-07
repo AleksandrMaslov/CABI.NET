@@ -11,7 +11,7 @@ import {
   Plan,
   Request,
   Services,
-} from 'src/components/business'
+} from 'src/components/business/pages/HomePage'
 
 const HomePage: FC = () => {
   return (

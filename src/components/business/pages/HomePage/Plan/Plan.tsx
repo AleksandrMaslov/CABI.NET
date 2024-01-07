@@ -2,10 +2,11 @@ import { Img, Marker } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
 import { plan_bg } from 'src/assets/home'
+import { Breaker } from 'src/components/ui'
 import { IGroupedSpace, IMarkerData } from 'src/models'
 import { SpacesService } from 'src/services'
 
-import { Breaker, PlanLegend } from '../..'
+import { PlanLegend } from '..'
 
 import classes from './Plan.module.css'
 

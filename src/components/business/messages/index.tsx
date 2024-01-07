@@ -1,4 +1,4 @@
-import { Message } from '..'
+import { Message } from 'src/components/ui'
 
 export const errorMessage = (
   <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />

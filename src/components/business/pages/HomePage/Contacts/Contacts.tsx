@@ -2,8 +2,9 @@ import { Img, Marker } from 'cabinet_ui_kit'
 import { FC } from 'react'
 
 import { contacts_map } from 'src/assets/home'
+import { Breaker } from 'src/components/ui'
 
-import { Breaker, Businesscard } from '../..'
+import { Businesscard } from '..'
 
 import classes from './Contacts.module.css'
 

@@ -1,20 +1,19 @@
 import { SpaceCard } from 'cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
-import { FramerSlider, PageIndicator } from 'src/components/ui'
+import { ApplicationForm, LoginForm } from 'src/components/business/forms'
+import {
+  Breaker,
+  FallbackCard,
+  FramerSlider,
+  PageIndicator,
+} from 'src/components/ui'
 import { useModal } from 'src/context/modal'
 import { IGroupedSpace } from 'src/models'
 import { SpacesService } from 'src/services'
 import { cacheImgs } from 'src/utils'
 
-import {
-  ApplicationForm,
-  Breaker,
-  FallbackCard,
-  LoginForm,
-  Tabs,
-  Tickers,
-} from '../..'
+import { Tabs, Tickers } from '..'
 
 import classes from './Services.module.css'
 

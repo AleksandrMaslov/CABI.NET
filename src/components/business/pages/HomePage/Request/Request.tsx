@@ -3,8 +3,7 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import { request_bg } from 'src/assets/home'
-
-import { RequestForm } from '../..'
+import { RequestForm } from 'src/components/business/forms'
 
 import classes from './Request.module.css'
 

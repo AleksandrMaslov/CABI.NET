@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { TempBlock } from 'src/components/business'
+import { TempBlock } from 'src/components/business/temp'
 
 const RecoverPage: FC = () => {
   return (

@@ -2,11 +2,9 @@ import { Icon } from 'cabinet_ui_kit'
 import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 
-import { Grid } from 'src/components/ui'
+import { Breaker, Grid } from 'src/components/ui'
 import { IAdvantage } from 'src/models'
 import { AdvantagesService } from 'src/services'
-
-import { Breaker } from '../..'
 
 import classes from './Advantages.module.css'
 

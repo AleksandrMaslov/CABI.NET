@@ -1,9 +1,8 @@
 import { FC } from 'react'
 
+import { Title } from 'src/components/ui'
 import { CategoriesEnum } from 'src/data'
 import { IGroupedSpace } from 'src/models'
-
-import { Title } from '../..'
 
 import classes from './PlanLegend.module.css'
 

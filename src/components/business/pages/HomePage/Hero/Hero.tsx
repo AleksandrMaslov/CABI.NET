@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import { hero_img } from 'src/assets/home'
+import { Title } from 'src/components/ui'
 
-import { Cover, Title } from '../..'
+import { Cover } from '..'
 
 import classes from './Hero.module.css'
 

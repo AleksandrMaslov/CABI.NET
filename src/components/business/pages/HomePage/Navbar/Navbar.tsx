@@ -1,12 +1,11 @@
 import { Anchor, Button, Icon } from 'cabinet_ui_kit'
 import { FC, ReactNode } from 'react'
 
+import { ApplicationForm, LoginForm } from 'src/components/business/forms'
 import { useModal } from 'src/context/modal'
 import { navlinksData } from 'src/data'
 import { useMediaQuery } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
-
-import { ApplicationForm, LoginForm } from '../..'
 
 import classes from './Navbar.module.css'
 
