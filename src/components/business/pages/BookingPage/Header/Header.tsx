@@ -15,7 +15,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
   const rootClasses = [classes.header]
   if (className) rootClasses.push(className)
 
-  const { signOut } = useAuth()
+  const { user, signOut } = useAuth()
 
   const height = useScrollAnimation([100, 300], ['10rem', '6rem'])
 
@@ -33,13 +33,18 @@ const Header: FC<HeaderProps> = ({ className }) => {
       <div className={classes.container} ref={container}>
         <Logo className={classes.logo} height="100%" href="#" />
 
-        <Button
-          className={classes.btn}
-          label="Выйти"
-          onClick={() => {
-            signOut()
-          }}
-        />
+        <div className={classes.wrapper}>
+          <h4>{user?.name}</h4>
+
+          <Button
+            className={classes.btn}
+            label="Выйти"
+            size="small"
+            onClick={() => {
+              signOut()
+            }}
+          />
+        </div>
       </div>
     </motion.header>
   )
