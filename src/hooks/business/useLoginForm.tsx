@@ -14,9 +14,10 @@ import { delay } from 'src/utils'
 
 type TUseLoginForm = (
   navigate: NavigateFunction,
+  navigatePrivate: () => void,
 ) => [(user?: IUser) => Promise<void>, () => Promise<void>]
 
-const useLoginForm: TUseLoginForm = navigate => {
+const useLoginForm: TUseLoginForm = (navigate, navigatePrivate) => {
   const { openModal, closeModal } = useModal()
   const { user } = useAuth()
 
@@ -26,7 +27,7 @@ const useLoginForm: TUseLoginForm = navigate => {
     openModal(loginFailedMessage)
     await delay(1000)
     await closeModal()
-    openModal(<LoginForm {...{ navigate }} />)
+    openModal(<LoginForm {...{ navigate, navigatePrivate }} />)
   }
 
   const loginRequestErrorHandler = async () => {
@@ -34,8 +35,14 @@ const useLoginForm: TUseLoginForm = navigate => {
     openModal(errorMessage)
   }
 
+  const loginSuccessHandler = async () => {
+    await closeModal()
+    navigate(RoutesEnum.BOOKING)
+  }
+
   useEffect(() => {
-    if (user) navigate(RoutesEnum.BOOKING)
+    if (!user) return
+    loginSuccessHandler()
   }, [user])
 
   return [loginRequestSuccessHandler, loginRequestErrorHandler]
