@@ -5,7 +5,7 @@ const authErrorMsg = 'Ошибка данных авторизации.'
 
 const dummyUser: IUser = {
   login: 'guest@mail.com',
-  name: 'Dear Guest',
+  name: 'Guest Name',
   avatar: '',
   token: 'dummy_token',
 }
