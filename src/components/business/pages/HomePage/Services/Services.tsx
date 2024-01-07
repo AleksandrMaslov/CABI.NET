@@ -8,8 +8,11 @@ import {
   FramerSlider,
   PageIndicator,
 } from 'src/components/ui'
+import { useAuth } from 'src/context/auth'
 import { useModal } from 'src/context/modal'
+import { useNavigatePrivate } from 'src/hooks'
 import { IGroupedSpace } from 'src/models'
+import { RoutesEnum } from 'src/router/routes'
 import { SpacesService } from 'src/services'
 import { cacheImgs } from 'src/utils'
 
@@ -22,8 +25,6 @@ interface ServicesProps {
 }
 
 const Services: FC<ServicesProps> = ({ className }) => {
-  const { openModal } = useModal()
-
   const rootClasses = [classes.services]
   if (className) rootClasses.push(className)
 
@@ -31,14 +32,21 @@ const Services: FC<ServicesProps> = ({ className }) => {
   const [filtered, setFiltered] = useState<IGroupedSpace[]>([])
   const [page, setPage] = useState<number>(0)
 
+  const navigation = useNavigatePrivate(RoutesEnum.BOOKING)
+  const { openModal } = useModal()
+  const { user } = useAuth()
+
   useEffect(() => {
     const spaces = SpacesService.getCommercial()
     setSpaces(spaces)
     cacheImgs(spaces.map(space => space.img))
   }, [])
 
-  const bookBtnClickHandler = () => openModal(<LoginForm />)
   const requestBtnClickHandler = () => openModal(<ApplicationForm />)
+  const bookBtnClickHandler = () => {
+    if (user) return navigation.navigatePrivate()
+    openModal(<LoginForm {...navigation} />)
+  }
 
   return (
     <section className={rootClasses.join(' ')}>

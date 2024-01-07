@@ -1,12 +1,13 @@
 import { Anchor, Button, Icon } from 'cabinet_ui_kit'
-import { FC, ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { FC } from 'react'
 
 import { ApplicationForm, LoginForm } from 'src/components/business/forms'
+import { useAuth } from 'src/context/auth'
 import { useModal } from 'src/context/modal'
 import { navlinksData } from 'src/data'
-import { useMediaQuery } from 'src/hooks'
+import { useMediaQuery, useNavigatePrivate } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
+import { RoutesEnum } from 'src/router/routes'
 
 import classes from './Navbar.module.css'
 
@@ -20,11 +21,11 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
-  const navigate = useNavigate()
+  const navigation = useNavigatePrivate(RoutesEnum.BOOKING)
+  const { user } = useAuth()
   const { openModal } = useModal()
 
   const isNotDesktop = useMediaQuery('(width < 992px)')
-
   const navbar = useCustomAnimation({
     selectors: `a, button`,
     keyframes: isNotDesktop
@@ -38,20 +39,19 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
         },
     once: !isNotDesktop,
   })
-
   const toggleMenu = () => {
     if (toggleOpened && isNotDesktop) toggleOpened()
   }
 
-  const buttonClickHandler = (content: ReactNode) => {
+  const callbackBtnClickHandler = () => {
     toggleMenu()
-    openModal(content)
+    openModal(<ApplicationForm />)
   }
-
-  const callbackBtnClickHandler = () => buttonClickHandler(<ApplicationForm />)
-
-  const loginBtnClickHandler = () =>
-    buttonClickHandler(<LoginForm {...{ navigate }} />)
+  const loginBtnClickHandler = () => {
+    toggleMenu()
+    if (user) return navigation.navigatePrivate()
+    openModal(<LoginForm {...navigation} />)
+  }
 
   return (
     <nav className={rootClasses.join(' ')} data-opened={isOpened} ref={navbar}>
