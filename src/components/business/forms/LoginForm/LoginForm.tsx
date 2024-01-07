@@ -1,8 +1,9 @@
 import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
-import { FC, FormEventHandler, useEffect, useState } from 'react'
+import { FC, FormEventHandler, useState } from 'react'
 
-import { useInput, useNavigate } from 'src/hooks'
-import { useFormAuth, useFormLogin } from 'src/hooks/business'
+import { useAuth } from 'src/context/auth'
+import { useCustomNavigate, useInput } from 'src/hooks'
+import { useLoginForm } from 'src/hooks/business'
 import { RoutesEnum } from 'src/router/routes'
 
 import classes from './LoginForm.module.css'
@@ -12,7 +13,6 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ className }) => {
-  const navigate = useNavigate()
   const rootClasses = [classes.loginForm]
   if (className) rootClasses.push(className)
 
@@ -21,25 +21,24 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const [isRemember, setRemember] = useState<boolean>(false)
   const isFormNotValid = !loginSettings.isValid || !passwordSettings.isValid
 
-  const [login, isLogging] = useFormLogin(isRemember)
-  const [reauthorize, isAuthing] = useFormAuth(isRemember)
-  const isLoading = isLogging || isAuthing
+  const [onSuccess, onError] = useLoginForm()
+  const { signIn, isLoading } = useAuth()
+  const navigate = useCustomNavigate()
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
-    login({
-      login: loginProps.value,
-      password: passwordProps.value,
-    })
+    signIn(
+      {
+        login: loginProps.value,
+        password: passwordProps.value,
+        isRemember,
+      },
+      {
+        onSuccess,
+        onError,
+      },
+    )
   }
-
-  useEffect(() => {
-    reauthorize({
-      setLogin: loginProps.setValue,
-      setPassword: passwordProps.setValue,
-      setRemember,
-    })
-  }, [])
 
   return (
     <form className={rootClasses.join(' ')} onSubmit={submitHandler}>

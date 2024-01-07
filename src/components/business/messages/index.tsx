@@ -11,13 +11,6 @@ export const applicationSuccessMessage = (
   />
 )
 
-export const authFailedMessage = (
-  <Message
-    title="Ошибка авторизации."
-    content="Попробуйте авторизироваться еще раз."
-  />
-)
-
 export const loginFailedMessage = (
   <Message
     title="Ошибка авторизации."
