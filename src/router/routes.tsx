@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { LoaderFunction, Navigate } from 'react-router-dom'
 
+import AuthRequired from 'src/context/auth/AuthRequired'
 import { BookingPage, HomePage, RecoverPage, RegisterPage } from 'src/pages'
 
 export const enum RoutesEnum {
@@ -37,7 +38,11 @@ export const routes: IRoute[] = [
     name: 'Cabinet',
     navbar: false,
     path: RoutesEnum.BOOKING,
-    element: <BookingPage />,
+    element: (
+      <AuthRequired>
+        <BookingPage />
+      </AuthRequired>
+    ),
   },
   {
     name: 'Recover',
