@@ -1,20 +1,12 @@
-import { Message } from 'src/components/business'
+import {
+  applicationSuccessMessage,
+  errorMessage,
+} from 'src/components/business/messages'
 import { useModal } from 'src/context/modal'
 import { IApplicationData } from 'src/models'
 import { ServerDummyService } from 'src/services'
 
 import { useFetch } from '..'
-
-const errorMsg = (
-  <Message title="Произошла ошибка!" content="Обратитесь в службу поддержки." />
-)
-
-const successMsg = (
-  <Message
-    title="Спасибо, ваша заявка успешно отправлена!"
-    content="Мы свяжемся с вами в ближайшее время."
-  />
-)
 
 type TUseRequestForm = (
   resetFormCallback: () => void,
@@ -25,11 +17,11 @@ const useRequestForm: TUseRequestForm = resetFormCallback => {
 
   const callback = async () => {
     resetFormCallback()
-    openModal(successMsg)
+    openModal(applicationSuccessMessage)
   }
 
   const onError = async () => {
-    openModal(errorMsg)
+    openModal(errorMessage)
   }
 
   const [submit, { isLoading }] = useFetch<IApplicationData, void>({
