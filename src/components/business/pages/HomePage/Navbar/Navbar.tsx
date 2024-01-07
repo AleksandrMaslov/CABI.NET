@@ -1,5 +1,6 @@
 import { Anchor, Button, Icon } from 'cabinet_ui_kit'
 import { FC, ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { ApplicationForm, LoginForm } from 'src/components/business/forms'
 import { useModal } from 'src/context/modal'
@@ -19,6 +20,7 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   const rootClasses = [classes.navbar]
   if (className) rootClasses.push(className)
 
+  const navigate = useNavigate()
   const { openModal } = useModal()
 
   const isNotDesktop = useMediaQuery('(width < 992px)')
@@ -47,7 +49,9 @@ const Navbar: FC<NavbarProps> = ({ isOpened, toggleOpened, className }) => {
   }
 
   const callbackBtnClickHandler = () => buttonClickHandler(<ApplicationForm />)
-  const loginBtnClickHandler = () => buttonClickHandler(<LoginForm />)
+
+  const loginBtnClickHandler = () =>
+    buttonClickHandler(<LoginForm {...{ navigate }} />)
 
   return (
     <nav className={rootClasses.join(' ')} data-opened={isOpened} ref={navbar}>

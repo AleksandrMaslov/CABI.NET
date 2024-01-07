@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { NavigateFunction } from 'react-router-dom'
 
 import { LoginForm } from 'src/components/business/forms'
 import {
@@ -11,16 +12,12 @@ import { IUser } from 'src/models'
 import { RoutesEnum } from 'src/router/routes'
 import { delay } from 'src/utils'
 
-import { useCustomNavigate } from '..'
+type TUseLoginForm = (
+  navigate: NavigateFunction,
+) => [(user?: IUser) => Promise<void>, () => Promise<void>]
 
-type TUseLoginForm = () => [
-  (user?: IUser) => Promise<void>,
-  () => Promise<void>,
-]
-
-const useLoginForm: TUseLoginForm = () => {
+const useLoginForm: TUseLoginForm = navigate => {
   const { openModal, closeModal } = useModal()
-  const navigate = useCustomNavigate()
   const { user } = useAuth()
 
   const loginRequestSuccessHandler = async (user?: IUser) => {
@@ -29,7 +26,7 @@ const useLoginForm: TUseLoginForm = () => {
     openModal(loginFailedMessage)
     await delay(1000)
     await closeModal()
-    openModal(<LoginForm />)
+    openModal(<LoginForm {...{ navigate }} />)
   }
 
   const loginRequestErrorHandler = async () => {
@@ -37,12 +34,8 @@ const useLoginForm: TUseLoginForm = () => {
     openModal(errorMessage)
   }
 
-  const loginSuccessHandler = async () => {
-    navigate(RoutesEnum.BOOKING)
-  }
-
   useEffect(() => {
-    if (user) loginSuccessHandler()
+    if (user) navigate(RoutesEnum.BOOKING)
   }, [user])
 
   return [loginRequestSuccessHandler, loginRequestErrorHandler]

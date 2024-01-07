@@ -1,4 +1,3 @@
-export { default as useCustomNavigate } from './useCustomNavigate'
 export { default as useDelayedUnmount } from './useDelayedUnmount'
 export { default as useFetch } from './useFetch'
 export { default as useInfinitePagination } from './useInfinitePagination'

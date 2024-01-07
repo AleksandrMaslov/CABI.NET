@@ -1,18 +1,20 @@
 import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
 import { FC, FormEventHandler, useState } from 'react'
+import { NavigateFunction } from 'react-router-dom'
 
 import { useAuth } from 'src/context/auth'
-import { useCustomNavigate, useInput } from 'src/hooks'
+import { useInput } from 'src/hooks'
 import { useLoginForm } from 'src/hooks/business'
 import { RoutesEnum } from 'src/router/routes'
 
 import classes from './LoginForm.module.css'
 
 interface LoginFormProps {
+  navigate: NavigateFunction
   className?: string
 }
 
-const LoginForm: FC<LoginFormProps> = ({ className }) => {
+const LoginForm: FC<LoginFormProps> = ({ navigate, className }) => {
   const rootClasses = [classes.loginForm]
   if (className) rootClasses.push(className)
 
@@ -21,9 +23,8 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const [isRemember, setRemember] = useState<boolean>(false)
   const isFormNotValid = !loginSettings.isValid || !passwordSettings.isValid
 
-  const [onSuccess, onError] = useLoginForm()
+  const [onSuccess, onError] = useLoginForm(navigate)
   const { signIn, isLoading } = useAuth()
-  const navigate = useCustomNavigate()
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
@@ -39,6 +40,9 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
       },
     )
   }
+
+  const forgotClickHandler = () => navigate(RoutesEnum.RECOVER)
+  const registerClickHandler = () => navigate(RoutesEnum.REGISTER)
 
   return (
     <form className={rootClasses.join(' ')} onSubmit={submitHandler}>
@@ -88,7 +92,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
             className={classes.link}
             lineColor="orange"
             disabled={isLoading}
-            onClick={() => navigate(RoutesEnum.RECOVER)}
+            onClick={forgotClickHandler}
           >
             Забыли пароль?
           </Anchor>
@@ -97,7 +101,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
             className={classes.link}
             lineColor="orange"
             disabled={isLoading}
-            onClick={() => navigate(RoutesEnum.REGISTER)}
+            onClick={registerClickHandler}
           >
             Регистрация
           </Anchor>
