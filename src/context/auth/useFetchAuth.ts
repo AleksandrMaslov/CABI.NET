@@ -1,12 +1,12 @@
 import { useFetch } from 'src/hooks'
-import { IAuthData, IListeners, IUser } from 'src/models'
+import { IAuthData, IUser, TAuthListeners } from 'src/models'
 import { ServerDummyService } from 'src/services'
 
 type TUseFetchAuth = (args: {
   onError: ((error?: string | undefined) => Promise<void>) | undefined
   callback: ((data?: IUser | undefined) => Promise<void>) | undefined
 }) => [
-  (data?: IAuthData, listeners?: IListeners) => Promise<void>,
+  (data?: IAuthData, listeners?: TAuthListeners) => Promise<void>,
   boolean | undefined,
 ]
 
