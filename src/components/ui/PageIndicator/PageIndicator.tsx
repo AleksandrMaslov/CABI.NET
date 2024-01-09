@@ -20,7 +20,7 @@ const PageIndicator: FC<PageIndicatorProps> = ({
   return (
     <div className={rootClasses.join(' ')}>
       <Icon icon="square" color="orange" size="2.5rem" />
-      <h4 className={classes.indicator}>{`${current}/${total}`}</h4>
+      <h4 className={classes.indicator}>{`${current || 0}/${total}`}</h4>
     </div>
   )
 }
