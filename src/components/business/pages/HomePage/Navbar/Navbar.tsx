@@ -8,6 +8,7 @@ import { navlinksData } from 'src/data'
 import { useMediaQuery, useNavigatePrivate } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
 import { RoutesEnum } from 'src/router/routes'
+import { scrollToId } from 'src/utils'
 
 import classes from './Navbar.module.css'
 
@@ -85,14 +86,20 @@ interface NavlinksProps {
 }
 
 const Navlinks: FC<NavlinksProps> = ({ isOpened, onClick }) => {
+  const clickHandler = (id: string) => {
+    scrollToId(id)
+    if (onClick) onClick()
+  }
+
   return (
     <ul className={classes.navlinks}>
       {navlinksData.map(({ title, href }) => (
         <Anchor
           key={title}
-          href={href}
-          target="_self"
-          onClick={onClick}
+          // href={href} // replaced by scrollToId because of HashRouter on github pages
+          onClick={() => {
+            clickHandler(href.replace('#', ''))
+          }}
           className={isOpened ? classes.navlink_white : undefined}
         >
           {title}
