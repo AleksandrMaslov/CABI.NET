@@ -91,6 +91,7 @@ const Navlinks: FC<NavlinksProps> = ({ isOpened, onClick }) => {
         <Anchor
           key={title}
           href={href}
+          target="_self"
           onClick={onClick}
           className={isOpened ? classes.navlink_white : undefined}
         >
