@@ -375,7 +375,9 @@ const lira: IGroupedSpace = {
   sales: SALES.residents,
 }
 
-export const spacesData: IGroupedSpace[] = [
+export const dummySpace = vega
+
+export const spaces: IGroupedSpace[] = [
   kassiopeia,
   lira,
   andromeda,

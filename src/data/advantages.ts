@@ -1,6 +1,6 @@
 import { IAdvantage } from 'src/models'
 
-const advantagesData: IAdvantage[] = [
+const advantages: IAdvantage[] = [
   {
     icon: 'location',
     title: 'Удобная локация',
@@ -74,4 +74,4 @@ const advantagesData: IAdvantage[] = [
   },
 ]
 
-export default advantagesData
+export default advantages

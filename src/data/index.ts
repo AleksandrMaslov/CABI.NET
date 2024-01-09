@@ -1,3 +1,4 @@
-export { default as advantagesData } from './advantagesData'
-export { default as navlinksData } from './navlinksData'
-export { CategoriesEnum, spacesData, tabs } from './spacesData'
+export { default as advantages } from './advantages'
+export { default as navlinks } from './navlinks'
+export { CategoriesEnum, spaces, tabs } from './spaces'
+export { dummyUser } from './users'

@@ -1,4 +1,4 @@
-const navlinksData = [
+const navlinks = [
   {
     title: 'УСЛУГИ',
     href: '#services',
@@ -13,4 +13,4 @@ const navlinksData = [
   },
 ]
 
-export default navlinksData
+export default navlinks
