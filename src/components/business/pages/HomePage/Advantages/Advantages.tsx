@@ -1,10 +1,10 @@
 import { Icon } from 'cabinet_ui_kit'
 import { motion } from 'framer-motion'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 
 import { Breaker, Grid } from 'src/components/ui'
+import { advantages } from 'src/data'
 import { IAdvantage } from 'src/models'
-import { AdvantagesService } from 'src/services'
 
 import classes from './Advantages.module.css'
 
@@ -30,12 +30,6 @@ const variants = {
 const Advantages: FC<AdvantagesProps> = ({ className }) => {
   const rootClasses = [classes.advantages]
   if (className) rootClasses.push(className)
-
-  const [advantages, setAdvantges] = useState<IAdvantage[]>([])
-
-  useEffect(() => {
-    setAdvantges(AdvantagesService.getAll())
-  }, [])
 
   return (
     <section className={rootClasses.join(' ')}>

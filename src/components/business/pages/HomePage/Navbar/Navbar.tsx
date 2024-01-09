@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { ApplicationForm, LoginForm } from 'src/components/business/forms'
 import { useAuth } from 'src/context/auth'
 import { useModal } from 'src/context/modal'
-import { navlinksData } from 'src/data'
+import { navlinks } from 'src/data'
 import { useMediaQuery, useNavigatePrivate } from 'src/hooks'
 import { useCustomAnimation } from 'src/hooks/framer_motion'
 import { RoutesEnum } from 'src/router/routes'
@@ -86,19 +86,19 @@ interface NavlinksProps {
 }
 
 const Navlinks: FC<NavlinksProps> = ({ isOpened, onClick }) => {
-  const clickHandler = (id: string) => {
-    scrollToId(id)
+  const clickHandler = (href: string) => {
+    scrollToId(href.replace('#', ''))
     if (onClick) onClick()
   }
 
   return (
     <ul className={classes.navlinks}>
-      {navlinksData.map(({ title, href }) => (
+      {navlinks.map(({ title, href }) => (
         <Anchor
           key={title}
           // href={href} // replaced by scrollToId because of HashRouter on github pages
           onClick={() => {
-            clickHandler(href.replace('#', ''))
+            clickHandler(href)
           }}
           className={isOpened ? classes.navlink_white : undefined}
         >
