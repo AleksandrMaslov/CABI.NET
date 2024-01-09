@@ -60,6 +60,8 @@ function FramerSlider<T>({
     setAnimating(false)
   }
 
+  const item = !renderItem || !number ? fallbackItem : renderItem(items[index])
+
   useEffect(() => {
     setOverflowKey(Date.now())
     reset()
@@ -98,7 +100,7 @@ function FramerSlider<T>({
               onAnimationStart={animationStartHandler}
               onAnimationComplete={animationCompleteHandler}
             >
-              {!renderItem || !number ? fallbackItem : renderItem(items[index])}
+              {item}
             </motion.div>
           </AnimatePresence>
         </motion.div>
