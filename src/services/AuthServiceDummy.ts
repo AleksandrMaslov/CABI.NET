@@ -13,11 +13,9 @@ export default class AuthServiceDummy {
     console.log('Login Data:', data)
     if (!data) throw new Error(authErrorMsg)
 
-    // request (post: login data) -> response
-    // throw on error
-
-    // return IUser on success
-    // return undefined on failure
+    // const response = await axios.post<IUser>(URL, data)
+    // if(response.status >= 400) return undefined
+    // return response.data
 
     await delay(1500)
     return dummyUser
@@ -28,11 +26,9 @@ export default class AuthServiceDummy {
     console.log('Auth Data:', data)
     if (!data) throw new Error(authErrorMsg)
 
-    // request (post: auth data) -> response
-    // throw on error
-
-    // return IUser on success
-    // return undefined on failure
+    // const response = await axios.post<IUser>(URL, data)
+    // if(response.status >= 400) return undefined
+    // return response.data
 
     await delay(1500)
     return dummyUser
