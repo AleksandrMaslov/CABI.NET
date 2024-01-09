@@ -4,7 +4,8 @@ import { FC, useEffect, useState } from 'react'
 import { plan_bg } from 'src/assets/home'
 import { Breaker } from 'src/components/ui'
 import { IGroupedSpace, IMarkerData } from 'src/models'
-import { SpacesService } from 'src/services'
+import { SpacesServiceDummy } from 'src/services'
+import { getSpaceMarkerData } from 'src/utils'
 
 import { PlanLegend } from '..'
 
@@ -21,7 +22,7 @@ const Plan: FC<PlanProps> = ({ className }) => {
   const [spaces, setSpaces] = useState<IGroupedSpace[]>([])
 
   useEffect(() => {
-    setSpaces(SpacesService.getAll())
+    SpacesServiceDummy.getAll().then(setSpaces)
   }, [])
 
   return (
@@ -33,15 +34,13 @@ const Plan: FC<PlanProps> = ({ className }) => {
           <div className={classes.wrapper}>
             <Img src={plan_bg} />
 
-            {SpacesService.extractMarkersData(spaces).map(
-              (props: IMarkerData) => (
-                <Marker
-                  className={classes.marker}
-                  key={props.tooltip}
-                  {...props}
-                />
-              ),
-            )}
+            {spaces.map(getSpaceMarkerData).map((props: IMarkerData) => (
+              <Marker
+                className={classes.marker}
+                key={props.tooltip}
+                {...props}
+              />
+            ))}
           </div>
 
           <PlanLegend className={classes.legend} spaces={spaces} />

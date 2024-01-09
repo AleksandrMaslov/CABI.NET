@@ -4,7 +4,7 @@ import {
 } from 'src/components/business/messages'
 import { useModal } from 'src/context/modal'
 import { IApplicationData } from 'src/models'
-import { ServerDummyService } from 'src/services'
+import { ApplicationsServiceDummy } from 'src/services'
 
 import { useFetch } from '..'
 
@@ -28,7 +28,7 @@ const useApplicationForm: TUseApplicationForm = () => {
 
   const [submit, { isLoading }] = useFetch<IApplicationData, void>({
     query: async data => {
-      await ServerDummyService.sendApplicationData(data!)
+      await ApplicationsServiceDummy.send(data!)
     },
     callback,
     onError,

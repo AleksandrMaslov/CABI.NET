@@ -1,6 +1,6 @@
 import { useFetch } from 'src/hooks'
 import { ILoginData, IUser, TAuthListeners } from 'src/models'
-import { ServerDummyService } from 'src/services'
+import { AuthServiceDummy } from 'src/services'
 
 type TUseFetchLogin = (args: {
   onError: ((error?: string | undefined) => Promise<void>) | undefined
@@ -15,7 +15,7 @@ const useFetchLogin: TUseFetchLogin = ({ onError, callback }) => {
     ILoginData,
     IUser | undefined
   >({
-    query: async data => ServerDummyService.login(data!),
+    query: async data => AuthServiceDummy.login(data!),
     onError,
     callback,
   })

@@ -1,3 +1,3 @@
-export { default as AdvantagesService } from './AdvantagesService'
-export { default as ServerDummyService } from './ServerDummyService'
-export { default as SpacesService } from './SpacesService'
+export { default as ApplicationsServiceDummy } from './ApplicationsServiceDummy'
+export { default as AuthServiceDummy } from './AuthServiceDummy'
+export { default as SpacesServiceDummy } from './SpacesServiceDummy'

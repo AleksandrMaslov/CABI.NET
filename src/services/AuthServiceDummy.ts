@@ -1,32 +1,13 @@
-import { IApplicationData, IAuthData, ILoginData, IUser } from 'src/models'
+import { dummyUser } from 'src/data'
+import { IAuthData, ILoginData, IUser } from 'src/models'
 import { delay } from 'src/utils'
 
 const authErrorMsg = 'Ошибка данных авторизации.'
 
-const dummyUser: IUser = {
-  login: 'guest@mail.com',
-  name: 'Guest Name',
-  avatar: '',
-  token: 'dummy_token',
-}
-
 // TODO: Commented POST requests
 // TODO: GET method
 
-//Service should be replaced with real server requests
-
-export default class ServerDummyService {
-  public static async sendApplicationData(data: IApplicationData) {
-    // eslint-disable-next-line no-console
-    console.log('Application Data:', data)
-
-    // request (post: application data) -> response
-    // throw on error
-
-    await delay(1500)
-    return
-  }
-
+export default class AuthServiceDummy {
   public static async login(data: ILoginData): Promise<IUser | undefined> {
     // eslint-disable-next-line no-console
     console.log('Login Data:', data)
