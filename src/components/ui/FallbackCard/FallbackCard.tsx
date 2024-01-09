@@ -1,5 +1,7 @@
-import { Img } from 'cabinet_ui_kit'
+import { DotsLoader, SpaceCard } from 'cabinet_ui_kit'
 import { FC } from 'react'
+
+import { dummySpace } from 'src/data/spaces'
 
 import classes from './FallbackCard.module.css'
 
@@ -12,11 +14,11 @@ const FallbackCard: FC<FallbackCardProps> = ({ className }) => {
   if (className) rootClasses.push(className)
 
   return (
-    <article className={rootClasses.join(' ')}>
-      <Img className={classes.img} loader />
-
-      <div className={classes.content}></div>
-    </article>
+    <div className={rootClasses.join(' ')}>
+      <SpaceCard space={dummySpace} />
+      <span className={classes.blur} />
+      <DotsLoader className={classes.loader} color="white" />
+    </div>
   )
 }
 
