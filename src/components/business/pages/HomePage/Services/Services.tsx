@@ -13,7 +13,7 @@ import { useModal } from 'src/context/modal'
 import { useNavigatePrivate } from 'src/hooks'
 import { IGroupedSpace } from 'src/models'
 import { RoutesEnum } from 'src/router/routes'
-import { SpacesService } from 'src/services'
+import { SpacesServiceDummy } from 'src/services'
 import { cacheImgs } from 'src/utils'
 
 import { Tabs, Tickers } from '..'
@@ -37,12 +37,14 @@ const Services: FC<ServicesProps> = ({ className }) => {
   const { user } = useAuth()
 
   useEffect(() => {
-    const spaces = SpacesService.getCommercial()
-    setSpaces(spaces)
-    cacheImgs(spaces.map(space => space.img))
+    SpacesServiceDummy.getCommercial().then(spaces => {
+      cacheImgs(spaces.map(space => space.img))
+      setSpaces(spaces)
+    })
   }, [])
 
   const requestBtnClickHandler = () => openModal(<ApplicationForm />)
+
   const bookBtnClickHandler = () => {
     if (user) return navigation.navigatePrivate()
     openModal(<LoginForm {...navigation} />)
@@ -60,6 +62,7 @@ const Services: FC<ServicesProps> = ({ className }) => {
 
           <FramerSlider
             className={classes.slider}
+            setPage={setPage}
             fallbackItem={<FallbackCard />}
             items={filtered}
             renderItem={(space: IGroupedSpace) => (
@@ -69,7 +72,6 @@ const Services: FC<ServicesProps> = ({ className }) => {
                 onRequestClick={requestBtnClickHandler}
               />
             )}
-            setPage={setPage}
           />
 
           <PageIndicator
