@@ -1,6 +1,6 @@
 # CABI.NET
 
-Корпоративный сайт аренды коммерческих помещений коворкинга, сверстанный по макету дизайнера. Разработан с использованием библиотеки React компонентов и корпоративных стилей cabinet_ui_kit, размещенной в отдельном репозитории [репозитории](https://github.com/AleksandrMaslov/cabinet_ui_kit), ознакомиться с которой можно в [Storybook](https://aleksandrmaslov.github.io/cabinet_ui_kit/).
+Корпоративный сайт аренды коммерческих помещений коворкинга, сверстанный по макету дизайнера. Разработан с использованием библиотеки React компонентов и корпоративных стилей cabinet_ui_kit, размещенной в отдельном [репозитории](https://github.com/AleksandrMaslov/cabinet_ui_kit), ознакомиться с которой можно в [Storybook](https://aleksandrmaslov.github.io/cabinet_ui_kit/).
 
 - HTML, CSS React + Vite
 - react-router-dom
