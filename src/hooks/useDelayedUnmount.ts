@@ -7,7 +7,7 @@ export default function useDelayedUnmount(
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    let timeoutId: number
+    let timeoutId: NodeJS.Timeout
 
     if (isMounted && !show) {
       setShow(true)
