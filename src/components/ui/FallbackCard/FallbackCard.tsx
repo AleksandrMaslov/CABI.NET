@@ -1,4 +1,4 @@
-import { DotsLoader, SpaceCard } from 'cabinet_ui_kit'
+import { DotsLoader, SpaceCard } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC } from 'react'
 
 import { dummySpace } from 'src/data/spaces'

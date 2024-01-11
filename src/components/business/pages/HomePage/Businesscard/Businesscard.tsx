@@ -1,4 +1,4 @@
-import { Anchor } from 'cabinet_ui_kit'
+import { Anchor } from '@aleksandrmaslov/cabinet_ui_kit'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 

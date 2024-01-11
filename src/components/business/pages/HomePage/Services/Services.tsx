@@ -1,4 +1,4 @@
-import { SpaceCard } from 'cabinet_ui_kit'
+import { SpaceCard } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
 import { ApplicationForm, LoginForm } from 'src/components/business/forms'

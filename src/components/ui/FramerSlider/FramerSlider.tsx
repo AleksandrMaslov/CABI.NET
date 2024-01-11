@@ -1,4 +1,4 @@
-import { Icon } from 'cabinet_ui_kit'
+import { Icon } from '@aleksandrmaslov/cabinet_ui_kit'
 import { AnimatePresence, AnimationDefinition, motion } from 'framer-motion'
 import { ReactNode, useEffect, useState } from 'react'
 

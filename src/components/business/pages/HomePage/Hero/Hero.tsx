@@ -1,4 +1,4 @@
-import { Img } from 'cabinet_ui_kit'
+import { Img } from '@aleksandrmaslov/cabinet_ui_kit'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 

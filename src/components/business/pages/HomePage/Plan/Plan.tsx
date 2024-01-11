@@ -1,4 +1,4 @@
-import { Img, Marker } from 'cabinet_ui_kit'
+import { Img, Marker } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC, useEffect, useState } from 'react'
 
 import { plan_bg } from 'src/assets/home'

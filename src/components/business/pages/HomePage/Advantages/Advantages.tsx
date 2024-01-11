@@ -1,4 +1,4 @@
-import { Icon } from 'cabinet_ui_kit'
+import { Icon } from '@aleksandrmaslov/cabinet_ui_kit'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 

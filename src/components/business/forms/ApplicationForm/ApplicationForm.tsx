@@ -1,4 +1,4 @@
-import { Button, Input } from 'cabinet_ui_kit'
+import { Button, Input } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC, FormEventHandler } from 'react'
 
 import { useInput } from 'src/hooks'

@@ -1,4 +1,9 @@
-import { Anchor, Button, Checkbox, Input } from 'cabinet_ui_kit'
+import {
+  Anchor,
+  Button,
+  Checkbox,
+  Input,
+} from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC, FormEventHandler, useState } from 'react'
 import { NavigateFunction } from 'react-router-dom'
 

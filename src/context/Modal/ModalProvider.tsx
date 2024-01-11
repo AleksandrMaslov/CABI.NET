@@ -1,4 +1,4 @@
-import { Modal } from 'cabinet_ui_kit'
+import { Modal } from '@aleksandrmaslov/cabinet_ui_kit'
 import { ReactNode, useState } from 'react'
 
 import { useDelayedUnmount } from 'src/hooks'

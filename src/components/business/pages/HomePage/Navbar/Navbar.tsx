@@ -1,4 +1,4 @@
-import { Anchor, Button, Icon } from 'cabinet_ui_kit'
+import { Anchor, Button, Icon } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC } from 'react'
 
 import { ApplicationForm, LoginForm } from 'src/components/business/forms'

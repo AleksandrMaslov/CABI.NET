@@ -1,4 +1,4 @@
-import { Icon } from 'cabinet_ui_kit'
+import { Icon } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC } from 'react'
 
 import { Ticker } from 'src/components/ui'

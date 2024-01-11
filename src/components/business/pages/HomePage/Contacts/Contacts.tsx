@@ -1,4 +1,4 @@
-import { Img, Marker } from 'cabinet_ui_kit'
+import { Img, Marker } from '@aleksandrmaslov/cabinet_ui_kit'
 import { FC } from 'react'
 
 import { contacts_map } from 'src/assets/home'
