@@ -90,7 +90,7 @@ const LoginForm: FC<LoginFormProps> = ({
 
       <Button
         className={classes.btn}
-        label="ОТПРАВИТЬ ЗАЯВКУ"
+        label="ВОЙТИ"
         disabled={isFormNotValid}
         isLoading={isLoading}
       />
